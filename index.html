@@ -2,200 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- TODO: Update the <title> to your project name -->
-  <title>Project Wiki – Homepage</title>
+  <!-- TODO: You can change this <title> if needed, but it should usually match the project name -->
+  <title>The Living Dead</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* 
-      ===== Global styles =====
-      TODO: If you want to adjust the overall theme (fonts, colors, spacing),
-      this :root and body section is the first place to tweak.
+      ===== Global page styles =====
+      Dark background with subtle color gradients.
+      TODO: Tweak the background gradients here if you want a different color mood.
     */
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
-      color: #111827;
-      background: #f3f4f6;
+      color: #e5e7eb;
+      background: #020617;
     }
 
     body {
       margin: 0;
       padding: 0;
-      display: flex;
       min-height: 100vh;
-      align-items: center;
-      justify-content: center;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.16), transparent 55%),
+        #020617;
+      color: #e5e7eb;
     }
 
-    /* Main card/shell for the homepage content */
-    .app-shell {
-      width: min(1000px, 100vw - 2rem);
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
-      padding: 2rem 2.5rem;
-    }
-
-    header {
+    /* Overall vertical layout: main content + footer */
+    .page {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
     }
 
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Main container card for the homepage */
+    .app-shell {
+      width: min(900px, 100vw - 2.5rem);
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 1.75rem;
+      box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.7),
+        0 0 0 1px rgba(148, 163, 184, 0.3);
+      padding: 2rem 2.5rem 2.25rem;
+      text-align: center; /* center all text by default */
+      backdrop-filter: blur(16px);
+    }
+
+    @media (max-width: 700px) {
+      .app-shell {
+        border-radius: 1.2rem;
+        padding: 1.75rem 1.4rem 1.9rem;
+      }
+    }
+
+    /* Header: title + subtitle */
     .project-title {
-      font-size: 1.75rem;
+      font-size: clamp(2rem, 3vw, 2.35rem);
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+      color: #f9fafb;
     }
 
     .project-subtitle {
       font-size: 0.95rem;
-      color: #6b7280;
-      max-width: 38rem;
+      color: #9ca3af;
+      max-width: 34rem;
+      margin: 0 auto;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: #eff6ff;
-      color: #1d4ed8;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
+    .horizon-rule {
+      width: 72px;
+      height: 1px;
+      margin: 1.25rem auto 1.5rem;
+      background: linear-gradient(
+        to right,
+        rgba(56, 189, 248, 0.6),
+        rgba(129, 140, 248, 0.9),
+        rgba(244, 114, 182, 0.7)
+      );
+      opacity: 0.85;
     }
 
-    .pill-dot {
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-    }
-
-    /* Two-column layout: nav on left, preview/detail on right */
-    .layout-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    /* Card row for the three main sections */
+    .nav-card-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 1.5rem;
+      margin-top: 0.25rem;
     }
 
-    /* Responsive behavior for small screens */
-    @media (max-width: 800px) {
-      .layout-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .app-shell {
-        padding: 1.5rem 1.25rem;
-        border-radius: 0;
-        box-shadow: none;
-      }
-    }
-
-    /* Navigation cards for main sections (Qualitative / Data Col / Processing) */
-    .nav-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
+    /* Square cards */
     .nav-card {
-      border-radius: 1rem;
-      border: 1px solid #e5e7eb;
-      padding: 0.9rem 1rem;
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 1.25rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, background 150ms ease;
-      background: #f9fafb;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.12), transparent 55%),
+                  rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.55);
+      transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease;
+    }
+
+    /* Slightly different accents per card for a multicolor but not too poppy feel */
+    .nav-card:nth-child(1) {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%),
+                  rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-card:nth-child(2) {
+      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.18), transparent 60%),
+                  rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-card:nth-child(3) {
+      background: radial-gradient(circle at top left, rgba(244, 114, 182, 0.18), transparent 60%),
+                  rgba(15, 23, 42, 0.9);
     }
 
     .nav-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 20px rgba(15, 23, 42, 0.12);
-      border-color: #93c5fd;
-      background: #eff6ff;
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.7);
+      border-color: rgba(191, 219, 254, 0.9);
     }
 
     .nav-card-title {
       font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.2rem;
+      color: #e5e7eb;
     }
 
     .nav-card-meta {
-      font-size: 0.75rem;
-      color: #6b7280;
+      font-size: 0.78rem;
+      color: #cbd5f5;
     }
 
-    /* Collaborators box styling */
-    .collab-list {
-      padding: 0.75rem 0.9rem;
-      border-radius: 0.9rem;
-      background: #f9fafb;
-      border: 1px dashed #e5e7eb;
+    /* Small preview line beneath the cards */
+    .preview-bar {
+      margin-top: 1.5rem;
       font-size: 0.85rem;
+      color: #9ca3af;
+      min-height: 1.3em; /* keep height stable even when text changes */
     }
 
-    .collab-list strong {
-      font-weight: 600;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
+    .preview-label {
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
-      margin-bottom: 0.25rem;
-    }
-
-    /* Detail/preview panel on the right side */
-    .detail-panel {
-      font-size: 0.88rem;
-      color: #4b5563;
-      border-radius: 1rem;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      padding: 1rem;
-      min-height: 140px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Soft gradient overlay inside detail panel */
-    .detail-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 55%);
-      pointer-events: none;
-    }
-
-    .detail-title {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .detail-body {
-      font-size: 0.82rem;
-      line-height: 1.6;
-    }
-
-    .detail-tagline {
-      font-size: 0.75rem;
-      margin-top: 0.5rem;
+      letter-spacing: 0.15em;
+      font-size: 0.7rem;
       color: #6b7280;
-      font-style: italic;
+      margin-bottom: 0.2rem;
     }
 
-    .mini-breadcrumb {
-      font-size: 0.8rem;
+    /* Collaborators box */
+    .collab-list {
+      margin-top: 1.75rem;
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      font-size: 0.82rem;
+      color: #d1d5db;
+    }
+
+    .collab-heading {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.72rem;
       color: #9ca3af;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .collab-role {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .collab-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 0;
+    }
+
+    .collab-list li {
+      margin: 0.08rem 0;
+    }
+
+    /* Footer at bottom of page */
+    .site-footer {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      text-align: center;
+      padding: 0.9rem 1rem 1.3rem;
+    }
+
+    .site-footer span {
+      opacity: 0.9;
     }
   </style>
 
@@ -206,176 +232,155 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-  <!-- Root div where React will mount the app -->
-  <div id="root"></div>
+  <div class="page">
+    <main class="main">
+      <!-- Root div where React will mount the app -->
+      <div id="root"></div>
+    </main>
+
+    <!-- Footer is outside the React app for simplicity -->
+    <footer class="site-footer">
+      <!-- TODO: If the year or name changes, edit this line -->
+      <span>© 2025, website created by Bhargav Dave</span>
+    </footer>
+  </div>
 
   <!-- All React code for this page lives here -->
   <script type="text/babel">
     /*
       ===== Project configuration =====
-      TODO: Edit this object to reflect your real project title, description,
-      lead, collaborators, and affiliations. This is the main place
-      you'll personalize the homepage text.
+      TODO: Edit subtitle if you want to change how the project is described.
     */
     const PROJECT_CONFIG = {
-      // TODO: Replace with your actual project title
-      title: "Project Title Goes Here",
+      // Project title used in the header
+      title: "The Living Dead",
 
       // TODO: Replace with a 1–2 sentence summary of your project
       subtitle:
-        "One-stop hub for understanding the project: qualitative design, data collection, and data processing. Use this site as a live, evolving guide to how everything fits together.",
+        "A living, evolving guide to a project about death, records, and the traces we leave behind — from qualitative work to data collection and processing.",
+    };
 
-      // TODO: Replace with your name / PI name
-      lead: "Your Name Here",
-
-      // TODO: Replace this with a comma-separated list of collaborators
-      collaborators: "Person A, Person B, Person C",
-
-      // TODO: Replace with your institutions / labs
-      affiliations: "Add institutions / labs here.",
+    /*
+      ===== Collaborators configuration =====
+      TODO: If collaborators change, add/remove names or adjust roles here.
+    */
+    const COLLABORATORS = {
+      lead: "Bhargav Dave", // TODO: Change if someone else is lead
+      // Ordered list of collaborators (displayed in order)
+      list: [
+        "Jennifer Lundquist",
+        "Naomi Gerstel",
+        "Eunkyung Song",
+        "Bhargav Dave",
+      ],
     };
 
     /*
       ===== Navigation sections =====
-      TODO: If you want to rename sections or add/remove them,
-      edit this NAV_SECTIONS array. Later, each section can link
-      to its own detailed page / component.
+      TODO: Rename sections or adjust descriptions as the project evolves.
+      Later, we can link each section to its own detailed wiki page.
     */
     const NAV_SECTIONS = [
       {
         id: "qualitative",
         title: "Qualitative Work",
-        meta: "Interviews, fieldnotes, coding frameworks",
-        blurb: "Overview of qualitative design, instruments, sampling, and analytic pipelines.",
+        meta: "Interviews, fieldnotes, coding",
+        preview:
+          "Design, conduct, and interpret interviews, fieldwork, and qualitative traces.",
       },
       {
         id: "dataCollection",
         title: "Data Collection",
-        meta: "Surveys, scraping, archival workflows",
-        blurb: "How data enters the project: protocols, tools, and quality control checks.",
+        meta: "Surveys, scraping, archives",
+        preview:
+          "From survey instruments to scraping and archival work: how the data enters the project.",
       },
       {
         id: "dataProcessing",
         title: "Data Processing",
-        meta: "Cleaning, merging, modeling",
-        blurb: "Steps to transform raw data into analysis-ready datasets and documentation.",
+        meta: "Cleaning, linkage, modeling",
+        preview:
+          "Transform raw records into analysis-ready datasets, logs, and reproducible workflows.",
       },
     ];
 
     /*
-      DetailPanel component:
-      - Shows a generic message when no section is selected
-      - Shows specific preview text when a section is active
-      TODO: Later, we can replace the placeholder text with:
-        * links to subpages
-        * embedded diagrams
-        * or live status indicators for each workflow.
-    */
-    function DetailPanel({ active }) {
-      if (!active) {
-        return (
-          <div className="detail-panel">
-            <div className="detail-title">Pick a lane to dive into the project.</div>
-            <div className="detail-body">
-              Use the cards on the left to jump into high-level overviews of the project&apos;s
-              qualitative work, data collection, and data processing workflows.
-            </div>
-            <div className="detail-tagline">
-              This panel will later expand into a full wiki with links and diagrams.
-            </div>
-          </div>
-        );
-      }
-
-      const section = NAV_SECTIONS.find((s) => s.id === active);
-
-      return (
-        <div className="detail-panel">
-          <div className="mini-breadcrumb">Project &gt; {section.title}</div>
-          <div className="detail-title">{section.title}</div>
-          <div className="detail-body">
-            {section.blurb}
-            <br />
-            <br />
-            <strong>Coming next:</strong> a dedicated page that documents this part of the pipeline
-            in depth – methods, files, code, and decision logs.
-          </div>
-          <div className="detail-tagline">
-            {/* TODO: You can customize this tagline per section if you want different vibes */}
-            Think of this as the &quot;doorway&quot; to the {section.title.toLowerCase()} wiki.
-          </div>
-        </div>
-      );
-    }
-
-    /*
       App component:
-      - Renders header (title, subtitle, pill)
-      - Renders navigation cards for each section
-      - Renders collaborators box
-      - Renders DetailPanel on the right
-      TODO: This will eventually become the "layout" component if we add more pages.
+      - Renders header (title, subtitle)
+      - Renders the three square cards in the center
+      - Shows a small preview line below the cards based on selected section
+      - Shows collaborators box below
+      TODO: This can grow into a layout that also manages subpages or routing.
     */
     function App() {
-      const [activeSection, setActiveSection] = React.useState(null);
+      const [activeSectionId, setActiveSectionId] = React.useState(null);
+
+      const activeSection =
+        NAV_SECTIONS.find((section) => section.id === activeSectionId) || null;
 
       return (
         <div className="app-shell">
+          {/* ===== Header: Title + Subtitle ===== */}
           <header>
-            <span className="pill">
-              <span className="pill-dot" />
-              {/* TODO: You can rename this label if you want (e.g., "Methods wiki", "Project dashboard") */}
-              Live project wiki
-            </span>
+            {/* TODO: Change PROJECT_CONFIG.title if you ever rename the project */}
+            <h1 className="project-title">{PROJECT_CONFIG.title}</h1>
 
-            {/* Project title from config */}
-            <h1 className="project-title">
-              {PROJECT_CONFIG.title}
-            </h1>
+            {/* TODO: Edit PROJECT_CONFIG.subtitle for a different description */}
+            <p className="project-subtitle">{PROJECT_CONFIG.subtitle}</p>
 
-            {/* Project subtitle from config */}
-            <p className="project-subtitle">
-              {PROJECT_CONFIG.subtitle}
-            </p>
+            <div className="horizon-rule" />
           </header>
 
-          <div className="layout-grid">
-            {/* LEFT SIDE: Navigation + collaborators */}
-            <div>
-              <div className="section-label">Navigation</div>
-              <div className="nav-card-grid">
-                {NAV_SECTIONS.map((section) => (
-                  <div
-                    key={section.id}
-                    className="nav-card"
-                    onClick={() => setActiveSection(section.id)}
-                    /* TODO: later we can add keyboard handlers or router logic here */
-                  >
-                    <div className="nav-card-title">{section.title}</div>
-                    <div className="nav-card-meta">{section.meta}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ marginTop: "1.25rem" }}>
-                <div className="section-label">Collaborators</div>
-                <div className="collab-list">
-                  {/* TODO: Edit the values in PROJECT_CONFIG above */}
-                  <strong>PI / Lead:</strong> {PROJECT_CONFIG.lead}
-                  <br />
-                  <strong>Collaborators:</strong> {PROJECT_CONFIG.collaborators}
-                  <br />
-                  <strong>Affiliations:</strong> {PROJECT_CONFIG.affiliations}
+          {/* ===== Centered cards ===== */}
+          <section aria-label="Project sections">
+            <div className="nav-card-row">
+              {NAV_SECTIONS.map((section) => (
+                <div
+                  key={section.id}
+                  className="nav-card"
+                  onClick={() => setActiveSectionId(section.id)}
+                  // TODO: Later, you can also handle keyboard events or routing here
+                >
+                  <div className="nav-card-title">{section.title}</div>
+                  <div className="nav-card-meta">{section.meta}</div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* RIGHT SIDE: Detail / preview panel */}
-            <div>
-              <div className="section-label">Preview</div>
-              <DetailPanel active={activeSection} />
+            {/* ===== Single-line preview beneath cards ===== */}
+            <div className="preview-bar">
+              <div className="preview-label">Preview</div>
+              {/* If nothing selected, show a generic hint; else show section-specific preview */}
+              {activeSection ? (
+                <span>{activeSection.preview}</span>
+              ) : (
+                <span>
+                  Hover over or click a card to see a brief description of that part of the project.
+                </span>
+              )}
             </div>
-          </div>
+          </section>
+
+          {/* ===== Collaborators box ===== */}
+          <section className="collab-list" aria-label="Collaborators">
+            <div className="collab-heading">People</div>
+
+            {/* TODO: Edit COLLABORATORS.lead if the lead changes */}
+            <div>
+              <span className="collab-role">Lead: </span>
+              <span>{COLLABORATORS.lead}</span>
+            </div>
+
+            <div style={{ marginTop: "0.5rem" }}>
+              <span className="collab-role">Collaborators:</span>
+              <ul>
+                {/* TODO: Add or remove names in COLLABORATORS.list above */}
+                {COLLABORATORS.list.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
         </div>
       );
     }
