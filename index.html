@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- TODO: Update the <title> to your project name -->
   <title>Project Wiki – Homepage</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* 
+      ===== Global styles =====
+      TODO: If you want to adjust the overall theme (fonts, colors, spacing),
+      this :root and body section is the first place to tweak.
+    */
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -21,6 +28,7 @@
       justify-content: center;
     }
 
+    /* Main card/shell for the homepage content */
     .app-shell {
       width: min(1000px, 100vw - 2rem);
       background: white;
@@ -70,12 +78,14 @@
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
     }
 
+    /* Two-column layout: nav on left, preview/detail on right */
     .layout-grid {
       display: grid;
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
       gap: 1.5rem;
     }
 
+    /* Responsive behavior for small screens */
     @media (max-width: 800px) {
       .layout-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -87,6 +97,7 @@
       }
     }
 
+    /* Navigation cards for main sections (Qualitative / Data Col / Processing) */
     .nav-card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -121,6 +132,7 @@
       color: #6b7280;
     }
 
+    /* Collaborators box styling */
     .collab-list {
       padding: 0.75rem 0.9rem;
       border-radius: 0.9rem;
@@ -141,6 +153,7 @@
       margin-bottom: 0.25rem;
     }
 
+    /* Detail/preview panel on the right side */
     .detail-panel {
       font-size: 0.88rem;
       color: #4b5563;
@@ -153,6 +166,7 @@
       overflow: hidden;
     }
 
+    /* Soft gradient overlay inside detail panel */
     .detail-panel::before {
       content: "";
       position: absolute;
@@ -185,16 +199,48 @@
     }
   </style>
 
-  <!-- React + ReactDOM from CDN -->
+  <!-- React + ReactDOM from CDN (no build step needed) -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <!-- Babel so we can use JSX directly in the browser -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+  <!-- Root div where React will mount the app -->
   <div id="root"></div>
 
+  <!-- All React code for this page lives here -->
   <script type="text/babel">
+    /*
+      ===== Project configuration =====
+      TODO: Edit this object to reflect your real project title, description,
+      lead, collaborators, and affiliations. This is the main place
+      you'll personalize the homepage text.
+    */
+    const PROJECT_CONFIG = {
+      // TODO: Replace with your actual project title
+      title: "Project Title Goes Here",
+
+      // TODO: Replace with a 1–2 sentence summary of your project
+      subtitle:
+        "One-stop hub for understanding the project: qualitative design, data collection, and data processing. Use this site as a live, evolving guide to how everything fits together.",
+
+      // TODO: Replace with your name / PI name
+      lead: "Your Name Here",
+
+      // TODO: Replace this with a comma-separated list of collaborators
+      collaborators: "Person A, Person B, Person C",
+
+      // TODO: Replace with your institutions / labs
+      affiliations: "Add institutions / labs here.",
+    };
+
+    /*
+      ===== Navigation sections =====
+      TODO: If you want to rename sections or add/remove them,
+      edit this NAV_SECTIONS array. Later, each section can link
+      to its own detailed page / component.
+    */
     const NAV_SECTIONS = [
       {
         id: "qualitative",
@@ -216,6 +262,15 @@
       },
     ];
 
+    /*
+      DetailPanel component:
+      - Shows a generic message when no section is selected
+      - Shows specific preview text when a section is active
+      TODO: Later, we can replace the placeholder text with:
+        * links to subpages
+        * embedded diagrams
+        * or live status indicators for each workflow.
+    */
     function DetailPanel({ active }) {
       if (!active) {
         return (
@@ -246,12 +301,21 @@
             in depth – methods, files, code, and decision logs.
           </div>
           <div className="detail-tagline">
+            {/* TODO: You can customize this tagline per section if you want different vibes */}
             Think of this as the &quot;doorway&quot; to the {section.title.toLowerCase()} wiki.
           </div>
         </div>
       );
     }
 
+    /*
+      App component:
+      - Renders header (title, subtitle, pill)
+      - Renders navigation cards for each section
+      - Renders collaborators box
+      - Renders DetailPanel on the right
+      TODO: This will eventually become the "layout" component if we add more pages.
+    */
     function App() {
       const [activeSection, setActiveSection] = React.useState(null);
 
@@ -260,18 +324,23 @@
           <header>
             <span className="pill">
               <span className="pill-dot" />
+              {/* TODO: You can rename this label if you want (e.g., "Methods wiki", "Project dashboard") */}
               Live project wiki
             </span>
+
+            {/* Project title from config */}
             <h1 className="project-title">
-              Project Title Goes Here
+              {PROJECT_CONFIG.title}
             </h1>
+
+            {/* Project subtitle from config */}
             <p className="project-subtitle">
-              One-stop hub for understanding the project: qualitative design, data collection,
-              and data processing. Use this site as a live, evolving guide to how everything fits together.
+              {PROJECT_CONFIG.subtitle}
             </p>
           </header>
 
           <div className="layout-grid">
+            {/* LEFT SIDE: Navigation + collaborators */}
             <div>
               <div className="section-label">Navigation</div>
               <div className="nav-card-grid">
@@ -280,6 +349,7 @@
                     key={section.id}
                     className="nav-card"
                     onClick={() => setActiveSection(section.id)}
+                    /* TODO: later we can add keyboard handlers or router logic here */
                   >
                     <div className="nav-card-title">{section.title}</div>
                     <div className="nav-card-meta">{section.meta}</div>
@@ -290,15 +360,17 @@
               <div style={{ marginTop: "1.25rem" }}>
                 <div className="section-label">Collaborators</div>
                 <div className="collab-list">
-                  <strong>PI / Lead:</strong> Your Name Here
+                  {/* TODO: Edit the values in PROJECT_CONFIG above */}
+                  <strong>PI / Lead:</strong> {PROJECT_CONFIG.lead}
                   <br />
-                  <strong>Collaborators:</strong> Person A, Person B, Person C
+                  <strong>Collaborators:</strong> {PROJECT_CONFIG.collaborators}
                   <br />
-                  <strong>Affiliations:</strong> Add institutions / labs here.
+                  <strong>Affiliations:</strong> {PROJECT_CONFIG.affiliations}
                 </div>
               </div>
             </div>
 
+            {/* RIGHT SIDE: Detail / preview panel */}
             <div>
               <div className="section-label">Preview</div>
               <DetailPanel active={activeSection} />
@@ -308,6 +380,7 @@
       );
     }
 
+    // Mount the React app into the #root div
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<App />);
   </script>
