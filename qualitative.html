@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Living Dead – Qualitative Work</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #f6f0e4;
+      --bg-card: #faf5ea;
+      --border-subtle: rgba(85, 71, 47, 0.18);
+      --accent-1: #b28b5e;
+      --accent-2: #7b6a9b;
+      --accent-3: #4c7a7a;
+      --text-main: #2b2620;
+      --text-muted: #6a6053;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+      --radius-card: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fffaf0 0, #f3ebdd 40%, #ece2d2 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* Top nav */
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .project-mark {
+      font-family: "Playfair Display", serif;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(4px);
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-color: rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-links a.active {
+      border-color: rgba(0, 0, 0, 0.18);
+      background: rgba(250, 245, 234, 0.9);
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    header.page-header {
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 240, 225, 0.98));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 18px;
+    }
+
+    .page-header h1 {
+      margin: 0 0 4px;
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #433529;
+    }
+
+    .page-header-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .page-header-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-header-meta span {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Layout with sidebar */
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 16px;
+      align-self: flex-start;
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 4px;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      display: block;
+      padding: 6px 8px;
+      border-radius: 10px;
+      transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .sidebar-nav a:hover {
+      background: rgba(250, 245, 234, 0.9);
+      color: var(--text-main);
+      transform: translateX(2px);
+    }
+
+    .sidebar-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    .main {
+      border-radius: 20px;
+      padding: 16px 16px 18px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-block {
+      margin-bottom: 22px;
+    }
+
+    .section-block:last-of-type {
+      margin-bottom: 8px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .section-block h2 {
+      margin: 0 0 6px;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      color: #433529;
+    }
+
+    .section-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0 0 8px;
+    }
+
+    .section-block ul {
+      margin: 0 0 8px 18px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .inline-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(248, 240, 225, 0.85);
+      color: var(--text-muted);
+    }
+
+    .figure-block {
+      border-radius: 14px;
+      border: 1px dashed rgba(0, 0, 0, 0.14);
+      background: rgba(250, 245, 234, 0.5);
+      padding: 10px 12px 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 10px 0;
+    }
+
+    .figure-caption {
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* Floating back-to-home button */
+    .floating-home {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 20;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 9px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(6px);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+    }
+
+    .floating-home:hover {
+      transform: translateY(-2px);
+      background: #fffdf6;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+    }
+
+    .floating-home-icon {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-row">
+      <div class="project-mark">The Living Dead</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="qualitative.html" class="active">Qualitative work</a>
+        <a href="data-collection.html">Data collection</a>
+        <a href="data-processing.html">Data processing</a>
+      </nav>
+    </div>
+
+    <header class="page-header">
+      <h1>Qualitative work</h1>
+      <div class="page-header-subtitle">
+        <!-- Subtitle requested by you -->
+        Methodology, close reading of texts, creating coding schemes, and reasoning about data choices.
+      </div>
+      <div class="page-header-meta">
+        <span>Module · Qualitative &amp; interpretive analysis</span>
+        <span>Focus · Narratives of ties, values, and inequality</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-title">On this page</div>
+        <ul class="sidebar-nav">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#methodology">Methodology &amp; close reading</a></li>
+          <li><a href="#coding-schemes">Coding schemes</a></li>
+          <li><a href="#data-choices">Data choices &amp; boundaries</a></li>
+          <li><a href="#current-status">Current status &amp; next steps</a></li>
+          <li><a href="#resources">Related resources</a></li>
+        </ul>
+        <div class="sidebar-note">
+          <!-- TODO: Add link to internal/shared folder if desired -->
+          Use this page as a high-level roadmap. Detailed memos, full proposal drafts,
+          and interview notes will be linked from locked internal pages.
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main">
+        <!-- Overview -->
+        <section id="overview" class="section-block">
+          <div class="section-label">Module overview</div>
+          <h2>What the qualitative work is doing</h2>
+          <p>
+            The qualitative strand of <em>The Living Dead</em> treats obituaries as cultural texts
+            rather than neutral records. We read them as narratives that construct collective memory:
+            deciding whose lives are worth narrating, which relationships are visible, and how
+            inequalities are framed or erased.
+          </p>
+          <p>
+            The core aims are to:
+          </p>
+          <ul>
+            <li>Trace how <strong>familial, community, and organizational ties</strong> are narrated across time.</li>
+            <li>Identify shifting <strong>values and cultural narratives</strong> (e.g., loneliness, belonging, duty, achievement).</li>
+            <li>Understand how <strong>inequalities of public memory</strong> appear by gender, race, and class.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Close reading</span>
+            <span class="pill">Comparative cases</span>
+            <span class="pill">Historical context</span>
+          </div>
+        </section>
+
+        <!-- Methodology & close reading -->
+        <section id="methodology" class="section-block">
+          <div class="section-label">Design</div>
+          <h2>Methodology &amp; close reading of texts</h2>
+          <p>
+            Qualitative work proceeds in iterative waves. We begin with small, carefully chosen
+            sets of obituaries (by period, place, race, and gender) and move between detailed
+            reading and emerging codes.
+          </p>
+          <ul>
+            <li>
+              <strong>Historical sampling.</strong> For each state and period, we select focused
+              batches of obituaries (e.g., early 19th century vs. mid-20th century; Black vs.
+              white newspapers; funeral programs vs. daily papers).
+            </li>
+            <li>
+              <strong>Context-first reading.</strong> Obituaries are read alongside historical notes
+              (e.g., war, migration, legal changes, civil rights struggles) to situate how lives are
+              framed in their time.
+            </li>
+            <li>
+              <strong>Comparative reading.</strong> We explicitly compare cases (e.g., husband vs.
+              wife obits, Black vs. white obits in the same city and year) to surface patterned
+              differences.
+            </li>
+          </ul>
+
+          <!-- Placeholder for a future qualitative workflow figure -->
+          <div class="figure-block">
+            <!-- TODO: Replace with actual image from assets/ when ready -->
+            <!-- Example:
+            <img src="assets/figures/qualitative/qual_workflow_v1.png"
+                 alt="Draft workflow of the qualitative close reading process" />
+            -->
+            <p class="figure-caption">
+              Placeholder for a qualitative workflow diagram (from initial reading to memoing and coding).
+              Add as an image from <code>assets/</code> once finalized.
+            </p>
+          </div>
+
+          <p class="inline-note">
+            TODO (internal): Add link here to the latest qualitative memo summarizing the 1930s Atlanta
+            obits pilot once the locked document location is finalized.
+          </p>
+        </section>
+
+        <!-- Coding schemes -->
+        <section id="coding-schemes" class="section-block">
+          <div class="section-label">Structure</div>
+          <h2>Creating and refining coding schemes</h2>
+          <p>
+            The coding system is being built to bridge qualitative nuance and quantitative analysis.
+            It captures both <strong>who appears</strong> in an obituary and <strong>how</strong> they
+            are described.
+          </p>
+          <ul>
+            <li>
+              <strong>Core dimensions.</strong> Demographic markers (where available), types of ties
+              (spouses, partners, children, extended kin, “chosen family”), organizational membership,
+              work, faith, and community roles.
+            </li>
+            <li>
+              <strong>Ordering and emphasis.</strong> Who is mentioned first? Who is named vs. left
+              generic (“a host of loving friends”)? How much text is devoted to different spheres of life?
+            </li>
+            <li>
+              <strong>Language and framing.</strong> Terms of affection, moral judgments, references to
+              health, cause of death (including suicide and violence), and depictions of inequality.
+            </li>
+          </ul>
+          <p>
+            Early coding is exploratory—multiple readers code the same small sets of obituaries,
+            compare interpretations, and adjust definitions before scaling up.
+          </p>
+
+          <p class="inline-note">
+            Find updated coding manual draft here (link to be added once the internal document location is finalized).
+          </p>
+        </section>
+
+        <!-- Data choices & boundaries -->
+        <section id="data-choices" class="section-block">
+          <div class="section-label">Data choices</div>
+          <h2>Reasoning about data choices &amp; limits</h2>
+          <p>
+            Not every death generates an obituary, and not every obituary survives in accessible
+            archives. The qualitative work continually foregrounds these limits when interpreting
+            findings.
+          </p>
+          <ul>
+            <li>
+              <strong>Elites vs. “ordinary” lives.</strong> Daily newspapers and online platforms
+              overrepresent certain groups (by class, race, and geography). We use subsamples and
+              comparison to vital statistics to keep this visible.
+            </li>
+            <li>
+              <strong>Black funeral programs &amp; newspapers.</strong> In many places, Black lives
+              were documented through funeral programs or community-specific outlets rather than
+              mainstream dailies. These sources are treated as analytically distinct, not just “add-ons.”
+            </li>
+            <li>
+              <strong>Death notices vs. obituaries.</strong> Brief death notices without meaningful
+              biographical detail are excluded from the main qualitative coding, but tracked separately
+              so we do not overinterpret silence.
+            </li>
+          </ul>
+
+          <p class="inline-note">
+            Longer discussion of limits and mitigation strategies lives in the SPARC proposal and
+            methods document. Find the updated proposal here (internal link to be added).
+          </p>
+        </section>
+
+        <!-- Current status & next steps -->
+        <section id="current-status" class="section-block">
+          <div class="section-label">Status</div>
+          <h2>Current status &amp; planned next steps</h2>
+          <p>
+            At this stage, qualitative work has focused on:
+          </p>
+          <ul>
+            <li>
+              Reviewing early newspapers to understand when and how obituaries emerge as a distinct
+              genre (versus scattered death notices).
+            </li>
+            <li>
+              Comparing Black and white obituaries and funeral programs to document differences in
+              visibility, length, and narrative focus.
+            </li>
+            <li>
+              Drafting and iteratively revising the coding scheme, especially around social ties,
+              inequality, and the language of loneliness/belonging.
+            </li>
+          </ul>
+          <p>
+            Upcoming qualitative tasks include:
+          </p>
+          <ul>
+            <li>Conducting a small pilot comparing two time periods with fully coded subsamples.</li>
+            <li>Preparing case-based vignettes to sit alongside tables and figures in future papers.</li>
+            <li>
+              Exploring interviews or conversations with obituary writers and funeral home staff as a
+              potential supplementary method.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Resources -->
+        <section id="resources" class="section-block">
+          <div class="section-label">Pointers</div>
+          <h2>Related resources &amp; internal links</h2>
+          <p>
+            This public page intentionally keeps detail at a high level. For internal use, we will
+            link to:
+          </p>
+          <ul>
+            <li>Full SPARC proposal text and later grant applications (NSF, NEH, Russell Sage).</li>
+            <li>Qualitative memos summarizing each pilot subsample.</li>
+            <li>The evolving coding manual and example coded obituaries.</li>
+          </ul>
+          <p class="inline-note">
+            TODO: Add concrete URLs once internal document locations are finalized. These links will
+            point to restricted resources, not public files.
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Floating "Back to home" button -->
+  <button class="floating-home" onclick="goHome()">
+    <span class="floating-home-icon">←</span>
+    <span>Back to home</span>
+  </button>
+
+  <script>
+    // Simple back-to-home navigation
+    function goHome() {
+      // TODO: If you prefer history.back(), replace with: window.history.back();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

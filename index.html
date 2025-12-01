@@ -2,26 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- TODO: Edit the page title in the browser tab if needed -->
-  <title>The Living Dead</title>
+  <title>The Living Dead – Project Wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- TODO: You can change fonts here if you want a different visual vibe -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-main: #f6f1e4;        /* warm cream background */
-      --bg-card: #fffaf1;        /* lighter card background */
-      --accent-1: #c89b4e;       /* muted gold */
-      --accent-2: #8b6b4a;       /* warm brown */
-      --accent-3: #506b7a;       /* cool slate */
-      --text-main: #2e2520;
-      --text-muted: #6a5c52;
-      --border-soft: rgba(0, 0, 0, 0.06);
-      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.16);
+      --bg-main: #f6f0e4;
+      --bg-card: #faf5ea;
+      --border-subtle: rgba(85, 71, 47, 0.18);
+      --accent-1: #b28b5e;
+      --accent-2: #7b6a9b;
+      --accent-3: #4c7a7a;
+      --text-main: #2b2620;
+      --text-muted: #6a6053;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
       --radius-card: 18px;
-      --transition-fast: 0.18s ease-out;
+      --radius-pill: 999px;
     }
 
     * {
@@ -31,492 +28,590 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fffaf0 0, #f3ebdd 40%, #ece2d2 100%);
       color: var(--text-main);
-      background: radial-gradient(circle at top left, #fdf7e8 0%, #f6f1e4 45%, #f3ecde 100%);
       -webkit-font-smoothing: antialiased;
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 1.75rem 1.25rem 3.5rem;
+      padding: 32px 20px 48px;
     }
 
-    /* Header / Hero */
+    header.hero {
+      margin-bottom: 32px;
+    }
 
-    .site-header {
+    .hero-top-row {
       display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      justify-content: space-between;
       align-items: center;
-      text-align: center;
-      margin-bottom: 2.25rem;
+      gap: 16px;
+      margin-bottom: 20px;
     }
 
-    .title-block h1 {
-      font-family: "Cormorant Garamond", "Times New Roman", serif;
-      font-weight: 600;
-      font-size: clamp(2.7rem, 4vw, 3.2rem);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin: 0 0 0.3rem;
-      color: #2a211b;
-    }
-
-    .title-block .tagline {
-      /* TODO: Edit this line to change the short project description */
-      margin: 0.1rem 0 0.35rem;
-      font-size: 0.95rem;
+    .project-mark {
+      font-family: "Playfair Display", serif;
+      font-size: 15px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent-3);
-    }
-
-    .title-block .subtitle {
-      /* TODO: Edit the longer subtitle here */
-      margin: 0.4rem 0 0;
-      font-size: 0.98rem;
-      max-width: 36rem;
-      line-height: 1.5;
       color: var(--text-muted);
     }
 
-    .top-nav {
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(4px);
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-color: rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-main {
+      border-radius: 24px;
+      padding: 26px 24px 24px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 240, 225, 0.98));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(178, 139, 94, 0.12) 0, transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(75, 99, 98, 0.12) 0, transparent 55%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      margin: 0 0 6px;
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #433529;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      max-width: 42rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .hero-meta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem 1.1rem;
-      justify-content: center;
-      margin-top: 0.55rem;
-    }
-
-    .top-nav a {
-      /* TODO: You can add or remove nav links here (anchors to sections below) */
-      text-decoration: none;
-      font-size: 0.86rem;
-      letter-spacing: 0.14em;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
       text-transform: uppercase;
-      color: var(--accent-2);
-      padding-bottom: 0.1rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition-fast), color var(--transition-fast);
+      letter-spacing: 0.14em;
     }
 
-    .top-nav a:hover {
-      border-color: rgba(0, 0, 0, 0.18);
-      color: #3d2f22;
+    .hero-pill {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-tag {
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-highlight-card {
+      align-self: stretch;
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .highlight-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .highlight-title {
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: #4c3b30;
+    }
+
+    .highlight-text {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .highlight-list {
+      margin: 6px 0 0;
+      padding-left: 16px;
+      color: var(--text-muted);
+    }
+
+    .highlight-list li {
+      margin-bottom: 4px;
     }
 
     main {
-      display: flex;
-      flex-direction: column;
-      gap: 2.8rem;
+      margin-top: 22px;
     }
-
-    /* Primary navigation cards (modules) */
 
     .modules-section {
-      padding: 1rem 0 0.5rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
     }
 
-    .modules-intro {
-      text-align: center;
-      margin-bottom: 1.4rem;
-    }
-
-    .modules-intro p {
-      /* TODO: Adjust the instruction text for how to use the cards */
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .primary-card-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .nav-card {
-      /* square cards that pop up on hover */
-      position: relative;
-      width: min(220px, 28vw);
-      aspect-ratio: 1 / 1;
-      background: var(--bg-card);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-      padding: 1.2rem 1.2rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      text-align: center;
-      transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background-color var(--transition-fast);
-    }
-
-    .nav-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: var(--shadow-soft);
-      background: #fffdf6;
-    }
-
-    .nav-card:active {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
-    }
-
-    .nav-card-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent-3);
-      opacity: 0.86;
-    }
-
-    .nav-card h3 {
-      /* TODO: Edit module titles here (e.g., "Qualitative Work") */
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-card-subtitle {
-      /* TODO: Edit/change these short subtitles per module */
-      margin: 0;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-      max-width: 16rem;
-    }
-
-    .nav-card-hint {
-      margin: 0.35rem 0 0;
-      font-size: 0.78rem;
+    .section-label {
+      font-size: 12px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent-2);
-      opacity: 0.9;
+      color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
-    /* Secondary info cards (Time & Place, Approach) */
-
-    .info-section {
-      padding-top: 0.8rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #433529;
     }
 
-    .info-grid {
+    .modules-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 10px;
     }
 
-    .info-card {
-      background: var(--bg-card);
+    @media (max-width: 900px) {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .module-card {
+      position: relative;
       border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      padding: 1.3rem 1.4rem 1.45rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      padding: 16px 15px 14px;
+      background: radial-gradient(circle at top left, rgba(178, 139, 94, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(75, 99, 98, 0.08), transparent 60%),
+                  var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
+    }
+
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.09);
+      border-color: rgba(0, 0, 0, 0.11);
+      background: radial-gradient(circle at top left, rgba(178, 139, 94, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(75, 99, 98, 0.12), transparent 60%),
+                  #fdf7ec;
+    }
+
+    .module-card-header {
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
-    .info-card h2 {
-      /* TODO: Edit section titles like "Time & Place", "Approach" */
+    .module-card-title {
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      color: #3b2f26;
       margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.15rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-2);
     }
 
-    .info-card p {
-      /* TODO: Edit these brief contextual blurbs */
-      margin: 0.35rem 0 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .module-card-pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .module-card-body {
+      font-size: 13px;
+      line-height: 1.5;
       color: var(--text-muted);
     }
 
-    /* Collaborators */
+    .module-card-body strong {
+      color: #534535;
+      font-weight: 600;
+    }
+
+    .modules-previews {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .modules-previews {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .preview-item {
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px dashed rgba(0, 0, 0, 0.07);
+    }
+
+    .preview-label {
+      font-weight: 500;
+      color: #4f4337;
+      margin-bottom: 2px;
+    }
+
+    .preview-text {
+      margin: 0;
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    @media (max-width: 900px) {
+      .context-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .context-card {
+      border-radius: var(--radius-card);
+      padding: 14px 14px 12px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .context-card h3 {
+      margin: 0 0 4px;
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+      color: #433529;
+    }
+
+    .context-card small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .context-card p,
+    .context-card ul {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .context-card ul {
+      margin-top: 4px;
+      padding-left: 16px;
+    }
 
     .collaborators-section {
-      padding-top: 0.8rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 22px;
+      padding: 18px 16px 14px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
     }
 
     .collaborators-section h2 {
-      margin: 0 0 0.6rem;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.15rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: center;
-      color: var(--accent-2);
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+      color: #433529;
     }
 
-    .collaborators-blurb {
-      /* TODO: You can edit this line to clarify roles or affiliations if desired */
-      text-align: center;
-      font-size: 0.9rem;
+    .collaborators-intro {
+      margin: 0 0 10px;
+      font-size: 13px;
       color: var(--text-muted);
-      margin: 0 0 0.7rem;
     }
 
     .collaborators-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
       list-style: none;
       padding: 0;
-      margin: 0.2rem 0 0;
-      text-align: center;
+      margin: 0 0 6px;
+      font-size: 14px;
     }
 
     .collaborators-list li {
-      /* Collaborator names centered as requested */
-      font-size: 0.9rem;
-      line-height: 1.6;
+      position: relative;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(250, 245, 234, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
-    .collaborators-note {
-      margin-top: 0.7rem;
-      font-size: 0.84rem;
-      color: var(--text-muted);
+    footer {
+      margin-top: 18px;
       text-align: center;
-    }
-
-    /* Footer */
-
-    .footer {
-      margin-top: 2.6rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      text-align: center;
-      font-size: 0.78rem;
+      font-size: 12px;
       color: var(--text-muted);
-    }
-
-    .footer p {
-      margin: 0.1rem 0;
-    }
-
-    /* Back-to-top floating button */
-
-    .back-to-top {
-      position: fixed;
-      right: 1.4rem;
-      bottom: 1.4rem;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition:
-        opacity 0.2s ease-out,
-        transform 0.2s ease-out,
-        box-shadow 0.2s ease-out;
-      z-index: 40;
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .back-to-top span {
-      transform: translateY(-1px);
-    }
-
-    /* Responsive tweaks */
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-
-      .nav-card {
-        width: min(220px, 80vw);
-      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="site-header">
-      <div class="title-block">
-        <h1>The Living Dead</h1>
-        <p class="tagline">Obituaries, social connection, and public memory</p>
-        <p class="subtitle">
-          <!-- TODO: Adjust this overview summary as the project evolves -->
-          An internal working wiki for tracking how obituaries across centuries reveal changing patterns of
-          connection, inequality, and remembrance in Pennsylvania and Georgia.
-        </p>
+    <header class="hero" id="top">
+      <div class="hero-top-row">
+        <div class="project-mark">The Living Dead</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="qualitative.html">Qualitative work</a>
+          <a href="data-collection.html">Data collection</a>
+          <a href="data-processing.html">Data processing</a>
+        </nav>
       </div>
 
-      <nav class="top-nav">
-        <!-- TODO: You can reorder or rename these anchors; just keep the hrefs in sync with section IDs -->
-        <a href="#modules">Project modules</a>
-        <a href="#context">Context</a>
-        <a href="#collaborators">Collaborators</a>
-      </nav>
+      <div class="hero-main">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <h1>The Living Dead</h1>
+            <p class="hero-subtitle">
+              A project analyzing how obituaries across centuries reveal changing patterns of
+              connection, inequality, and remembrance.
+            </p>
+            <div class="hero-meta-row">
+              <div class="hero-pill">Pennsylvania &amp; Georgia · 18th century–present</div>
+              <div class="hero-tag-group">
+                <span class="hero-tag">Obituaries as cultural texts</span>
+                <span class="hero-tag">Mixed methods</span>
+                <span class="hero-tag">LLMs &amp; archives</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-highlight-card">
+            <div class="highlight-label">Current focus</div>
+            <div class="highlight-title">From raw pages to linked lives</div>
+            <p class="highlight-text">
+              We are building a long-run obituary dataset for two states, tracing who is
+              remembered, how relationships are narrated, and how inequalities surface in public commemoration.
+            </p>
+            <ul class="highlight-list">
+              <li>Refining obituary detection in historical newspapers</li>
+              <li>Designing qualitative coding for ties, values, and exclusions</li>
+              <li>Prototyping LLM pipelines for modernization and extraction</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
     </header>
 
     <main>
-      <!-- PRIMARY NAVIGATION CARDS (moved to top) -->
-      <section id="modules" class="modules-section">
-        <div class="modules-intro">
-          <p>Use the cards below to navigate into the main areas of the project.</p>
+      <!-- MAIN MODULE CARDS -->
+      <section class="modules-section">
+        <div class="section-label">Project modules</div>
+        <h2 class="section-title">Navigate the work</h2>
+
+        <div class="modules-grid">
+          <!-- Qualitative module card -->
+          <article class="module-card" onclick="location.href='qualitative.html'">
+            <div class="module-card-header">
+              <h3 class="module-card-title">Qualitative work</h3>
+              <span class="module-card-pill">Reading &amp; coding</span>
+            </div>
+            <div class="module-card-body">
+              Close reading of obituaries to understand
+              <strong>how lives, relationships, and exclusions</strong> are narrated across time and place.
+            </div>
+          </article>
+
+          <!-- Data collection module card -->
+          <article class="module-card" onclick="location.href='data-collection.html'">
+            <div class="module-card-header">
+              <h3 class="module-card-title">Data collection</h3>
+              <span class="module-card-pill">Archives &amp; platforms</span>
+            </div>
+            <div class="module-card-body">
+              Building the long-run dataset from
+              <strong>state archives, Black newspapers, funeral programs, and online platforms</strong>.
+            </div>
+          </article>
+
+          <!-- Data processing module card -->
+          <article class="module-card" onclick="location.href='data-processing.html'">
+            <div class="module-card-header">
+              <h3 class="module-card-title">Data processing</h3>
+              <span class="module-card-pill">Pipelines &amp; models</span>
+            </div>
+            <div class="module-card-body">
+              Turning messy historical text into
+              <strong>usable, validated variables and networks</strong> via LLMs and other tools.
+            </div>
+          </article>
         </div>
 
-        <div class="primary-card-grid">
-          <!-- QUALITATIVE WORK CARD -->
-          <article class="nav-card" data-target="qualitative.html">
-            <!-- TODO: If you rename the qualitative module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
-            <h3>Qualitative Work</h3>
-            <p class="nav-card-subtitle">
-              Methodology · close reading · coding schemes · data choices
+        <!-- Previews under the cards (no "Open to explore this area" text) -->
+        <div class="modules-previews">
+          <div class="preview-item">
+            <div class="preview-label">Qualitative work</div>
+            <p class="preview-text">
+              Coding how families, communities, and inequalities appear in specific obituaries across periods.
             </p>
-            <p class="nav-card-hint">Open to explore this area</p>
-          </article>
-
-          <!-- DATA COLLECTION CARD -->
-          <article class="nav-card" data-target="data-collection.html">
-            <!-- TODO: If you rename the data collection module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
-            <h3>Data Collection</h3>
-            <p class="nav-card-subtitle">
-              Scraping from datasets, platforms, and archives
+          </div>
+          <div class="preview-item">
+            <div class="preview-label">Data collection</div>
+            <p class="preview-text">
+              Sampling from Pennsylvania &amp; Georgia, including Black newspapers and funeral programs.
             </p>
-            <p class="nav-card-hint">Open to explore this area</p>
-          </article>
-
-          <!-- DATA PROCESSING CARD -->
-          <article class="nav-card" data-target="data-processing.html">
-            <!-- TODO: If you rename the data processing module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
-            <h3>Data Processing & Design</h3>
-            <p class="nav-card-subtitle">
-              Cleaning, modernizing, and structuring obituary data for multi-method analysis
+          </div>
+          <div class="preview-item">
+            <div class="preview-label">Data processing</div>
+            <p class="preview-text">
+              OCR cleanup, modernization, classification, and structured extraction into a research dataset.
             </p>
-            <p class="nav-card-hint">Open to explore this area</p>
-          </article>
+          </div>
         </div>
       </section>
 
-      <!-- CONTEXT CARDS (Time & Place / Approach) -->
-      <section id="context" class="info-section">
-        <div class="info-grid">
-          <article class="info-card">
-            <h2>Time &amp; Place</h2>
+      <!-- CONTEXT CARDS -->
+      <section class="context-section">
+        <div class="section-label">Context</div>
+        <div class="context-grid">
+          <article class="context-card">
+            <small>Where</small>
+            <h3>States &amp; sites</h3>
             <p>
-              <!-- TODO: Make this a concise, public-safe contextual blurb -->
-              Focused on English-language obituaries from Pennsylvania and Georgia, from the mid-18th century
-              through the present, with particular attention to Black newspapers and funeral programs.
+              Pennsylvania and Georgia were selected for their contrasting regional histories,
+              sizable Black populations, and rich archival coverage in both state and national repositories.
             </p>
           </article>
 
-          <article class="info-card">
-            <h2>Approach</h2>
+          <article class="context-card">
+            <small>When</small>
+            <h3>Time span</h3>
             <p>
-              <!-- TODO: Briefly summarize the mixed-methods design you are comfortable sharing publicly -->
-              A mixed-methods project combining close reading and qualitative coding with computational
-              text analysis, social network approaches, and large language models to trace patterns of
-              social connection and inequality over time.
+              Covering obituaries from the mid-18th century to the early 21st century,
+              with attention to shifts in who appears, what is recorded, and how ties are framed.
+            </p>
+          </article>
+
+          <article class="context-card">
+            <small>How</small>
+            <h3>Approach</h3>
+            <p>
+              Mixed-methods: iterative qualitative coding, statistical analysis, and computational pipelines
+              (LLMs, NLP, network analysis) to link individual stories to broader social change.
             </p>
           </article>
         </div>
       </section>
 
       <!-- COLLABORATORS -->
-      <section id="collaborators" class="collaborators-section">
+      <section class="collaborators-section" id="collaborators">
         <h2>Collaborators</h2>
-
-        <p class="collaborators-blurb">
-          <!-- TODO: Adjust this line if you want more detail on institutional affiliations -->
-          Core team for <em>The Living Dead</em> project.
+        <p class="collaborators-intro">
+          This public-facing wiki provides a high-level overview and timeline of the project.
         </p>
 
         <ul class="collaborators-list">
-          <!-- TODO: Edit order / add affiliations if needed, but keep names as desired -->
+          <!-- TODO: Update titles/affiliations offline if needed; names stay here -->
           <li>Jennifer Lundquist</li>
           <li>Naomi Gerstel</li>
           <li>Eunkyung Song</li>
           <li>Bhargav Dave</li>
         </ul>
 
-        <p class="collaborators-note">
-          This public-facing wiki provides a high-level, non-technical overview.
-          <!-- TODO: You can note that detailed materials live in locked internal documents here -->
+        <!-- TODO: Add link to locked/internal documentation if desired -->
+        <!-- Example:
+        <p class="collaborators-intro">
+          Find the updated internal proposal here (link accessible to team only).
         </p>
+        -->
       </section>
+
+      <footer>
+        <!-- TODO: Update year if needed -->
+        © 2025, website created by Bhargav Dave
+      </footer>
     </main>
-
-    <footer class="footer">
-      <p>© 2025 The Living Dead Project. All rights reserved.</p>
-      <p>Website created by Bhargav Dave.</p>
-      <!-- TODO: If you want, you can add a link here to a LICENSE or internal docs landing page -->
-    </footer>
   </div>
-
-  <!-- Floating "Back to top" button.
-       NOTE: On internal module pages, you can reuse this element but change the click handler
-       to go "back to home" (e.g., window.location.href = 'index.html#modules'). -->
-  <button class="back-to-top" type="button" aria-label="Back to top">
-    <span>↑</span>
-  </button>
-
-  <script>
-    // Card navigation: clicking a module card moves to the corresponding HTML page.
-    document.querySelectorAll(".nav-card[data-target]").forEach(function (card) {
-      card.addEventListener("click", function () {
-        var target = card.getAttribute("data-target");
-        if (target) {
-          window.location.href = target; // TODO: Ensure these filenames exist in your repo
-        }
-      });
-    });
-
-    // Back-to-top button logic
-    const backToTop = document.querySelector(".back-to-top");
-
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 260) {
-        backToTop.classList.add("visible");
-      } else {
-        backToTop.classList.remove("visible");
-      }
-    });
-
-    backToTop.addEventListener("click", function () {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  </script>
 </body>
 </html>

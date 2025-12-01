@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Living Dead · Data Processing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (keep in sync with index.html if you change colors there)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: {
+              50: '#fdf7ed',
+              100: '#f7efe0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-parchment-50 text-slate-900 antialiased">
+
+  <!-- Page wrapper -->
+  <div class="min-h-screen flex">
+
+    <!-- Sidebar (desktop) -->
+    <aside class="hidden lg:flex lg:flex-col w-64 border-r border-slate-200 bg-white/80 backdrop-blur sticky top-0 h-screen">
+      <div class="px-6 pt-6 pb-4 border-b border-slate-200">
+        <h1 class="text-lg font-semibold tracking-tight text-slate-900">
+          <!-- Project title -->
+          The Living Dead
+        </h1>
+        <p class="mt-1 text-xs text-slate-500 leading-snug">
+          <!-- Page subtitle -->
+          Data Processing &amp; Structuring
+        </p>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto px-4 py-4 text-sm space-y-1">
+        <!-- Sidebar links (keep ids in sync with section ids below) -->
+        <button data-target="#overview" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Overview
+        </button>
+        <button data-target="#pipeline" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Processing pipeline
+        </button>
+        <button data-target="#stages" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Key stages &amp; decisions
+        </button>
+        <button data-target="#validation" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Validation &amp; QA
+        </button>
+        <button data-target="#current-status" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Current status
+        </button>
+        <button data-target="#next-steps" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Next steps
+        </button>
+        <button data-target="#resources" class="sidebar-link w-full text-left px-3 py-2 rounded-md hover:bg-parchment-100 text-slate-700">
+          Resources &amp; links
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1">
+
+      <!-- Mobile header + nav -->
+      <header class="lg:hidden sticky top-0 z-40 bg-parchment-50/95 backdrop-blur border-b border-slate-200">
+        <div class="px-4 pt-3 pb-2">
+          <h1 class="text-base font-semibold tracking-tight text-slate-900">
+            The Living Dead · Data Processing
+          </h1>
+          <p class="mt-1 text-xs text-slate-600">
+            <!-- Short one-line summary -->
+            From raw OCR to analyzable obituary records.
+          </p>
+        </div>
+        <div class="px-2 pb-2 overflow-x-auto">
+          <div class="flex gap-2 text-xs">
+            <!-- Keep hrefs in sync with section ids below -->
+            <a href="#overview" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Overview
+            </a>
+            <a href="#pipeline" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Pipeline
+            </a>
+            <a href="#stages" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Key stages
+            </a>
+            <a href="#validation" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Validation
+            </a>
+            <a href="#current-status" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Status
+            </a>
+            <a href="#next-steps" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Next steps
+            </a>
+            <a href="#resources" class="inline-flex-shrink-0 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+              Resources
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content container -->
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 py-8 lg:py-12 space-y-12">
+
+        <!-- Page intro -->
+        <section id="overview" class="scroll-mt-24">
+          <p class="text-xs font-semibold tracking-[0.18em] uppercase text-amber-700 mb-2">
+            Data processing
+          </p>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
+            From raw pages to structured obituary records
+          </h2>
+          <p class="mt-4 text-sm sm:text-base leading-relaxed text-slate-700">
+            This page tracks how the project converts heterogeneous, often messy obituary
+            sources—historic newspaper pages, funeral programs, and contemporary online
+            platforms—into a consistent, analyzable dataset. It focuses on the “middle”
+            of the pipeline: what happens after scraping but before qualitative coding
+            and statistical analysis.
+          </p>
+          <p class="mt-3 text-sm sm:text-base leading-relaxed text-slate-700">
+            <!-- TODO: If needed, customize this description -->
+            The emphasis here is on transparency: documenting key processing decisions,
+            versioned pipelines, and the tradeoffs between automation and hand curation.
+          </p>
+        </section>
+
+        <!-- Pipeline diagram -->
+        <section id="pipeline" class="scroll-mt-24">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            High-level processing pipeline
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+            At a high level, data processing bridges three stages:
+          </p>
+
+          <ol class="mt-4 space-y-3 text-sm sm:text-base text-slate-700 list-decimal list-inside">
+            <li>
+              <span class="font-medium">Ingestion:</span>
+              bringing in OCR text, PDFs, and platform exports from
+              Georgia and Pennsylvania sources (state archives, Chronicling America,
+              ProQuest Black newspapers, funeral programs, Legacy.com, etc.).
+            </li>
+            <li>
+              <span class="font-medium">Normalization &amp; cleaning:</span>
+              repairing OCR, modernizing language where needed, de-duplicating records,
+              and mapping fields into a shared schema.
+            </li>
+            <li>
+              <span class="font-medium">Enrichment &amp; structuring:</span>
+              extracting key entities (person, date, location, relationships, organizations),
+              attaching source metadata, and preparing “analysis-ready” tables.
+            </li>
+          </ol>
+
+          <!-- Diagram placeholder -->
+          <div class="mt-6 rounded-2xl border border-dashed border-amber-300 bg-amber-50/60 p-4 sm:p-5">
+            <p class="text-xs font-semibold text-amber-800 tracking-[0.16em] uppercase mb-2">
+              Diagram placeholder
+            </p>
+            <p class="text-sm text-slate-700">
+              <!-- TODO: Replace this box with an actual figure when ready. -->
+              A visual pipeline diagram (e.g., boxes for “Source ingestion → OCR &amp;
+              modernization → Classification → Entity extraction → Validation → Output datasets”)
+              will be placed here.
+            </p>
+            <!--
+              TODO: When you have a figure file, update the src path and alt text:
+              <img
+                src="assets/figures/dataprocessing/pipeline_v1.png"
+                alt="Overview of the obituary data processing pipeline from raw sources to structured outputs"
+                class="mt-4 rounded-xl border border-amber-200"
+              />
+            -->
+          </div>
+        </section>
+
+        <!-- Key stages & decisions -->
+        <section id="stages" class="scroll-mt-24">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            Key stages and design decisions
+          </h3>
+
+          <!-- Stage 1 -->
+          <div class="mt-4 space-y-5 text-sm sm:text-base text-slate-700">
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                1. OCR handling &amp; modernization
+              </h4>
+              <p class="mt-2 leading-relaxed">
+                Older newspaper pages arrive as full-page OCR text with substantial noise:
+                broken lines, misread characters, and archaic spellings. The pipeline:
+              </p>
+              <ul class="mt-2 list-disc list-inside space-y-1.5">
+                <li>Splits page-level OCR into candidate text blocks.</li>
+                <li>
+                  Applies light normalization (e.g., whitespace, common OCR corrections)
+                  prior to any machine-learning classification.
+                </li>
+                <li>
+                  Uses large language models selectively to modernize particularly
+                  difficult segments while preserving substantive meaning.
+                  <!-- TODO: Add brief internal note if you standardize specific spellings. -->
+                </li>
+              </ul>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                2. Obituary classification
+              </h4>
+              <p class="mt-2 leading-relaxed">
+                Not every text mentioning death is an obituary. The project distinguishes:
+              </p>
+              <ul class="mt-2 list-disc list-inside space-y-1.5">
+                <li>
+                  <span class="font-medium">Full obituaries:</span> meet the project
+                  definition (within one year of death, public medium, biographical content).
+                </li>
+                <li>
+                  <span class="font-medium">Death notices:</span> very short announcements
+                  with minimal biographical detail.
+                </li>
+                <li>
+                  <span class="font-medium">In memoriam pieces:</span> often appear years
+                  after death and are excluded from the core analytic set.
+                </li>
+              </ul>
+              <p class="mt-2 leading-relaxed">
+                Classification combines rule-based filters (e.g., inclusion/exclusion terms)
+                with supervised models trained on manually reviewed examples drawn from
+                historic Georgia and Pennsylvania newspapers.
+                <!-- TODO: Link to labeled training set documentation if/when made public. -->
+              </p>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                3. Schema design &amp; field mapping
+              </h4>
+              <p class="mt-2 leading-relaxed">
+                Once texts are identified as obituaries, they are mapped into a common schema
+                designed to support both qualitative and quantitative work. Broad categories
+                include:
+              </p>
+              <ul class="mt-2 list-disc list-inside space-y-1.5">
+                <li>Core identifiers (internal ID, source, page/URL, scrape date).</li>
+                <li>Deceased person (name, gender, approximate race coding, birth/death dates, location fields).</li>
+                <li>Relational structure (spouses/partners, children, extended kin, friends, pallbearers, organizations).</li>
+                <li>Contextual fields (cause of death when present, religion, occupation, civic roles).</li>
+              </ul>
+              <p class="mt-2 leading-relaxed">
+                <!-- TODO: Link to the latest data dictionary when you are ready. -->
+                A versioned data dictionary documents each field, its type, and examples.
+              </p>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                4. Entity extraction &amp; relationship structuring
+              </h4>
+              <p class="mt-2 leading-relaxed">
+                To study “linked lives,” the project extracts entities and their relations,
+                with particular emphasis on:
+              </p>
+              <ul class="mt-2 list-disc list-inside space-y-1.5">
+                <li>Spouse/partner links (including ex-spouses where explicitly named).</li>
+                <li>Generational structure (children, parents, siblings, extended kin).</li>
+                <li>Organizational ties (churches, workplaces, unions, civic organizations).</li>
+              </ul>
+              <p class="mt-2 leading-relaxed">
+                Initial extraction uses NLP and LLM-based tagging; ambiguous cases are flagged
+                for hand review and/or qualitative decisions rather than forced automation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Validation & QA -->
+        <section id="validation" class="scroll-mt-24">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            Validation, quality checks, and representativeness
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+            Because the “population” of obituaries is unknown, validation is layered rather
+            than single-shot. The main strategies are:
+          </p>
+
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                Cross-checks with vital statistics
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                Random samples from the obituary dataset are compared to death certificate
+                distributions for Pennsylvania and Georgia. The goal is not perfect
+                representativeness but a clear sense of who is systematically more or
+                less likely to appear.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900">
+                Celebrity subsets as benchmarks
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                For celebrities whose lives are documented elsewhere (e.g., Wikipedia,
+                genealogical records), the project can compare obituary narratives to
+                independent information about family structure and public roles.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/80 border border-slate-200 p-4 sm:p-5 shadow-sm md:col-span-2">
+              <h4 class="text-sm font-semibold text-slate-900">
+                Consistency checks across sources
+              </h4>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                When the same individual appears in multiple venues (e.g., a Black funeral
+                program and a newspaper obituary), the pipeline records linkages and highlights
+                differences. These cases are particularly useful for understanding how race,
+                class, and editorial practices shape public memory.
+              </p>
+              <!-- TODO: Add a short example or anonymized case description here if desired. -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Current status -->
+        <section id="current-status" class="scroll-mt-24">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            Current status (high-level)
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- TODO: Update this snapshot periodically as the work moves forward. -->
+            As of the latest internal update:
+          </p>
+          <ul class="mt-3 list-disc list-inside space-y-1.5 text-sm sm:text-base text-slate-700">
+            <li>
+              Core ingestion and de-duplication scripts are in place for Legacy.com,
+              state archives, and selected Black newspaper sources.
+            </li>
+            <li>
+              A first-pass classifier for distinguishing full obituaries from death
+              notices has been trained on manually reviewed examples from Georgia and
+              Pennsylvania newspapers.
+            </li>
+            <li>
+              A working version of the obituary schema and entity-extraction rules is
+              available and being iteratively refined based on qualitative review.
+            </li>
+            <li>
+              Pilot subsets (e.g., selected decades, specific newspapers, or funeral
+              programs) are being used to stress-test both the pipeline and the coding
+              manual.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Next steps -->
+        <section id="next-steps" class="scroll-mt-24">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            Next steps for the processing pipeline
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+            Immediate priorities for the data-processing layer include:
+          </p>
+          <ul class="mt-3 list-disc list-inside space-y-1.5 text-sm sm:text-base text-slate-700">
+            <li>
+              Tightening obituary vs. non-obituary classification for especially noisy
+              historical periods and newspapers.
+            </li>
+            <li>
+              Finalizing a versioned data dictionary that can be shared alongside
+              public data releases after the proprietary-access period ends.
+            </li>
+            <li>
+              Integrating additional sources of Black funeral programs and newspapers
+              while clearly documenting coverage gaps.
+            </li>
+            <li>
+              Building robust export paths for qualitative teams (e.g., samples formatted
+              for close reading) and for quantitative teams (e.g., tidy tables for
+              statistical analysis and network construction).
+            </li>
+          </ul>
+        </section>
+
+        <!-- Resources & links -->
+        <section id="resources" class="scroll-mt-24 pb-16">
+          <h3 class="text-xl font-semibold tracking-tight text-slate-900">
+            Resources, internal links, and locked materials
+          </h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+            This public page is intentionally high-level. Detailed technical notes,
+            proposals, and internal logs are kept in restricted locations.
+          </p>
+
+          <div class="mt-4 space-y-3 text-sm sm:text-base text-slate-700">
+            <p>
+              <!-- TODO: Replace the placeholders in parentheses with real links when ready. -->
+              Find updated internal documentation here:
+              <span class="italic">(link to internal data-processing notes here)</span>.
+            </p>
+            <p>
+              For the most recent version of the proposal and study design, see:
+              <span class="italic">(link to updated proposal here)</span>.
+            </p>
+            <p>
+              For collaborators with access, the full work log and meeting notes are stored at:
+              <span class="italic">(link to Teams/OneDrive folder here)</span>.
+            </p>
+          </div>
+
+          <p class="mt-6 text-xs text-slate-500">
+            <!-- Keep this consistent across pages if you like -->
+            Copyright 2025. Website created by Bhargav Dave. Content © The Living Dead team.
+          </p>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating controls: Back to home + Back to top -->
+  <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+    <!-- Back to home -->
+    <a
+      href="index.html#modules"
+      class="inline-flex items-center justify-center rounded-full bg-slate-900/90 text-slate-50 text-xs font-medium px-4 py-2 shadow-lg shadow-slate-900/30 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-parchment-50 transition"
+    >
+      ← Back to home
+    </a>
+
+    <!-- Back to top -->
+    <button
+      id="scrollTopButton"
+      type="button"
+      class="inline-flex items-center justify-center rounded-full bg-white/90 text-slate-800 text-xs font-medium px-4 py-2 border border-slate-200 shadow-md hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-parchment-50 transition"
+    >
+      ↑ Back to top
+    </button>
+  </div>
+
+  <!-- Small JS for smooth scroll + sidebar active state -->
+  <script>
+    // Smooth scroll for sidebar buttons
+    document.querySelectorAll('.sidebar-link').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        const el = document.querySelector(target);
+        if (el) {
+          window.scrollTo({
+            top: el.offsetTop - 80, // adjust for sticky headers
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Back to top button
+    const scrollTopButton = document.getElementById('scrollTopButton');
+    scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Optional: highlight active section in sidebar as user scrolls
+    const sections = document.querySelectorAll('section[id]');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = '#' + entry.target.id;
+            sidebarLinks.forEach(link => {
+              if (link.getAttribute('data-target') === id) {
+                link.classList.add('bg-parchment-100', 'font-semibold');
+              } else {
+                link.classList.remove('bg-parchment-100', 'font-semibold');
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-50% 0px -40% 0px',
+        threshold: 0.1
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
