@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead – Data Collection</title>
+  <title>The Living Dead · Data Collection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --bg-main: #f6f0e4;
-      --bg-card: #faf5ea;
-      --border-subtle: rgba(85, 71, 47, 0.18);
-      --accent-1: #b28b5e;
-      --accent-2: #7b6a9b;
-      --accent-3: #4c7a7a;
-      --text-main: #2b2620;
-      --text-muted: #6a6053;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+      --bg-main: #f6f1e4;
+      --bg-card: #fffaf1;
+      --accent-1: #c89b4e;
+      --accent-2: #8b6b4a;
+      --accent-3: #506b7a;
+      --text-main: #2e2520;
+      --text-muted: #6a5c52;
+      --border-soft: rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.16);
       --radius-card: 18px;
-      --radius-pill: 999px;
+      --transition-fast: 0.18s ease-out;
     }
 
     * {
@@ -28,552 +29,398 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #fffaf0 0, #f3ebdd 40%, #ece2d2 100%);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-main);
+      background: radial-gradient(circle at top left, #fdf7e8 0%, #f6f1e4 45%, #f3ecde 100%);
       -webkit-font-smoothing: antialiased;
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 24px 20px 48px;
+      padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    .top-row {
+    /* Header */
+
+    .site-header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 0.9rem;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 18px;
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
-    .project-mark {
-      font-family: "Playfair Display", serif;
-      font-size: 14px;
+    .title-block h1 {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 3.4vw, 3rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.2rem;
+      color: #2a211b;
+    }
+
+    .title-block .tagline {
+      margin: 0.1rem 0 0.35rem;
+      font-size: 0.9rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--accent-3);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      font-size: 13px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(4px);
-      transition: all 0.18s ease-out;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-      border-color: rgba(0, 0, 0, 0.08);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .nav-links a.active {
-      border-color: rgba(0, 0, 0, 0.18);
-      background: rgba(250, 245, 234, 0.9);
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    header.page-header {
-      border-radius: 20px;
-      padding: 18px 18px 16px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 240, 225, 0.98));
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 18px;
-    }
-
-    .page-header h1 {
-      margin: 0 0 4px;
-      font-family: "Playfair Display", serif;
-      font-size: 26px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #433529;
-    }
-
-    .page-header-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .page-header-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .page-header-meta span {
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      background: rgba(255, 255, 255, 0.8);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      gap: 22px;
-      margin-top: 22px;
-    }
-
-    @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 16px;
-      align-self: flex-start;
-      border-radius: 18px;
-      padding: 14px 14px 12px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-    }
-
-    .sidebar-title {
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .sidebar-nav {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 10px;
-    }
-
-    .sidebar-nav li {
-      margin-bottom: 4px;
-    }
-
-    .sidebar-nav a {
-      text-decoration: none;
-      color: var(--text-muted);
-      display: block;
-      padding: 6px 8px;
-      border-radius: 10px;
-      transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out;
-    }
-
-    .sidebar-nav a:hover {
-      background: rgba(250, 245, 234, 0.9);
-      color: var(--text-main);
-      transform: translateX(2px);
-    }
-
-    .sidebar-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      line-height: 1.6;
-    }
-
-    .main {
-      border-radius: 20px;
-      padding: 16px 16px 18px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .section-block {
-      margin-bottom: 22px;
-    }
-
-    .section-block:last-of-type {
-      margin-bottom: 8px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .section-block h2 {
-      margin: 0 0 6px;
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-      color: #433529;
-    }
-
-    .section-block p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin: 0 0 8px;
-    }
-
-    .section-block ul {
-      margin: 0 0 8px 18px;
-      padding: 0;
-      font-size: 14px;
+    .title-block .subtitle {
+      margin: 0.2rem 0 0;
+      font-size: 0.95rem;
+      max-width: 42rem;
       line-height: 1.5;
       color: var(--text-muted);
     }
 
-    .inline-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-style: italic;
+    .module-label {
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-2);
     }
 
-    .pill-row {
+    /* Layout: sidebar + content */
+
+    .module-layout {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-      margin-bottom: 4px;
+      gap: 1.8rem;
+      align-items: flex-start;
     }
 
-    .pill {
-      padding: 3px 9px;
-      border-radius: var(--radius-pill);
-      font-size: 11px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      background: rgba(248, 240, 225, 0.85);
+    .sidebar {
+      flex: 0 0 230px;
+      position: sticky;
+      top: 1.5rem;
+      align-self: flex-start;
+    }
+
+    .sidebar-nav {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.1rem 1.1rem 1.2rem;
+    }
+
+    .sidebar-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-3);
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.3rem 0;
+      color: var(--text-muted);
+      border-left: 2px solid transparent;
+      padding-left: 0.4rem;
+      transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .sidebar-nav a:hover {
+      color: #3d2f22;
+      border-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 6px;
+    }
+
+    .module-content {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      padding: 1.35rem 1.5rem 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .section-card h2 {
+      margin: 0 0 0.45rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .section-card p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
       color: var(--text-muted);
     }
 
-    .figure-block {
-      border-radius: 14px;
-      border: 1px dashed rgba(0, 0, 0, 0.14);
-      background: rgba(250, 245, 234, 0.5);
-      padding: 10px 12px 8px;
-      font-size: 12px;
+    .section-card ul {
+      margin: 0.4rem 0 0.1rem 1.2rem;
+      padding: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
       color: var(--text-muted);
-      margin: 10px 0;
     }
 
-    .figure-caption {
-      margin: 0;
-      font-style: italic;
+    .section-card li + li {
+      margin-top: 0.2rem;
     }
 
-    .floating-home {
+    .section-tagline {
+      font-size: 0.82rem;
+      color: var(--accent-3);
+      margin-top: 0.1rem;
+    }
+
+    /* Footer */
+
+    .footer {
+      margin-top: 2.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer p {
+      margin: 0.1rem 0;
+    }
+
+    /* Back-to-home floating button */
+
+    .back-home {
       position: fixed;
-      right: 18px;
-      bottom: 20px;
-      z-index: 20;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 42px;
+      height: 42px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      background: rgba(255, 255, 255, 0.95);
-      padding: 9px 14px;
-      font-size: 12px;
-      color: var(--text-muted);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fdf7ea;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      font-size: 1.1rem;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
-      backdrop-filter: blur(6px);
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+      transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        background-color 0.2s ease-out;
+      z-index: 40;
     }
 
-    .floating-home:hover {
+    .back-home:hover {
       transform: translateY(-2px);
-      background: #fffdf6;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background-color: #fffaf1;
     }
 
-    .floating-home-icon {
-      font-size: 14px;
+    .back-home span {
+      transform: translateY(-1px);
+    }
+
+    /* Responsive tweaks */
+
+    @media (max-width: 860px) {
+      .module-layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: static;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .section-card {
+        padding-inline: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="top-row">
-      <div class="project-mark">The Living Dead</div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="qualitative.html">Qualitative work</a>
-        <a href="data-collection.html" class="active">Data collection</a>
-        <a href="data-processing.html">Data processing</a>
-      </nav>
-    </div>
-
-    <header class="page-header">
-      <h1>Data collection</h1>
-      <div class="page-header-subtitle">
-        <!-- Subtitle requested by you -->
-        Scraping from various datasets, platforms, and archives.
-      </div>
-      <div class="page-header-meta">
-        <span>Module · Data sources &amp; sampling</span>
-        <span>Focus · Building the long-run obituary corpus</span>
+    <header class="site-header">
+      <div class="title-block">
+        <h1>The Living Dead</h1>
+        <p class="tagline">Obituaries, social connection, and public memory</p>
+        <p class="subtitle">
+          A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
+        </p>
+        <p class="module-label">Module · Data Collection</p>
       </div>
     </header>
 
-    <div class="layout">
-      <!-- SIDEBAR -->
+    <main class="module-layout">
       <aside class="sidebar">
-        <div class="sidebar-title">On this page</div>
-        <ul class="sidebar-nav">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#sources">Sources &amp; coverage</a></li>
-          <li><a href="#scraping-pipeline">Scraping &amp; retrieval pipeline</a></li>
-          <li><a href="#sampling">Sampling strategy</a></li>
-          <li><a href="#current-data">Current datasets</a></li>
-          <li><a href="#open-questions">Open questions</a></li>
-        </ul>
-        <div class="sidebar-note">
-          This page is a map of what we collect and from where. Technical scraping
-          details and scripts live in the GitHub repository and internal notes.
-        </div>
+        <nav class="sidebar-nav">
+          <div class="sidebar-label">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#sources">Sources &amp; coverage</a>
+          <a href="#workflows">Workflows &amp; tooling</a>
+          <a href="#metadata">Metadata &amp; tracking</a>
+          <a href="#current-decisions">Current decisions</a>
+          <a href="#risks-open">Risks &amp; open questions</a>
+        </nav>
       </aside>
 
-      <!-- MAIN CONTENT -->
-      <main class="main">
-        <!-- Overview -->
-        <section id="overview" class="section-block">
-          <div class="section-label">Module overview</div>
-          <h2>Constructing the obituary corpus</h2>
+      <div class="module-content">
+        <section id="overview" class="section-card">
+          <h2>Overview</h2>
           <p>
-            The data collection effort assembles obituaries from multiple, partially overlapping
-            sources into a coherent research corpus for Pennsylvania and Georgia from the 18th century
-            to the present.
+            The data collection module coordinates how we acquire obituary texts and related metadata from
+            a variety of sources, including digitized newspapers, online archives, and funeral program collections.
+            The goal is to assemble a transparent, reproducible corpus that can support both qualitative and
+            computational analysis.
           </p>
-          <p>
-            Because there is no simple “list of all obituaries,” we piece together coverage from:
+          <p class="section-tagline">
+            Short version: where our texts come from, what we keep, and how we keep track of them.
           </p>
-          <ul>
-            <li>State-sponsored digital archives for historical newspapers.</li>
-            <li>Chronicling America (Library of Congress) for additional titles and earlier years.</li>
-            <li>ProQuest Historical Black Newspapers for Black-focused print outlets.</li>
-            <li>Funeral program collections and Black cemetery repositories.</li>
-            <li>Legacy.com as a key online platform for contemporary obituaries.</li>
-          </ul>
-          <div class="pill-row">
-            <span class="pill">Pennsylvania &amp; Georgia</span>
-            <span class="pill">Newspapers &amp; funeral programs</span>
-            <span class="pill">Online platforms</span>
-          </div>
         </section>
 
-        <!-- Sources & coverage -->
-        <section id="sources" class="section-block">
-          <div class="section-label">Sources</div>
+        <section id="sources" class="section-card">
           <h2>Sources &amp; coverage</h2>
           <p>
-            For each state, we rely on a small number of key repositories, each with different
-            strengths and gaps.
+            We are currently focusing on English-language obituaries from Pennsylvania and Georgia, with particular
+            attention to Black newspapers and community funeral programs. Over time, the corpus may expand.
           </p>
           <ul>
-            <li>
-              <strong>State archives.</strong> Georgia Historic Newspapers and the Pennsylvania
-              Newspaper Archive provide digitized pages from hundreds of titles,
-              including many local and regional papers.
-            </li>
-            <li>
-              <strong>Chronicling America.</strong> Complements the state archives, especially for
-              earlier decades and titles that cross state lines.
-            </li>
-            <li>
-              <strong>ProQuest Historical Black Newspapers.</strong> Supplies obituaries and death
-              coverage from historically Black newspapers (e.g., Atlanta Daily World, Philadelphia Tribune).
-            </li>
-            <li>
-              <strong>Funeral programs and cemetery sites.</strong> Collections from the Digital Library
-              of Georgia and Black cemetery projects capture African American funerary practice not always
-              represented in newspapers.
-            </li>
-            <li>
-              <strong>Legacy.com.</strong> A major online platform for post-2000 obituaries, used to
-              build a large contemporary sample.
-            </li>
+            <li>Digitized historical newspapers (e.g., state and library portals, ProQuest collections).</li>
+            <li>Community and Black press outlets with obituary sections or death notices.</li>
+            <li>Funeral programs and memorial brochures (scanned PDFs or images with OCR).</li>
+            <li>Supplementary local histories or directories when they help identify individuals or institutions.</li>
           </ul>
-
-          <!-- Placeholder for a coverage figure/map -->
-          <div class="figure-block">
-            <!-- TODO: Replace with image from assets/ that shows geographic or temporal coverage -->
-            <p class="figure-caption">
-              Placeholder for a coverage map (e.g., cities and years represented in the current corpus).
-              Add as an image from <code>assets/</code> when available.
-            </p>
-          </div>
-        </section>
-
-        <!-- Scraping & retrieval pipeline -->
-        <section id="scraping-pipeline" class="section-block">
-          <div class="section-label">Pipeline</div>
-          <h2>Scraping &amp; retrieval pipeline</h2>
           <p>
-            Each source has its own interface and constraints, so the pipeline is modular. At a high level:
-          </p>
-          <ul>
-            <li>
-              <strong>Metadata first.</strong> For each archive or platform, we compile metadata tables
-              (title, date, URL, basic descriptors) to guide scraping and to track coverage.
-            </li>
-            <li>
-              <strong>Automated retrieval.</strong> Scripts download page images/text (state archives,
-              Chronicling America) or obituary records (Legacy.com, cemetery/funeral sites), subject to
-              terms of use and rate limits.
-            </li>
-            <li>
-              <strong>Obituary detection.</strong> For historical pages, classifiers and keyword rules
-              are applied to extract candidate obituary snippets from full pages.
-            </li>
-            <li>
-              <strong>Storage &amp; versioning.</strong> Outputs are stored in structured formats
-              (e.g., CSV/Parquet) with documented versions so later cleaning and processing are traceable.
-            </li>
-          </ul>
-
-          <div class="figure-block">
-            <!-- TODO: Replace with an actual data-collection pipeline diagram -->
-            <p class="figure-caption">
-              Placeholder for a schematic of the data collection pipeline (from metadata discovery
-              to downloaded text). Add figure from <code>assets/figures/datacollection/</code> when finalized.
-            </p>
-          </div>
-
-          <p class="inline-note">
-            Implementation details (scripts, parameters, and logs) live in the private GitHub repository
-            and are not exposed here.
+            Each source brings its own constraints on what can be scraped or downloaded, which are documented here
+            as they arise.
           </p>
         </section>
 
-        <!-- Sampling strategy -->
-        <section id="sampling" class="section-block">
-          <div class="section-label">Sampling</div>
-          <h2>Sampling strategy across sources</h2>
+        <section id="workflows" class="section-card">
+          <h2>Workflows &amp; tooling</h2>
           <p>
-            Since we cannot exhaustively download every page ever printed, we aim for a
-            <strong>transparent and reproducible sampling strategy</strong> that balances coverage and feasibility.
+            Data collection relies on a mix of manual download, semi-automated scripts, and fully automated scraping,
+            depending on the site and its terms of use.
           </p>
           <ul>
             <li>
-              <strong>Legacy.com.</strong> For each year and state (2000–2024), we select
-              two months approximately six months apart and retrieve up to 1,000 obituaries per month.
-              Earlier years often yield fewer records per month, later years more.
+              Manual curation and download for small or sensitive collections (e.g., community funeral programs).
             </li>
             <li>
-              <strong>Historical newspapers.</strong> We prioritize titles with long runs and meaningful
-              geographic coverage, then sample issues at regular intervals (e.g., every N years) while
-              also targeting historically important moments.
+              Scripted collection for large, public newspaper portals, respecting documented usage and rate limits.
             </li>
             <li>
-              <strong>Black newspapers and programs.</strong> Because coverage is uneven and often
-              sparse, we oversample from Black-focused outlets (newspapers, funeral programs, cemeteries)
-              rather than treating them as proportional to their print circulation.
+              Use of headless browsers or Selenium for sites that require navigation, login, or dynamic rendering.
             </li>
             <li>
-              <strong>Celebrities vs. “ordinary” obits.</strong> A separate tract identifies
-              Pennsylvania/Georgia-born celebrities via external lists (e.g., Wikipedia) and locates their
-              obituaries and genealogical information for comparison.
+              Consistent directory and file naming conventions to make later processing reproducible.
             </li>
           </ul>
-          <p class="inline-note">
-            A more technical description of the sampling frame lives in the internal “Data collection”
-            methods document. Links will be added from this section once finalized.
+          <p>
+            As scripts stabilize, this page can link out to public-safe documentation and, where appropriate, to
+            code repositories.
           </p>
         </section>
 
-        <!-- Current datasets -->
-        <section id="current-data" class="section-block">
-          <div class="section-label">Status</div>
-          <h2>Current datasets (high-level)</h2>
+        <section id="metadata" class="section-card">
+          <h2>Metadata &amp; tracking</h2>
           <p>
-            As of this stage in the project, the following major components are in place:
+            Alongside the texts themselves, we actively track metadata needed for both analysis and stewardship.
           </p>
           <ul>
-            <li>
-              A large Legacy.com sample for Pennsylvania and Georgia (2000–2024), with metadata and raw text
-              for tens of thousands of obituaries.
-            </li>
-            <li>
-              Initial batches of historical obituaries from Georgia and Pennsylvania state archives and
-              Chronicling America, focused on selected titles and time slices.
-            </li>
-            <li>
-              Prototype datasets from Black cemetery and funeral program sites, including shorter, more
-              concise obituaries and program-based narratives.
-            </li>
-            <li>
-              A preliminary “Temporary Obituary Viewer” app (internal) used to inspect and validate early
-              automated extraction from historical pages.
-            </li>
+            <li>Publication title, location, and known political or community orientation.</li>
+            <li>Issue date, page number, and section (when available).</li>
+            <li>File paths, URLs, and identifiers that allow us to re-trace the origin of each item.</li>
+            <li>Notes on quality issues (e.g., OCR quality, scan artifacts, missing pages).</li>
           </ul>
           <p>
-            Counts and tables are being updated as scraping and cleaning proceed and will be summarized in
-            internal dashboards rather than on this public page.
+            Internal tracking tables and logs are designed so that we can always answer “Where did this text come from?”
+            and “What have we done to it so far?”
           </p>
         </section>
 
-        <!-- Open questions -->
-        <section id="open-questions" class="section-block">
-          <div class="section-label">In progress</div>
-          <h2>Open questions &amp; decisions ahead</h2>
-          <p>
-            Several data collection issues remain under active discussion:
-          </p>
+        <section id="current-decisions" class="section-card">
+          <h2>Current decisions</h2>
+          <p>Some working choices in the data collection pipeline include:</p>
           <ul>
             <li>
-              How to measure and report <strong>who is missing</strong> from the corpus using death
-              certificates, vital statistics, or genealogical data.
+              Erring on the side of collecting a broad set of death-related items initially, with later filtering
+              into stricter obituary categories.
             </li>
             <li>
-              How to best distinguish between <strong>news stories about death</strong> and obituaries,
-              especially in early newspapers where the boundary is blurry.
+              Treating institutional constraints (e.g., access limits, download caps) as design constraints to be
+              documented rather than ignored.
             </li>
             <li>
-              How to systematically incorporate <strong>interviews and consultations</strong> with
-              archivists, funeral home staff, and obituary editors as part of “data collection.”
+              Logging all automated downloads with timestamps and basic diagnostics (e.g., success, timeout, block).
             </li>
             <li>
-              How to document and share the assembled dataset publicly after the period of proprietary access.
+              Avoiding scraping from sites that explicitly prohibit automated access, unless separate arrangements
+              are made.
             </li>
           </ul>
-          <p class="inline-note">
-            These questions are being tracked in SPARC proposal revisions, meeting notes, and emails
-            with partners (e.g., Digital Library of Georgia, CDSAI). Links will be added here once
-            internal documentation is stable.
-          </p>
         </section>
-      </main>
-    </div>
+
+        <section id="risks-open" class="section-card">
+          <h2>Risks &amp; open questions</h2>
+          <p>
+            Data collection raises ethical, legal, and technical questions that we keep revisiting:
+          </p>
+          <ul>
+            <li>How do we handle contemporary obituaries where privacy concerns may be more acute?</li>
+            <li>What constraints do licenses and terms of use place on sharing derived data or models?</li>
+            <li>Where might our collection practices systematically miss communities or publications?</li>
+            <li>How can we design the pipeline so that new sources can be added without breaking earlier steps?</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 The Living Dead Project. All rights reserved.</p>
+      <p>Website created by Bhargav Dave.</p>
+    </footer>
   </div>
 
-  <!-- Floating "Back to home" button -->
-  <button class="floating-home" onclick="goHome()">
-    <span class="floating-home-icon">←</span>
-    <span>Back to home</span>
+  <button class="back-home" type="button" aria-label="Back to home">
+    <span>←</span>
   </button>
 
   <script>
-    function goHome() {
-      // TODO: If you prefer history.back(), replace this line
-      window.location.href = "index.html";
-    }
+    // Smooth scroll for sidebar links
+    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        var target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    // Back to home (modules section)
+    document.querySelector(".back-home").addEventListener("click", function () {
+      window.location.href = "index.html#modules";
+    });
   </script>
 </body>
 </html>
