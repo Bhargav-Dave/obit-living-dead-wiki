@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- TODO: Edit the page title in the browser tab if needed -->
   <title>The Living Dead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- TODO: You can change fonts here if you want a different visual vibe -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
@@ -65,7 +63,6 @@
     }
 
     .title-block .tagline {
-      /* TODO: Edit this line to change the short project description */
       margin: 0.1rem 0 0.35rem;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
@@ -74,7 +71,6 @@
     }
 
     .title-block .subtitle {
-      /* TODO: Edit the longer subtitle here */
       margin: 0.4rem 0 0;
       font-size: 0.98rem;
       max-width: 36rem;
@@ -91,7 +87,6 @@
     }
 
     .top-nav a {
-      /* TODO: You can add or remove nav links here (anchors to sections below) */
       text-decoration: none;
       font-size: 0.86rem;
       letter-spacing: 0.14em;
@@ -126,7 +121,6 @@
     }
 
     .modules-intro p {
-      /* TODO: Adjust the instruction text for how to use the cards */
       margin: 0;
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -140,7 +134,6 @@
     }
 
     .nav-card {
-      /* square cards that pop up on hover */
       position: relative;
       width: min(220px, 28vw);
       aspect-ratio: 1 / 1;
@@ -182,7 +175,6 @@
     }
 
     .nav-card h3 {
-      /* TODO: Edit module titles here (e.g., "Qualitative Work") */
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.3rem;
@@ -190,21 +182,11 @@
     }
 
     .nav-card-subtitle {
-      /* TODO: Edit/change these short subtitles per module */
       margin: 0;
       font-size: 0.82rem;
       line-height: 1.5;
       color: var(--text-muted);
       max-width: 16rem;
-    }
-
-    .nav-card-hint {
-      margin: 0.35rem 0 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      opacity: 0.9;
     }
 
     /* Secondary info cards (Time & Place, Approach) */
@@ -232,7 +214,6 @@
     }
 
     .info-card h2 {
-      /* TODO: Edit section titles like "Time & Place", "Approach" */
       margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.15rem;
@@ -242,7 +223,6 @@
     }
 
     .info-card p {
-      /* TODO: Edit these brief contextual blurbs */
       margin: 0.35rem 0 0;
       font-size: 0.9rem;
       line-height: 1.6;
@@ -267,7 +247,6 @@
     }
 
     .collaborators-blurb {
-      /* TODO: You can edit this line to clarify roles or affiliations if desired */
       text-align: center;
       font-size: 0.9rem;
       color: var(--text-muted);
@@ -282,7 +261,6 @@
     }
 
     .collaborators-list li {
-      /* Collaborator names centered as requested */
       font-size: 0.9rem;
       line-height: 1.6;
     }
@@ -368,16 +346,14 @@
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
-        <p class="tagline">Obituaries, social connection, and public memory</p>
+        <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
         <p class="subtitle">
-          <!-- TODO: Adjust this overview summary as the project evolves -->
           A project analyzing how obituaries across centuries reveal changing patterns of
           connection, inequality, and remembrance.
         </p>
       </div>
 
       <nav class="top-nav">
-        <!-- TODO: You can reorder or rename these anchors; just keep the hrefs in sync with section IDs -->
         <a href="#modules">Project modules</a>
         <a href="#context">Context</a>
         <a href="#collaborators">Collaborators</a>
@@ -385,7 +361,7 @@
     </header>
 
     <main>
-      <!-- PRIMARY NAVIGATION CARDS (moved to top) -->
+      <!-- PRIMARY NAVIGATION CARDS -->
       <section id="modules" class="modules-section">
         <div class="modules-intro">
           <p>Use the cards below to navigate into the main areas of the project.</p>
@@ -394,40 +370,25 @@
         <div class="primary-card-grid">
           <!-- QUALITATIVE WORK CARD -->
           <article class="nav-card" data-target="qualitative.html">
-            <!-- TODO: If you rename the qualitative module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
             <h3>Qualitative Work</h3>
             <p class="nav-card-subtitle">
-              Methodology · close reading · coding schemes · data choices
-            </p>
-            <p class="nav-card-hint">
-              <!-- Hint text intentionally left blank; cards are self-explanatory. -->
+              Methodology · Close Reading · Coding Schemes · Data Choices
             </p>
           </article>
 
           <!-- DATA COLLECTION CARD -->
           <article class="nav-card" data-target="data-collection.html">
-            <!-- TODO: If you rename the data collection module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
             <h3>Data Collection</h3>
             <p class="nav-card-subtitle">
               Scraping from datasets, platforms, and archives
-            </p>
-            <p class="nav-card-hint">
-              <!-- Hint text intentionally left blank; cards are self-explanatory. -->
             </p>
           </article>
 
           <!-- DATA PROCESSING CARD -->
           <article class="nav-card" data-target="data-processing.html">
-            <!-- TODO: If you rename the data processing module file, update data-target above -->
-            <div class="nav-card-label">Module</div>
             <h3>Data Processing &amp; Design</h3>
             <p class="nav-card-subtitle">
               Cleaning, modernizing, and structuring obituary data for multi-method analysis
-            </p>
-            <p class="nav-card-hint">
-              <!-- Hint text intentionally left blank; cards are self-explanatory. -->
             </p>
           </article>
         </div>
@@ -439,19 +400,18 @@
           <article class="info-card">
             <h2>Time &amp; Place</h2>
             <p>
-              <!-- TODO: Make this a concise, public-safe contextual blurb -->
-              Focused on English-language obituaries from Pennsylvania and Georgia, from the mid-18th century
-              through the present, with particular attention to Black newspapers and funeral programs.
+              Focused on English-language obituaries from Pennsylvania and Georgia, from the
+              18th century through the present, with particular attention to discrepancies across
+              race, social status and gender.
             </p>
           </article>
 
           <article class="info-card">
             <h2>Approach</h2>
             <p>
-              <!-- TODO: Briefly summarize the mixed-methods design you are comfortable sharing publicly -->
-              A mixed-methods project combining close reading and qualitative coding with computational
-              text analysis, social network approaches, and large language models to trace patterns of
-              social connection and inequality over time.
+              A mixed-methods project combining close reading and qualitative coding with
+              computational text analysis, social network approaches, and large language models
+              to trace patterns of social connection and inequality over time.
             </p>
           </article>
         </div>
@@ -461,12 +421,7 @@
       <section id="collaborators" class="collaborators-section">
         <h2>Collaborators</h2>
 
-        <p class="collaborators-blurb">
-          <!-- Collaborator roles or affiliations can be added here later if desired. -->
-        </p>
-
         <ul class="collaborators-list">
-          <!-- TODO: Edit order / add affiliations if needed, but keep names as desired -->
           <li>Jennifer Lundquist</li>
           <li>Naomi Gerstel</li>
           <li>Eunkyung Song</li>
@@ -475,7 +430,6 @@
 
         <p class="collaborators-note">
           This public-facing wiki provides a high-level overview and timeline of the project.
-          <!-- TODO: You can note that detailed materials live in locked internal documents here -->
         </p>
       </section>
     </main>
@@ -483,13 +437,10 @@
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
       <p>Website created by Bhargav Dave.</p>
-      <!-- TODO: If you want, you can add a link here to a LICENSE or internal docs landing page -->
     </footer>
   </div>
 
-  <!-- Floating "Back to top" button.
-       NOTE: On internal module pages, you can reuse this element but change the click handler
-       to go "back to home" (e.g., window.location.href = 'index.html#modules'). -->
+  <!-- Floating "Back to top" button -->
   <button class="back-to-top" type="button" aria-label="Back to top">
     <span>↑</span>
   </button>
@@ -500,7 +451,7 @@
       card.addEventListener("click", function () {
         var target = card.getAttribute("data-target");
         if (target) {
-          window.location.href = target; // TODO: Ensure these filenames exist in your repo
+          window.location.href = target;
         }
       });
     });
