@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- TODO: You can change this <title> if needed, but it should usually match the project name -->
-  <title>The Living Dead</title>
-
+  <title>The Living Dead – Project Wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    /* 
-      ===== Global page styles =====
-      Lighter cream / academic theme with subtle warm gradients.
-      TODO: Adjust the background colors/gradients here if you want a different mood.
-    */
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
@@ -30,7 +24,6 @@
       color: #1f2933;
     }
 
-    /* Overall vertical layout: main content + footer */
     .page {
       min-height: 100vh;
       display: flex;
@@ -45,16 +38,15 @@
       padding: 2.5rem 1.5rem;
     }
 
-    /* Main container card for the homepage + section views */
     .app-shell {
-      width: min(900px, 100vw - 2.5rem);
-      background: rgba(255, 252, 244, 0.96); /* warm paper-like card */
+      width: min(980px, 100vw - 2.5rem);
+      background: rgba(255, 252, 244, 0.96);
       border-radius: 1.75rem;
       box-shadow:
         0 20px 50px rgba(148, 120, 97, 0.22),
         0 0 0 1px rgba(148, 120, 97, 0.35);
       padding: 2rem 2.5rem 2.25rem;
-      text-align: center; /* center header text by default */
+      text-align: center;
       backdrop-filter: blur(10px);
     }
 
@@ -65,7 +57,6 @@
       }
     }
 
-    /* Header: title + subtitle */
     .project-title {
       font-size: clamp(2rem, 3vw, 2.35rem);
       font-weight: 700;
@@ -78,7 +69,7 @@
     .project-subtitle {
       font-size: 0.95rem;
       color: #4b5563;
-      max-width: 34rem;
+      max-width: 38rem;
       margin: 0 auto;
     }
 
@@ -95,7 +86,144 @@
       opacity: 0.9;
     }
 
-    /* Card row for the three main sections (home view) */
+    /* Snapshot section on home view */
+    .snapshot-grid {
+      margin: 0.5rem auto 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.9rem 1.2rem;
+      text-align: left;
+    }
+
+    .snapshot-item {
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.9rem;
+      background: rgba(255, 252, 244, 0.96);
+      border: 1px solid rgba(209, 178, 140, 0.45);
+    }
+
+    .snapshot-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+
+    .snapshot-text {
+      font-size: 0.88rem;
+      color: #374151;
+    }
+
+    .snapshot-list {
+      margin: 0.1rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.86rem;
+      color: #374151;
+    }
+
+    /* Pipeline diagram */
+    .pipeline {
+      margin: 0.25rem 0 1.6rem;
+      padding: 0.6rem 1.1rem 0.9rem;
+      border-radius: 1.1rem;
+      background: rgba(249, 245, 234, 0.9);
+      border: 1px solid rgba(209, 178, 140, 0.6);
+      position: relative;
+      text-align: left;
+    }
+
+    .pipeline::before {
+      content: "";
+      position: absolute;
+      left: 1.35rem;
+      top: 1.2rem;
+      bottom: 1.2rem;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(209, 178, 140, 0.9),
+        rgba(209, 178, 140, 0.1)
+      );
+    }
+
+    .pipeline-step {
+      position: relative;
+      padding-left: 2.6rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .pipeline-step:last-child {
+      margin-bottom: 0.1rem;
+    }
+
+    .pipeline-step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .pipeline-step-number {
+      position: absolute;
+      left: 0.75rem;
+      top: 0.1rem;
+      width: 1.15rem;
+      height: 1.15rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f3e2c8;
+      color: #4b3a22;
+      border: 1px solid rgba(148, 120, 97, 0.8);
+    }
+
+    .pipeline-step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .pipeline-step-body {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin: 0.15rem 0 0.25rem;
+    }
+
+    .pipeline--compact .pipeline-step-body {
+      display: none;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      margin-top: 0.1rem;
+    }
+
+    .status-chip--done {
+      background: rgba(34, 197, 94, 0.12);
+      color: #166534;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+    }
+
+    .status-chip--in-progress {
+      background: rgba(251, 191, 36, 0.12);
+      color: #92400e;
+      border: 1px solid rgba(251, 191, 36, 0.6);
+    }
+
+    .status-chip--planned {
+      background: rgba(148, 163, 184, 0.16);
+      color: #1f2937;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    /* Card row on home view */
     .nav-card-row {
       display: flex;
       justify-content: center;
@@ -104,7 +232,6 @@
       margin-top: 0.25rem;
     }
 
-    /* Square cards */
     .nav-card {
       position: relative;
       width: 150px;
@@ -127,7 +254,6 @@
         background 160ms ease;
     }
 
-    /* Slightly different accents per card for a multicolor but still muted feel */
     .nav-card:nth-child(1) {
       background: radial-gradient(circle at top left, rgba(245, 211, 162, 0.6), transparent 65%),
                   rgba(255, 252, 244, 0.98);
@@ -159,14 +285,14 @@
     .nav-card-meta {
       font-size: 0.78rem;
       color: #6b7280;
+      text-align: center;
     }
 
-    /* Small preview line beneath the cards (home view) */
     .preview-bar {
       margin-top: 1.5rem;
       font-size: 0.85rem;
       color: #4b5563;
-      min-height: 1.3em; /* keep height stable even when text changes */
+      min-height: 1.3em;
     }
 
     .preview-label {
@@ -177,7 +303,7 @@
       margin-bottom: 0.2rem;
     }
 
-    /* Collaborators box (home view) */
+    /* Collaborators list */
     .collab-list {
       margin-top: 1.75rem;
       padding: 0.9rem 1rem;
@@ -186,6 +312,7 @@
       border: 1px dashed rgba(148, 120, 97, 0.7);
       font-size: 0.82rem;
       color: #374151;
+      text-align: left;
     }
 
     .collab-heading {
@@ -206,12 +333,10 @@
       margin: 0.1rem 0;
     }
 
-    /* Section view layout (when you click a card) */
+    /* Section layout (detail pages) */
     .section-layout {
-      /* TODO: If you prefer center-aligned text for section pages,
-         remove the text-align override below. */
       text-align: left;
-      max-width: 40rem;
+      max-width: 44rem;
       margin: 0 auto;
       font-size: 0.92rem;
       color: #374151;
@@ -252,15 +377,30 @@
     }
 
     .section-outline {
-      margin: 0.4rem 0 0.2rem;
-      padding-left: 1.2rem;
+      margin: 0.15rem 0 0.2rem;
+      padding-left: 1.1rem;
+      font-size: 0.88rem;
+      color: #4b5563;
     }
 
     .section-outline li {
       margin: 0.15rem 0;
     }
 
-    /* Back button to home view */
+    .section-link-list {
+      list-style: disc;
+      padding-left: 1.1rem;
+      margin: 0.2rem 0 0;
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    .section-link-note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-left: 0.25rem;
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -282,7 +422,63 @@
       color: #4b3a22;
     }
 
-    /* Footer at bottom of page */
+    /* Data summary blocks in Data Collection section */
+    .data-summary {
+      margin-top: 0.7rem;
+    }
+
+    .data-summary-section {
+      margin-bottom: 1rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.95rem;
+      background: rgba(255, 252, 244, 0.95);
+      border: 1px solid rgba(209, 178, 140, 0.6);
+    }
+
+    .data-summary-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+
+    .data-summary-body {
+      font-size: 0.86rem;
+      color: #4b5563;
+      margin: 0 0 0.25rem;
+    }
+
+    /* Timeline for recent milestones */
+    .timeline {
+      margin-top: 1.75rem;
+      text-align: left;
+    }
+
+    .timeline-item {
+      border-left: 2px solid rgba(209, 178, 140, 0.8);
+      margin-left: 0.6rem;
+      padding: 0.35rem 0 0.35rem 0.8rem;
+    }
+
+    .timeline-item:last-child {
+      border-left-style: dashed;
+    }
+
+    .timeline-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 0.05rem;
+    }
+
+    .timeline-body {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    /* Footer */
     .site-footer {
       font-size: 0.78rem;
       color: #6b7280;
@@ -295,48 +491,30 @@
     }
   </style>
 
-  <!-- React + ReactDOM from CDN (no build step needed) -->
+  <!-- React + ReactDOM from CDN -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <!-- Babel so we can use JSX directly in the browser -->
+  <!-- Babel so we can use JSX directly -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <div class="page">
     <main class="main">
-      <!-- Root div where React will mount the app -->
       <div id="root"></div>
     </main>
-
-    <!-- Footer is outside the React app for simplicity -->
     <footer class="site-footer">
-      <!-- TODO: If the year or name changes, edit this line -->
       <span>© 2025, website created by Bhargav Dave</span>
     </footer>
   </div>
 
-  <!-- All React code for this page lives here -->
   <script type="text/babel">
-    /*
-      ===== Project configuration =====
-      TODO: Edit subtitle if you want to change how the project is described.
-    */
     const PROJECT_CONFIG = {
-      // Project title used in the header
       title: "The Living Dead",
-
-      // TODO: Replace with a 1–2 sentence summary of your project
       subtitle:
-        "A living, evolving guide to a project about death, records, and the traces we leave behind — from qualitative work to data collection and processing.",
+        "A multi-method study of obituaries in Pennsylvania and Georgia, tracing how lives, relationships, and inequalities are remembered from the eighteenth century to the present.",
     };
 
-    /*
-      ===== Collaborators configuration =====
-      NOTE: There is no project lead line here.
-      TODO: If collaborators change, add/remove names or adjust order here.
-    */
     const COLLABORATORS = {
-      // Ordered list of collaborators (displayed in this order)
       list: [
         "Jennifer Lundquist",
         "Naomi Gerstel",
@@ -345,65 +523,181 @@
       ],
     };
 
-    /*
-      ===== Navigation sections =====
-      TODO: Rename sections, adjust previews, or customize outlines as the project evolves.
-      The "outline" is just a suggested skeleton for the section page; you can turn items
-      into links or full paragraphs later.
-    */
     const NAV_SECTIONS = [
       {
         id: "qualitative",
         title: "Qualitative Work",
-        meta: "Interviews, fieldnotes, coding",
+        meta: "Close reading & interviews",
         preview:
-          "Design, conduct, and interpret interviews, fieldwork, and qualitative traces.",
-        outline: [
-          "Overview & rationale for qualitative components.",
-          "Data sources (interviews, fieldnotes, observations, etc.).",
-          "Sampling, recruitment, and ethical considerations.",
-          "Coding frameworks, memos, and analytic strategies.",
-        ],
+          "How we read obituaries as narratives, design qualitative subsamples, and plan interviews with obituary writers and archivists.",
       },
       {
         id: "dataCollection",
         title: "Data Collection",
-        meta: "Surveys, scraping, archives",
+        meta: "Archives, platforms, sampling",
         preview:
-          "From survey instruments to scraping and archival work: how the data enters the project.",
-        outline: [
-          "Inventory of data sources (surveys, administrative records, scraping, archives).",
-          "Collection protocols and instruments (questionnaires, forms, scripts).",
-          "Quality control checks and logging procedures.",
-          "File naming, storage conventions, and handoff points.",
-        ],
+          "Where the obituaries come from, how we sample across time and place, and what has already been scraped.",
       },
       {
         id: "dataProcessing",
         title: "Data Processing",
-        meta: "Cleaning, linkage, modeling",
+        meta: "Cleaning, coding, validation",
         preview:
-          "Transform raw records into analysis-ready datasets, logs, and reproducible workflows.",
-        outline: [
-          "Cleaning and preprocessing steps (e.g., missing data, recodes).",
-          "Linkage / merging logic across files or sources.",
-          "Versioning of datasets and documentation of changes.",
-          "Paths to scripts, notebooks, and reproducible pipelines.",
-        ],
+          "From noisy OCR pages to analysis-ready datasets, coding schemes, and validation strategies.",
       },
     ];
 
-    /*
-      HomeView component:
-      - Cards in the center
-      - Single-line preview under cards
-      - Collaborators list
-      TODO: This is the high-level project overview hub.
-    */
+    const SNAPSHOT_ITEMS = [
+      {
+        label: "Time & place",
+        text:
+          "English-language obituaries from Pennsylvania and Georgia, roughly mid-eighteenth century through 2024.",
+      },
+      {
+        label: "Approach",
+        text:
+          "Mixed-methods: large-scale text and network analysis, qualitative close reading, and key-informant interviews.",
+      },
+      {
+        label: "Focus",
+        text:
+          "How family, community, work, and inequality appear in public remembrance, and how those patterns shift over time.",
+      },
+    ];
+
+    const RESEARCH_QUESTIONS = [
+      "Whose lives are publicly remembered, and how does that change across time, place, and social position?",
+      "What values and narratives about family, community, and belonging do obituaries highlight?",
+      "How do obituaries reproduce or contest inequalities of race, gender, class, and status in public memory?",
+    ];
+
+    const PIPELINE_STEPS = [
+      {
+        id: "scope",
+        title: "Frame questions & scope",
+        status: "done",
+        description:
+          "Define core questions about remembrance, values, and inequality; focus on Pennsylvania and Georgia and a working definition of “obituary” versus death notice or in memoriam.",
+      },
+      {
+        id: "sources",
+        title: "Map sources & sampling",
+        status: "in-progress",
+        description:
+          "Inventory state archives, Chronicling America, Legacy.com, Black newspapers, funeral programs, cemetery sites, and celebrity/genealogical sources; design sampling rules, including oversamples for African American materials.",
+      },
+      {
+        id: "acquire",
+        title: "Acquire & scrape texts",
+        status: "in-progress",
+        description:
+          "Scrape Legacy.com, state archives, and specialized sites; build metadata tables with URLs, dates, newspaper titles, and basic descriptors; prototype Shiny viewers for exploratory review.",
+      },
+      {
+        id: "detect",
+        title: "Detect obituaries",
+        status: "in-progress",
+        description:
+          "Combine keyword-based heuristics with supervised/LLM classification to distinguish obituaries from crime reports, legal notices, and other content on the same page.",
+      },
+      {
+        id: "clean",
+        title: "Modernize & clean text",
+        status: "in-progress",
+        description:
+          "Use OCR correction and language-model–based modernization to handle pre-modern spelling, broken text, and layout issues so the material is readable and machine-parseable.",
+      },
+      {
+        id: "structure",
+        title: "Extract structure & ties",
+        status: "planned",
+        description:
+          "Populate a coding scheme (demographics, family ties, community roles, organizations, causes of death, etc.) and build “linked lives” networks across spouses, kin, and community ties.",
+      },
+      {
+        id: "validate",
+        title: "Validate coverage & analyze",
+        status: "planned",
+        description:
+          "Compare to death certificates, genealogical sources, and celebrity subsamples; document who is missing; move toward descriptive statistics, qualitative case work, and grant/paper outputs.",
+      },
+    ];
+
+    const TIMELINE_ITEMS = [
+      {
+        label: "Spring–Summer 2025",
+        text:
+          "Team formation, articulation of the loneliness/inequality frame, initial coding manual, and early SPARC concept notes.",
+      },
+      {
+        label: "Late Summer 2025",
+        text:
+          "Selection of Pennsylvania and Georgia; mapping of state archives and Chronicling America titles; first GA historical obituaries scraped and displayed in a temporary viewer.",
+      },
+      {
+        label: "Fall 2025",
+        text:
+          "Draft and iterative revision of the SPARC proposal; prototype Shiny apps for Legacy and BlackCemeteries data; include/exclude keyword lists refined using Atlanta Daily World 1932 test cases.",
+      },
+      {
+        label: "Late Fall 2025",
+        text:
+          "Updated study design that foregrounds qualitative components and limits; planning for validation via death certificates, celebrity obits, and genealogical sources; preparation for SPARC submission and external grant pipeline.",
+      },
+    ];
+
+    function ProjectSnapshot() {
+      return (
+        <section className="snapshot-grid" aria-label="Project snapshot">
+          {SNAPSHOT_ITEMS.map((item) => (
+            <div key={item.label} className="snapshot-item">
+              <div className="snapshot-label">{item.label}</div>
+              <div className="snapshot-text">{item.text}</div>
+            </div>
+          ))}
+          <div className="snapshot-item">
+            <div className="snapshot-label">Core questions</div>
+            <ul className="snapshot-list">
+              {RESEARCH_QUESTIONS.map((q, idx) => (
+                <li key={idx}>{q}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      );
+    }
+
+    function Pipeline({ compact = false }) {
+      return (
+        <section
+          className={"pipeline" + (compact ? " pipeline--compact" : "")}
+          aria-label="Data and methods pipeline"
+        >
+          {PIPELINE_STEPS.map((step, index) => (
+            <div key={step.id} className="pipeline-step">
+              <div className="pipeline-step-number">{index + 1}</div>
+              <div className="pipeline-step-header">
+                <div>
+                  <div className="pipeline-step-title">{step.title}</div>
+                  <div className={"status-chip status-chip--" + step.status}>
+                    {step.status === "done"
+                      ? "In place"
+                      : step.status === "in-progress"
+                      ? "In progress"
+                      : "Planned"}
+                  </div>
+                </div>
+              </div>
+              <p className="pipeline-step-body">{step.description}</p>
+            </div>
+          ))}
+        </section>
+      );
+    }
+
     function HomeView({ activeSection, onCardClick }) {
       return (
         <>
-          {/* ===== Centered cards ===== */}
           <section aria-label="Project sections">
             <div className="nav-card-row">
               {NAV_SECTIONS.map((section) => (
@@ -411,7 +705,6 @@
                   key={section.id}
                   className="nav-card"
                   onClick={() => onCardClick(section.id)}
-                  // TODO: You can also add onMouseEnter for hover-based preview only, if desired
                 >
                   <div className="nav-card-title">{section.title}</div>
                   <div className="nav-card-meta">{section.meta}</div>
@@ -419,25 +712,19 @@
               ))}
             </div>
 
-            {/* ===== Single-line preview beneath cards ===== */}
             <div className="preview-bar">
               <div className="preview-label">Preview</div>
-              {/* If nothing selected, show a generic hint; else show section-specific preview */}
               {activeSection ? (
                 <span>{activeSection.preview}</span>
               ) : (
-                <span>
-                  Hover over or click a card to see a brief description of that part of the project.
-                </span>
+                <span>Click a card to open a concise section page for that part of the project.</span>
               )}
             </div>
           </section>
 
-          {/* ===== Collaborators box ===== */}
           <section className="collab-list" aria-label="Collaborators">
             <div className="collab-heading">Collaborators</div>
             <ul>
-              {/* TODO: Add or remove names in COLLABORATORS.list above */}
               {COLLABORATORS.list.map((name) => (
                 <li key={name}>{name}</li>
               ))}
@@ -447,117 +734,475 @@
       );
     }
 
-    /*
-      SectionView component:
-      - Shown when a specific section is selected
-      - Contains placeholders for overview text and outline
-      TODO: Replace placeholder paragraphs and outline items with your real project content.
-    */
-    function SectionView({ section, onBack }) {
-      if (!section) {
-        // Safety fallback; in normal use this shouldn't render without a section.
-        return null;
-      }
+    function RecentTimeline() {
+      return (
+        <section className="timeline" aria-label="Recent milestones">
+          <div className="section-subheading">Where we are now</div>
+          {TIMELINE_ITEMS.map((item) => (
+            <div key={item.label} className="timeline-item">
+              <div className="timeline-label">{item.label}</div>
+              <p className="timeline-body">{item.text}</p>
+            </div>
+          ))}
+        </section>
+      );
+    }
 
+    function BackLink({ onBack }) {
+      return (
+        <div className="back-link" onClick={onBack}>
+          <span>← Back to overview</span>
+        </div>
+      );
+    }
+
+    function QualitativeSection({ section, onBack }) {
       return (
         <section className="section-layout" aria-label={`${section.title} details`}>
-          {/* Back to the overview (home view) */}
-          <div
-            className="back-link"
-            onClick={onBack}
-          >
-            {/* TODO: You can change this label text if you prefer different wording */}
-            <span>← Back to overview</span>
-          </div>
-
-          <div className="section-breadcrumb">
-            {/* TODO: If you define a more complex hierarchy later, adjust breadcrumb text here */}
-            Project &nbsp;›&nbsp; {section.title}
-          </div>
-
+          <BackLink onBack={onBack} />
+          <div className="section-breadcrumb">Project › {section.title}</div>
           <h2 className="section-title">{section.title}</h2>
 
-          {/* ===== Section intro / overview ===== */}
           <p className="section-tagline">
-            {/* TODO: Replace this with a 2–3 sentence overview of what this part of the project does. */}
-            This page will capture the logic, decisions, and moving parts of the{" "}
-            {section.title.toLowerCase()} pipeline, so that anyone joining the project can see
-            how work in this area is structured.
+            How we use close reading, contextual research, and interviews to interpret obituary texts
+            beyond what can be captured in purely quantitative measures.
           </p>
 
           <div className="section-body-text">
-            <div className="section-subheading">What lives on this page</div>
+            <div className="section-subheading">Role in the project</div>
             <p>
-              {/* TODO: You can rewrite this paragraph to better fit your actual documentation style. */}
-              Use this space as a working wiki. Over time, you can link to protocols, code, data
-              dictionaries, and decision logs. The outline below is a starting point: feel free to
-              modify it as the project evolves.
+              Qualitative work anchors the project in lived experience and historical context. It treats
+              obituaries not only as data points but as narratives constructed by families, journalists,
+              and funeral homes under specific social and economic constraints.
             </p>
 
-            <div className="section-subheading">Working outline</div>
+            <div className="section-subheading">Design so far</div>
             <ul className="section-outline">
-              {/* TODO: Replace items in section.outline with more specific headings or links. */}
-              {section.outline.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              <li>
+                <strong>Historical close reading.</strong> Manual review of early newspapers in Georgia and
+                Pennsylvania shows that pre-1800 obituaries are rare, concentrated among political and
+                military elites, and often emphasize the manner of death and property over social ties.
+              </li>
+              <li>
+                <strong>Contrasting racial and institutional contexts.</strong> Reading Black newspapers and
+                African American funeral programs reveals different obituary customs (for example, the
+                Savannah Tribune’s limited obituary section historically and the centrality of funeral
+                homes for Black communities).
+              </li>
+              <li>
+                <strong>Conceptual coding scheme.</strong> A shared coding manual (July 2025 draft) identifies
+                how to capture family, friendship, community organizations, work, health, and cause of
+                death in both qualitative and quantitative modes.
+              </li>
+              <li>
+                <strong>Key-informant conversations.</strong> Informal “interviews” with newspaper staff,
+                archivists, and librarians (e.g., Savannah Tribune, Digital Library of Georgia) are being
+                treated as data about how obituaries are produced and preserved.
+              </li>
             </ul>
 
-            <div className="section-subheading">Notes & next steps</div>
-            <p>
-              {/* TODO: Replace this with concrete next steps (e.g., “Write up sampling protocol,”
-                  “Document file structure in shared drive,” etc.). */}
-              As you refine this part of the project, jot down open questions, pending tasks,
-              and links to external documents here. This way, the page becomes both a reference
-              and a lightweight planning tool.
-            </p>
+            <div className="section-subheading">Pilot work to date</div>
+            <ul className="section-outline">
+              <li>
+                Early Georgia newspapers (late 18th–early 19th century) show very few obituaries and almost
+                no named kin; this constrains what can be said about “ordinary” people in that era.
+              </li>
+              <li>
+                African American funeral programs in Georgia (1930s–2010s) provide rich qualitative material:
+                photographs, long narrative “Life Reflections,” and detailed lists of relatives, friends,
+                pallbearers, and church affiliations.
+              </li>
+              <li>
+                Initial qualitative memos document patterns such as gendered expectations (e.g., who is named,
+                how age is handled, how work and community roles are described) and forms of resistance or
+                erasure in Black obituaries relative to white newspapers.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Next steps</div>
+            <ul className="section-outline">
+              <li>
+                Define small, time-bounded qualitative subsamples (e.g., two periods, selected newspapers and
+                funeral programs) for systematic close reading.
+              </li>
+              <li>
+                Draft short methodological “interview” write-ups for key conversations (Savannah Tribune, Digital
+                Library of Georgia, potential historian collaborator) to cite in future methods sections.
+              </li>
+              <li>
+                Align qualitative sampling with the emerging quantitative dataset so that cases can be followed
+                across both modes (for example, couples linked via “linked lives”). 
+              </li>
+            </ul>
+
+            <div className="section-subheading">Internal documents to link later</div>
+            <ul className="section-link-list">
+              <li>
+                Working qualitative coding manual and instructions
+                <span className="section-link-note">(add internal link to latest version)</span>
+              </li>
+              <li>
+                Memos on early newspaper readings and African American funeral programs
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+              <li>
+                Key-informant interview notes (newspaper editors, archivists, funeral directors)
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+            </ul>
           </div>
         </section>
       );
     }
 
-    /*
-      App component:
-      - Always renders the header (title + subtitle)
-      - Shows either:
-          * HomeView (cards + preview + collaborators) when view === "home"
-          * SectionView (detailed content for a chosen section) when view === "section"
-      TODO: Later, we can hook this into URL hashes (e.g., #qualitative) if you want sharable deep links.
-    */
+    function DataCollectionSection({ section, onBack }) {
+      return (
+        <section className="section-layout" aria-label={`${section.title} details`}>
+          <BackLink onBack={onBack} />
+          <div className="section-breadcrumb">Project › {section.title}</div>
+          <h2 className="section-title">{section.title}</h2>
+
+          <p className="section-tagline">
+            How we are assembling a multi-century obituary dataset from state archives, online platforms,
+            and specialized collections, with an emphasis on Pennsylvania and Georgia.
+          </p>
+
+          <div className="section-body-text">
+            <div className="section-subheading">Scope and principles</div>
+            <p>
+              The dataset focuses on English-language obituaries from Pennsylvania and Georgia, from roughly
+              the mid-eighteenth century through 2024. These states were chosen for their colonial histories,
+              contrasting regional positions (North/South), sizable Black populations, and strong state
+              newspaper archives. The design pairs:
+            </p>
+            <ul className="section-outline">
+              <li>Mainstream and historically Black sources;</li>
+              <li>
+                Historical (print/OCR) and contemporary (online platform) obituaries; and
+              </li>
+              <li>
+                “Ordinary” individuals and a subset of celebrities whose genealogical records are more complete.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Pipeline snapshot</div>
+            <p>
+              The pipeline below shows how data collection ties into the broader research design. Later
+              sections (especially Data Processing) focus on the right-hand side of this flow.
+            </p>
+            <Pipeline compact={false} />
+
+            <div className="section-subheading">Data sources so far (high-level)</div>
+            <div className="data-summary">
+              <div className="data-summary-section">
+                <div className="data-summary-title">Legacy.com (modern obituaries)</div>
+                <p className="data-summary-body">
+                  Legacy.com is the main source for contemporary obituaries.
+                </p>
+                <ul className="section-outline">
+                  <li>
+                    <strong>Coverage.</strong> Georgia and Pennsylvania, 2000–2024.
+                  </li>
+                  <li>
+                    <strong>Sampling.</strong> Two randomly selected months per year per state, roughly six
+                    months apart, scraping up to the first 1,000 obituaries per month (limited by the
+                    platform’s search interface). Earlier years often contain fewer than 1,000 obits per
+                    month.
+                  </li>
+                  <li>
+                    <strong>Status.</strong> A large pilot sample (tens of thousands of obits) has been
+                    scraped; basic descriptive work (for example, word counts over time) and cleaning are in
+                    progress.
+                  </li>
+                  <li>
+                    <strong>Use.</strong> Modern “gold standard” for content, training data for classification
+                    and information extraction, and a contrast point for historical obituaries.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="data-summary-section">
+                <div className="data-summary-title">
+                  State archives & Chronicling America (historical print)
+                </div>
+                <p className="data-summary-body">
+                  Historical obituaries come primarily from state-sponsored archives and the Library of
+                  Congress.
+                </p>
+                <ul className="section-outline">
+                  <li>
+                    <strong>Sources.</strong> Georgia Historic Newspapers, Pennsylvania Newspaper Archive, and
+                    Chronicling America (Library of Congress).
+                  </li>
+                  <li>
+                    <strong>Data structure.</strong> OCR text is returned at the page level, not as individual
+                    obituaries, which necessitates obituary detection and extraction.
+                  </li>
+                  <li>
+                    <strong>Work to date.</strong> Title lists and metadata have been scraped; pilot extraction
+                    on specific newspapers (e.g., Atlanta Daily World 1932) generated candidate obituary files
+                    and a small curated set displayed in an “old obits” Shiny viewer (~100+ early obits).
+                  </li>
+                  <li>
+                    <strong>Next steps.</strong> Extend automated obituary detection to more titles and years,
+                    while tracking coverage gaps across rural/urban areas and time periods.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="data-summary-section">
+                <div className="data-summary-title">
+                  African American funeral programs & cemetery sites
+                </div>
+                <p className="data-summary-body">
+                  These sources are central for capturing Black obituaries that may never have appeared in
+                  mainstream newspapers.
+                </p>
+                <ul className="section-outline">
+                  <li>
+                    <strong>Funeral programs.</strong> Collections such as the Augusta-Richmond County Public
+                    Library System’s African American funeral programs (3,000+ programs, mainly from the 1960s
+                    onward) and related Georgia/other archives have been partially scraped; many include long
+                    narrative obits, photos, and detailed lists of relatives and friends.
+                  </li>
+                  <li>
+                    <strong>BlackCemeteries.com.</strong> Scraped records for 1900–2008, including an online
+                    cemetery list with cause-of-death information. Data quality is uneven, but it is valuable
+                    training material for identifying obituary-like texts and family structure.
+                  </li>
+                  <li>
+                    <strong>Work to date.</strong> Shiny apps now expose prototype datasets for inspection
+                    (cemetery list, obits from BlackCemeteries, and combined Legacy/BlackCemeteries samples).
+                  </li>
+                  <li>
+                    <strong>Next steps.</strong> Systematic cleaning and alignment of funeral programs and
+                    cemetery records with the main obituary dataset.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="data-summary-section">
+                <div className="data-summary-title">
+                  Black newspapers, celebrity obits, and genealogical sources
+                </div>
+                <p className="data-summary-body">
+                  Additional sources deepen coverage of race, inequality, and “linked lives”.
+                </p>
+                <ul className="section-outline">
+                  <li>
+                    <strong>Historical Black newspapers.</strong> ProQuest Historical Black Newspapers (e.g.,
+                    New Pittsburgh Courier, Philadelphia Tribune, Atlanta Daily World) provide relatively clean
+                    PDF obituaries for African American communities; these are being used to oversample Black
+                    obits and compare formats.
+                  </li>
+                  <li>
+                    <strong>Celebrity obituaries.</strong> Lists of notable individuals from Pennsylvania and
+                    Georgia (e.g., via Wikipedia and WikiTree) are being used to identify a subset of
+                    “celebrity” obituaries whose family trees and public biographies can be cross-checked.
+                  </li>
+                  <li>
+                    <strong>Vital statistics & genealogical records.</strong> Death certificates and
+                    genealogical sites (e.g., WikiTree) are planned as external benchmarks for who receives
+                    obituaries and which relationships appear in them.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="section-subheading">Internal documents to link later</div>
+            <ul className="section-link-list">
+              <li>
+                Data collection plan and sampling frame notes
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+              <li>
+                Maps and tables summarizing GA/PA newspaper coverage
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+              <li>
+                Shiny app URLs and documentation for Legacy, BlackCemeteries, and historical obits
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      );
+    }
+
+    function DataProcessingSection({ section, onBack }) {
+      return (
+        <section className="section-layout" aria-label={`${section.title} details`}>
+          <BackLink onBack={onBack} />
+          <div className="section-breadcrumb">Project › {section.title}</div>
+          <h2 className="section-title">{section.title}</h2>
+
+          <p className="section-tagline">
+            How raw pages, OCR text, and scraped records are converted into analysis-ready datasets and
+            networks of social ties.
+          </p>
+
+          <div className="section-body-text">
+            <div className="section-subheading">Cleaning & modernization</div>
+            <ul className="section-outline">
+              <li>
+                <strong>OCR challenges.</strong> Historical newspapers arrive as noisy OCR text with broken
+                lines, inconsistent spelling, and mixed content. Many pre-1900 obits are embedded in full
+                page images.
+              </li>
+              <li>
+                <strong>Modernizing language.</strong> Large language models (LLMs) are being tested to convert
+                pre-modern English into standardized modern English while preserving meaning, with checks for
+                hallucinations and mistranslations.
+              </li>
+              <li>
+                <strong>Quality control.</strong> Multiple passes (OCR → LLM modernization → consistency checks)
+                plus spot human review are planned for sensitive periods and subsamples.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Detecting obituaries</div>
+            <ul className="section-outline">
+              <li>
+                <strong>Keyword heuristics.</strong> Early work used include terms (e.g., “died”, “funeral”,
+                “survived by”, “obituary”) and exclude terms (e.g., “murder”, “battle”, “tornado”, “burglar”)
+                to find likely obits in Atlanta Daily World 1932 issues and similar newspapers.
+              </li>
+              <li>
+                <strong>Pilot evaluation.</strong> In a small Atlanta Daily World test file, only a subset of
+                keyword-based “hits” were true obituaries; the rest were brief death notices or other stories
+                about death. These pilots are informing the next round of classifiers.
+              </li>
+              <li>
+                <strong>LLM-based classification.</strong> The team plans to use labeled training sets and
+                LLMs (via campus infrastructure such as CDSAI/UNITY) to classify page segments as “obituary”,
+                “death notice”, “in memoriam”, or “other”.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Coding structure & networks</div>
+            <ul className="section-outline">
+              <li>
+                <strong>Coding schema.</strong> A detailed schema (roughly 150 fields) captures demographics,
+                kin ties (who is named and in what order), work and community roles, cause of death, and
+                textual themes (e.g., virtues, service, suffering).
+              </li>
+              <li>
+                <strong>Linked lives.</strong> Using a “linked lives” framework, obituaries can be connected
+                across spouses and family members, enabling dyadic comparisons (for example, how a husband and
+                wife from the same family are remembered differently).
+              </li>
+              <li>
+                <strong>Multiple modes.</strong> The schema is designed to support both automated extraction
+                (LLMs and parsers) and qualitative coding, so that statistical patterns can be grounded in
+                close reading.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Validation & representativeness</div>
+            <ul className="section-outline">
+              <li>
+                <strong>Death certificates.</strong> Random samples of obituaries will be compared to state
+                vital statistics to understand which deaths are represented and which are missing.
+              </li>
+              <li>
+                <strong>Celebrity & genealogical checks.</strong> Celebrity obituaries, with richer genealogical
+                records, provide a benchmark for how completely family ties and life events are covered
+                relative to non-celebrities.
+              </li>
+              <li>
+                <strong>Cross-model and human review.</strong> Cross-LLM validation, simple NLP metrics, and
+                selective hand-checking will be used to evaluate accuracy of classification and extraction.
+              </li>
+            </ul>
+
+            <div className="section-subheading">What is already in place</div>
+            <ul className="section-outline">
+              <li>
+                Prototype obituary viewer apps (e.g., combining BlackCemeteries and Legacy obits, and a small
+                historical GA sample) that reveal how cleaned text will eventually be explored.
+              </li>
+              <li>
+                Working include/exclude term lists for historical newspapers and documentation of their
+                performance on pilot samples.
+              </li>
+              <li>
+                Initial discussions with the campus data science center about LLM infrastructure, API access,
+                and validation strategies.
+              </li>
+            </ul>
+
+            <div className="section-subheading">Internal documents to link later</div>
+            <ul className="section-link-list">
+              <li>
+                Coding manual and variable list
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+              <li>
+                LLM/OCR pipeline design notes and benchmarks
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+              <li>
+                Validation plan (death certificates, WikiTree, celebrity subsample)
+                <span className="section-link-note">(add internal link)</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      );
+    }
+
+    function SectionView({ section, onBack }) {
+      if (!section) return null;
+
+      if (section.id === "qualitative") {
+        return <QualitativeSection section={section} onBack={onBack} />;
+      }
+      if (section.id === "dataCollection") {
+        return <DataCollectionSection section={section} onBack={onBack} />;
+      }
+      if (section.id === "dataProcessing") {
+        return <DataProcessingSection section={section} onBack={onBack} />;
+      }
+
+      return null;
+    }
+
     function App() {
-      const [view, setView] = React.useState("home"); // "home" | "section"
+      const [view, setView] = React.useState("home");
       const [activeSectionId, setActiveSectionId] = React.useState(null);
 
       const activeSection =
         NAV_SECTIONS.find((section) => section.id === activeSectionId) || null;
 
-      // When a card is clicked on the home view
       const handleCardClick = (sectionId) => {
         setActiveSectionId(sectionId);
         setView("section");
       };
 
-      // When user clicks "Back to overview"
       const handleBackToHome = () => {
         setView("home");
-        // NOTE: We keep activeSectionId so the preview line still knows what was last selected.
       };
 
       return (
         <div className="app-shell">
-          {/* ===== Header: Title + Subtitle (always visible) ===== */}
           <header>
-            {/* TODO: Change PROJECT_CONFIG.title if you ever rename the project */}
             <h1 className="project-title">{PROJECT_CONFIG.title}</h1>
-
-            {/* TODO: Edit PROJECT_CONFIG.subtitle for a different description */}
             <p className="project-subtitle">{PROJECT_CONFIG.subtitle}</p>
-
             <div className="horizon-rule" />
           </header>
 
-          {/* ===== Conditional views: home vs section ===== */}
+          {view === "home" && (
+            <>
+              <ProjectSnapshot />
+              <Pipeline compact={true} />
+            </>
+          )}
+
           {view === "home" ? (
-            <HomeView activeSection={activeSection} onCardClick={handleCardClick} />
+            <>
+              <HomeView activeSection={activeSection} onCardClick={handleCardClick} />
+              <RecentTimeline />
+            </>
           ) : (
             <SectionView section={activeSection} onBack={handleBackToHome} />
           )}
@@ -565,7 +1210,6 @@
       );
     }
 
-    // Mount the React app into the #root div
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<App />);
   </script>
