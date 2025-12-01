@@ -9,14 +9,14 @@
   <style>
     /* 
       ===== Global page styles =====
-      Dark background with subtle color gradients.
-      TODO: Tweak the background gradients here if you want a different color mood.
+      Lighter cream / academic theme with subtle warm gradients.
+      TODO: Adjust the background colors/gradients here if you want a different mood.
     */
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      color: #e5e7eb;
-      background: #020617;
+      line-height: 1.6;
+      color: #1f2933;
+      background: #f3f0e5;
     }
 
     body {
@@ -24,10 +24,10 @@
       padding: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.16), transparent 55%),
-        #020617;
-      color: #e5e7eb;
+        radial-gradient(circle at top left, rgba(243, 213, 159, 0.45), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(224, 181, 171, 0.35), transparent 55%),
+        #f3f0e5;
+      color: #1f2933;
     }
 
     /* Overall vertical layout: main content + footer */
@@ -48,14 +48,14 @@
     /* Main container card for the homepage */
     .app-shell {
       width: min(900px, 100vw - 2.5rem);
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(255, 252, 244, 0.96); /* warm paper-like card */
       border-radius: 1.75rem;
       box-shadow:
-        0 30px 80px rgba(15, 23, 42, 0.7),
-        0 0 0 1px rgba(148, 163, 184, 0.3);
+        0 20px 50px rgba(148, 120, 97, 0.22),
+        0 0 0 1px rgba(148, 120, 97, 0.35);
       padding: 2rem 2.5rem 2.25rem;
       text-align: center; /* center all text by default */
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
     }
 
     @media (max-width: 700px) {
@@ -69,15 +69,15 @@
     .project-title {
       font-size: clamp(2rem, 3vw, 2.35rem);
       font-weight: 700;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.7rem;
-      color: #f9fafb;
+      color: #111827;
     }
 
     .project-subtitle {
       font-size: 0.95rem;
-      color: #9ca3af;
+      color: #4b5563;
       max-width: 34rem;
       margin: 0 auto;
     }
@@ -88,11 +88,11 @@
       margin: 1.25rem auto 1.5rem;
       background: linear-gradient(
         to right,
-        rgba(56, 189, 248, 0.6),
-        rgba(129, 140, 248, 0.9),
-        rgba(244, 114, 182, 0.7)
+        rgba(191, 128, 64, 0.8),
+        rgba(148, 120, 97, 0.9),
+        rgba(174, 136, 94, 0.85)
       );
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     /* Card row for the three main sections */
@@ -116,11 +116,10 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 60%),
-                  radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.12), transparent 55%),
-                  rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.55);
+      background: radial-gradient(circle at top left, rgba(245, 211, 162, 0.46), transparent 65%),
+                  rgba(255, 252, 244, 0.98);
+      border: 1px solid rgba(148, 120, 97, 0.6);
+      box-shadow: 0 14px 28px rgba(148, 120, 97, 0.3);
       transition:
         transform 160ms ease,
         box-shadow 160ms ease,
@@ -128,45 +127,45 @@
         background 160ms ease;
     }
 
-    /* Slightly different accents per card for a multicolor but not too poppy feel */
+    /* Slightly different accents per card for a multicolor but still muted feel */
     .nav-card:nth-child(1) {
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%),
-                  rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, rgba(245, 211, 162, 0.6), transparent 65%),
+                  rgba(255, 252, 244, 0.98);
     }
 
     .nav-card:nth-child(2) {
-      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.18), transparent 60%),
-                  rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, rgba(214, 196, 255, 0.5), transparent 65%),
+                  rgba(255, 252, 244, 0.98);
     }
 
     .nav-card:nth-child(3) {
-      background: radial-gradient(circle at top left, rgba(244, 114, 182, 0.18), transparent 60%),
-                  rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, rgba(237, 200, 178, 0.55), transparent 65%),
+                  rgba(255, 252, 244, 0.98);
     }
 
     .nav-card:hover {
       transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.7);
-      border-color: rgba(191, 219, 254, 0.9);
+      box-shadow: 0 22px 34px rgba(148, 120, 97, 0.4);
+      border-color: rgba(148, 120, 97, 0.95);
     }
 
     .nav-card-title {
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.2rem;
-      color: #e5e7eb;
+      color: #1f2933;
     }
 
     .nav-card-meta {
       font-size: 0.78rem;
-      color: #cbd5f5;
+      color: #6b7280;
     }
 
     /* Small preview line beneath the cards */
     .preview-bar {
       margin-top: 1.5rem;
       font-size: 0.85rem;
-      color: #9ca3af;
+      color: #4b5563;
       min-height: 1.3em; /* keep height stable even when text changes */
     }
 
@@ -174,7 +173,7 @@
       text-transform: uppercase;
       letter-spacing: 0.15em;
       font-size: 0.7rem;
-      color: #6b7280;
+      color: #9ca3af;
       margin-bottom: 0.2rem;
     }
 
@@ -183,45 +182,40 @@
       margin-top: 1.75rem;
       padding: 0.9rem 1rem;
       border-radius: 1rem;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px dashed rgba(148, 163, 184, 0.8);
+      background: rgba(255, 252, 244, 0.96);
+      border: 1px dashed rgba(148, 120, 97, 0.7);
       font-size: 0.82rem;
-      color: #d1d5db;
+      color: #374151;
     }
 
     .collab-heading {
       text-transform: uppercase;
       letter-spacing: 0.13em;
       font-size: 0.72rem;
-      color: #9ca3af;
+      color: #6b7280;
       margin-bottom: 0.35rem;
-    }
-
-    .collab-role {
-      font-weight: 600;
-      color: #e5e7eb;
     }
 
     .collab-list ul {
       list-style: none;
       padding: 0;
-      margin: 0.4rem 0 0;
+      margin: 0.25rem 0 0;
     }
 
     .collab-list li {
-      margin: 0.08rem 0;
+      margin: 0.1rem 0;
     }
 
     /* Footer at bottom of page */
     .site-footer {
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: #6b7280;
       text-align: center;
       padding: 0.9rem 1rem 1.3rem;
     }
 
     .site-footer span {
-      opacity: 0.9;
+      opacity: 0.95;
     }
   </style>
 
@@ -262,11 +256,11 @@
 
     /*
       ===== Collaborators configuration =====
-      TODO: If collaborators change, add/remove names or adjust roles here.
+      NOTE: There is no project lead line anymore.
+      TODO: If collaborators change, add/remove names or adjust order here.
     */
     const COLLABORATORS = {
-      lead: "Bhargav Dave", // TODO: Change if someone else is lead
-      // Ordered list of collaborators (displayed in order)
+      // Ordered list of collaborators (displayed in this order)
       list: [
         "Jennifer Lundquist",
         "Naomi Gerstel",
@@ -363,23 +357,13 @@
 
           {/* ===== Collaborators box ===== */}
           <section className="collab-list" aria-label="Collaborators">
-            <div className="collab-heading">People</div>
-
-            {/* TODO: Edit COLLABORATORS.lead if the lead changes */}
-            <div>
-              <span className="collab-role">Lead: </span>
-              <span>{COLLABORATORS.lead}</span>
-            </div>
-
-            <div style={{ marginTop: "0.5rem" }}>
-              <span className="collab-role">Collaborators:</span>
-              <ul>
-                {/* TODO: Add or remove names in COLLABORATORS.list above */}
-                {COLLABORATORS.list.map((name) => (
-                  <li key={name}>{name}</li>
-                ))}
-              </ul>
-            </div>
+            <div className="collab-heading">Collaborators</div>
+            <ul>
+              {/* TODO: Add or remove names in COLLABORATORS.list above */}
+              {COLLABORATORS.list.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </section>
         </div>
       );
