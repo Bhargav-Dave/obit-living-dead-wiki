@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Wiki – Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      color: #111827;
+      background: #f3f4f6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-shell {
+      width: min(1000px, 100vw - 2rem);
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      padding: 2rem 2.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .project-subtitle {
+      font-size: 0.95rem;
+      color: #6b7280;
+      max-width: 38rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .pill-dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .layout-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .app-shell {
+        padding: 1.5rem 1.25rem;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    .nav-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .nav-card {
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, background 150ms ease;
+      background: #f9fafb;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px rgba(15, 23, 42, 0.12);
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .nav-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .nav-card-meta {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    .collab-list {
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.9rem;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    .collab-list strong {
+      font-weight: 600;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+
+    .detail-panel {
+      font-size: 0.88rem;
+      color: #4b5563;
+      border-radius: 1rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 1rem;
+      min-height: 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 55%);
+      pointer-events: none;
+    }
+
+    .detail-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .detail-body {
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .detail-tagline {
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .mini-breadcrumb {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+
+  <!-- React + ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel so we can use JSX directly in the browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const NAV_SECTIONS = [
+      {
+        id: "qualitative",
+        title: "Qualitative Work",
+        meta: "Interviews, fieldnotes, coding frameworks",
+        blurb: "Overview of qualitative design, instruments, sampling, and analytic pipelines.",
+      },
+      {
+        id: "dataCollection",
+        title: "Data Collection",
+        meta: "Surveys, scraping, archival workflows",
+        blurb: "How data enters the project: protocols, tools, and quality control checks.",
+      },
+      {
+        id: "dataProcessing",
+        title: "Data Processing",
+        meta: "Cleaning, merging, modeling",
+        blurb: "Steps to transform raw data into analysis-ready datasets and documentation.",
+      },
+    ];
+
+    function DetailPanel({ active }) {
+      if (!active) {
+        return (
+          <div className="detail-panel">
+            <div className="detail-title">Pick a lane to dive into the project.</div>
+            <div className="detail-body">
+              Use the cards on the left to jump into high-level overviews of the project&apos;s
+              qualitative work, data collection, and data processing workflows.
+            </div>
+            <div className="detail-tagline">
+              This panel will later expand into a full wiki with links and diagrams.
+            </div>
+          </div>
+        );
+      }
+
+      const section = NAV_SECTIONS.find((s) => s.id === active);
+
+      return (
+        <div className="detail-panel">
+          <div className="mini-breadcrumb">Project &gt; {section.title}</div>
+          <div className="detail-title">{section.title}</div>
+          <div className="detail-body">
+            {section.blurb}
+            <br />
+            <br />
+            <strong>Coming next:</strong> a dedicated page that documents this part of the pipeline
+            in depth – methods, files, code, and decision logs.
+          </div>
+          <div className="detail-tagline">
+            Think of this as the &quot;doorway&quot; to the {section.title.toLowerCase()} wiki.
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [activeSection, setActiveSection] = React.useState(null);
+
+      return (
+        <div className="app-shell">
+          <header>
+            <span className="pill">
+              <span className="pill-dot" />
+              Live project wiki
+            </span>
+            <h1 className="project-title">
+              Project Title Goes Here
+            </h1>
+            <p className="project-subtitle">
+              One-stop hub for understanding the project: qualitative design, data collection,
+              and data processing. Use this site as a live, evolving guide to how everything fits together.
+            </p>
+          </header>
+
+          <div className="layout-grid">
+            <div>
+              <div className="section-label">Navigation</div>
+              <div className="nav-card-grid">
+                {NAV_SECTIONS.map((section) => (
+                  <div
+                    key={section.id}
+                    className="nav-card"
+                    onClick={() => setActiveSection(section.id)}
+                  >
+                    <div className="nav-card-title">{section.title}</div>
+                    <div className="nav-card-meta">{section.meta}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: "1.25rem" }}>
+                <div className="section-label">Collaborators</div>
+                <div className="collab-list">
+                  <strong>PI / Lead:</strong> Your Name Here
+                  <br />
+                  <strong>Collaborators:</strong> Person A, Person B, Person C
+                  <br />
+                  <strong>Affiliations:</strong> Add institutions / labs here.
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="section-label">Preview</div>
+              <DetailPanel active={activeSection} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
