@@ -45,7 +45,7 @@
       padding: 2.5rem 1.5rem;
     }
 
-    /* Main container card for the homepage */
+    /* Main container card for the homepage + section views */
     .app-shell {
       width: min(900px, 100vw - 2.5rem);
       background: rgba(255, 252, 244, 0.96); /* warm paper-like card */
@@ -54,7 +54,7 @@
         0 20px 50px rgba(148, 120, 97, 0.22),
         0 0 0 1px rgba(148, 120, 97, 0.35);
       padding: 2rem 2.5rem 2.25rem;
-      text-align: center; /* center all text by default */
+      text-align: center; /* center header text by default */
       backdrop-filter: blur(10px);
     }
 
@@ -95,7 +95,7 @@
       opacity: 0.9;
     }
 
-    /* Card row for the three main sections */
+    /* Card row for the three main sections (home view) */
     .nav-card-row {
       display: flex;
       justify-content: center;
@@ -161,7 +161,7 @@
       color: #6b7280;
     }
 
-    /* Small preview line beneath the cards */
+    /* Small preview line beneath the cards (home view) */
     .preview-bar {
       margin-top: 1.5rem;
       font-size: 0.85rem;
@@ -177,7 +177,7 @@
       margin-bottom: 0.2rem;
     }
 
-    /* Collaborators box */
+    /* Collaborators box (home view) */
     .collab-list {
       margin-top: 1.75rem;
       padding: 0.9rem 1rem;
@@ -204,6 +204,82 @@
 
     .collab-list li {
       margin: 0.1rem 0;
+    }
+
+    /* Section view layout (when you click a card) */
+    .section-layout {
+      /* TODO: If you prefer center-aligned text for section pages,
+         remove the text-align override below. */
+      text-align: left;
+      max-width: 40rem;
+      margin: 0 auto;
+      font-size: 0.92rem;
+      color: #374151;
+    }
+
+    .section-breadcrumb {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: #111827;
+    }
+
+    .section-tagline {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-subheading {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+      margin-top: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-body-text {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .section-outline {
+      margin: 0.4rem 0 0.2rem;
+      padding-left: 1.2rem;
+    }
+
+    .section-outline li {
+      margin: 0.15rem 0;
+    }
+
+    /* Back button to home view */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.8rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: #6b4e2e;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .back-link span {
+      border-bottom: 1px solid rgba(107, 78, 46, 0.4);
+    }
+
+    .back-link:hover {
+      color: #4b3a22;
     }
 
     /* Footer at bottom of page */
@@ -256,7 +332,7 @@
 
     /*
       ===== Collaborators configuration =====
-      NOTE: There is no project lead line anymore.
+      NOTE: There is no project lead line here.
       TODO: If collaborators change, add/remove names or adjust order here.
     */
     const COLLABORATORS = {
@@ -271,8 +347,9 @@
 
     /*
       ===== Navigation sections =====
-      TODO: Rename sections or adjust descriptions as the project evolves.
-      Later, we can link each section to its own detailed wiki page.
+      TODO: Rename sections, adjust previews, or customize outlines as the project evolves.
+      The "outline" is just a suggested skeleton for the section page; you can turn items
+      into links or full paragraphs later.
     */
     const NAV_SECTIONS = [
       {
@@ -281,6 +358,12 @@
         meta: "Interviews, fieldnotes, coding",
         preview:
           "Design, conduct, and interpret interviews, fieldwork, and qualitative traces.",
+        outline: [
+          "Overview & rationale for qualitative components.",
+          "Data sources (interviews, fieldnotes, observations, etc.).",
+          "Sampling, recruitment, and ethical considerations.",
+          "Coding frameworks, memos, and analytic strategies.",
+        ],
       },
       {
         id: "dataCollection",
@@ -288,6 +371,12 @@
         meta: "Surveys, scraping, archives",
         preview:
           "From survey instruments to scraping and archival work: how the data enters the project.",
+        outline: [
+          "Inventory of data sources (surveys, administrative records, scraping, archives).",
+          "Collection protocols and instruments (questionnaires, forms, scripts).",
+          "Quality control checks and logging procedures.",
+          "File naming, storage conventions, and handoff points.",
+        ],
       },
       {
         id: "dataProcessing",
@@ -295,36 +384,25 @@
         meta: "Cleaning, linkage, modeling",
         preview:
           "Transform raw records into analysis-ready datasets, logs, and reproducible workflows.",
+        outline: [
+          "Cleaning and preprocessing steps (e.g., missing data, recodes).",
+          "Linkage / merging logic across files or sources.",
+          "Versioning of datasets and documentation of changes.",
+          "Paths to scripts, notebooks, and reproducible pipelines.",
+        ],
       },
     ];
 
     /*
-      App component:
-      - Renders header (title, subtitle)
-      - Renders the three square cards in the center
-      - Shows a small preview line below the cards based on selected section
-      - Shows collaborators box below
-      TODO: This can grow into a layout that also manages subpages or routing.
+      HomeView component:
+      - Cards in the center
+      - Single-line preview under cards
+      - Collaborators list
+      TODO: This is the high-level project overview hub.
     */
-    function App() {
-      const [activeSectionId, setActiveSectionId] = React.useState(null);
-
-      const activeSection =
-        NAV_SECTIONS.find((section) => section.id === activeSectionId) || null;
-
+    function HomeView({ activeSection, onCardClick }) {
       return (
-        <div className="app-shell">
-          {/* ===== Header: Title + Subtitle ===== */}
-          <header>
-            {/* TODO: Change PROJECT_CONFIG.title if you ever rename the project */}
-            <h1 className="project-title">{PROJECT_CONFIG.title}</h1>
-
-            {/* TODO: Edit PROJECT_CONFIG.subtitle for a different description */}
-            <p className="project-subtitle">{PROJECT_CONFIG.subtitle}</p>
-
-            <div className="horizon-rule" />
-          </header>
-
+        <>
           {/* ===== Centered cards ===== */}
           <section aria-label="Project sections">
             <div className="nav-card-row">
@@ -332,8 +410,8 @@
                 <div
                   key={section.id}
                   className="nav-card"
-                  onClick={() => setActiveSectionId(section.id)}
-                  // TODO: Later, you can also handle keyboard events or routing here
+                  onClick={() => onCardClick(section.id)}
+                  // TODO: You can also add onMouseEnter for hover-based preview only, if desired
                 >
                   <div className="nav-card-title">{section.title}</div>
                   <div className="nav-card-meta">{section.meta}</div>
@@ -365,6 +443,124 @@
               ))}
             </ul>
           </section>
+        </>
+      );
+    }
+
+    /*
+      SectionView component:
+      - Shown when a specific section is selected
+      - Contains placeholders for overview text and outline
+      TODO: Replace placeholder paragraphs and outline items with your real project content.
+    */
+    function SectionView({ section, onBack }) {
+      if (!section) {
+        // Safety fallback; in normal use this shouldn't render without a section.
+        return null;
+      }
+
+      return (
+        <section className="section-layout" aria-label={`${section.title} details`}>
+          {/* Back to the overview (home view) */}
+          <div
+            className="back-link"
+            onClick={onBack}
+          >
+            {/* TODO: You can change this label text if you prefer different wording */}
+            <span>← Back to overview</span>
+          </div>
+
+          <div className="section-breadcrumb">
+            {/* TODO: If you define a more complex hierarchy later, adjust breadcrumb text here */}
+            Project &nbsp;›&nbsp; {section.title}
+          </div>
+
+          <h2 className="section-title">{section.title}</h2>
+
+          {/* ===== Section intro / overview ===== */}
+          <p className="section-tagline">
+            {/* TODO: Replace this with a 2–3 sentence overview of what this part of the project does. */}
+            This page will capture the logic, decisions, and moving parts of the{" "}
+            {section.title.toLowerCase()} pipeline, so that anyone joining the project can see
+            how work in this area is structured.
+          </p>
+
+          <div className="section-body-text">
+            <div className="section-subheading">What lives on this page</div>
+            <p>
+              {/* TODO: You can rewrite this paragraph to better fit your actual documentation style. */}
+              Use this space as a working wiki. Over time, you can link to protocols, code, data
+              dictionaries, and decision logs. The outline below is a starting point: feel free to
+              modify it as the project evolves.
+            </p>
+
+            <div className="section-subheading">Working outline</div>
+            <ul className="section-outline">
+              {/* TODO: Replace items in section.outline with more specific headings or links. */}
+              {section.outline.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="section-subheading">Notes & next steps</div>
+            <p>
+              {/* TODO: Replace this with concrete next steps (e.g., “Write up sampling protocol,”
+                  “Document file structure in shared drive,” etc.). */}
+              As you refine this part of the project, jot down open questions, pending tasks,
+              and links to external documents here. This way, the page becomes both a reference
+              and a lightweight planning tool.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    /*
+      App component:
+      - Always renders the header (title + subtitle)
+      - Shows either:
+          * HomeView (cards + preview + collaborators) when view === "home"
+          * SectionView (detailed content for a chosen section) when view === "section"
+      TODO: Later, we can hook this into URL hashes (e.g., #qualitative) if you want sharable deep links.
+    */
+    function App() {
+      const [view, setView] = React.useState("home"); // "home" | "section"
+      const [activeSectionId, setActiveSectionId] = React.useState(null);
+
+      const activeSection =
+        NAV_SECTIONS.find((section) => section.id === activeSectionId) || null;
+
+      // When a card is clicked on the home view
+      const handleCardClick = (sectionId) => {
+        setActiveSectionId(sectionId);
+        setView("section");
+      };
+
+      // When user clicks "Back to overview"
+      const handleBackToHome = () => {
+        setView("home");
+        // NOTE: We keep activeSectionId so the preview line still knows what was last selected.
+      };
+
+      return (
+        <div className="app-shell">
+          {/* ===== Header: Title + Subtitle (always visible) ===== */}
+          <header>
+            {/* TODO: Change PROJECT_CONFIG.title if you ever rename the project */}
+            <h1 className="project-title">{PROJECT_CONFIG.title}</h1>
+
+            {/* TODO: Edit PROJECT_CONFIG.subtitle for a different description */}
+            <p className="project-subtitle">{PROJECT_CONFIG.subtitle}</p>
+
+            <div className="horizon-rule" />
+          </header>
+
+          {/* ===== Conditional views: home vs section ===== */}
+          {view === "home" ? (
+            <HomeView activeSection={activeSection} onCardClick={handleCardClick} />
+          ) : (
+            <SectionView section={activeSection} onBack={handleBackToHome} />
+          )}
         </div>
       );
     }
