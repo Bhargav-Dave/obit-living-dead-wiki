@@ -1,0 +1,16 @@
+The Living Dead – Project Website
+
+© 2025 Jennifer Lundquist, Naomi Gerstel, Eunkyung Song, and Bhargav Dave.
+All rights reserved.
+
+This repository and the website it generates are provided solely for viewing and
+internal reference by the project team and collaborators.
+
+You may not:
+- copy, reproduce, or redistribute any part of this repository or site;
+- modify, adapt, or create derivative works from any part of this repository or site;
+- use any part of this repository or site for commercial purposes;
+
+without prior written permission from the project team.
+
+For permission requests, please contact: Bhargav Dave at bdave@umass.edu.
