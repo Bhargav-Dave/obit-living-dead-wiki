@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead – General Newspapers</title>
+  <title>The Living Dead · General Newspapers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Shared fonts with the rest of the project -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
@@ -23,9 +22,7 @@
       --transition-fast: 0.18s ease-out;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -42,26 +39,25 @@
       padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    /* ===== Header / Site title ===== */
+    /* Header */
 
     .site-header {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
       align-items: center;
       text-align: center;
-      margin-bottom: 2.1rem;
+      margin-bottom: 2.2rem;
     }
 
     .title-block {
-      max-width: 40rem;
+      max-width: 640px;
       margin: 0 auto;
     }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 3.2vw, 2.8rem);
+      font-size: clamp(2.5rem, 3.6vw, 3.1rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin: 0 0 0.2rem;
@@ -69,7 +65,7 @@
     }
 
     .title-block .tagline {
-      margin: 0.2rem 0 0.3rem;
+      margin: 0.15rem 0 0.2rem;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -77,186 +73,127 @@
     }
 
     .title-block .subtitle {
-      margin: 0.35rem auto 0;
-      font-size: 0.96rem;
+      margin: 0.35rem 0 0;
+      font-size: 0.98rem;
       max-width: 36rem;
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--text-muted);
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .top-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.1rem;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .top-nav a {
-      text-decoration: none;
-      font-size: 0.86rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      padding-bottom: 0.1rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .top-nav a:hover {
-      border-color: rgba(0, 0, 0, 0.18);
-      color: #3d2f22;
-    }
-
-    /* ===== Layout: sidebar + content ===== */
+    /* Layout */
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
-      gap: 2rem;
+      grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+      gap: 1.8rem;
       align-items: flex-start;
     }
+
+    @media (max-width: 840px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    /* Sidebar */
 
     .sidebar {
       position: sticky;
       top: 1.5rem;
       align-self: flex-start;
-      background: rgba(255, 250, 241, 0.9);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.1rem 1.2rem;
-      backdrop-filter: blur(4px);
     }
 
-    .sidebar h2 {
-      margin: 0 0 0.6rem;
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.1rem 1.2rem 1.2rem;
+    }
+
+    .sidebar-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.14em;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      margin: 0 0 0.4rem;
       color: var(--accent-2);
+    }
+
+    .sidebar-subtitle {
+      margin: 0 0 0.8rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
 
     .sidebar-nav {
       list-style: none;
       padding: 0;
-      margin: 0.1rem 0 0.9rem;
-      font-size: 0.9rem;
+      margin: 0;
+      font-size: 0.88rem;
     }
 
-    .sidebar-nav li + li {
-      margin-top: 0.25rem;
-    }
+    .sidebar-nav li + li { margin-top: 0.25rem; }
 
     .sidebar-nav a {
       text-decoration: none;
-      color: var(--text-muted);
-      padding: 0.16rem 0;
+      color: var(--accent-3);
+      padding: 0.25rem 0;
       display: inline-block;
       border-bottom: 1px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
-      color: var(--accent-2);
-      border-color: rgba(0, 0, 0, 0.12);
+      border-color: rgba(0, 0, 0, 0.18);
+      color: #3d2f22;
     }
 
-    .sidebar-note {
-      margin: 0.6rem 0 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+    /* Content */
 
     .content {
       display: flex;
       flex-direction: column;
-      gap: 1.9rem;
+      gap: 1.8rem;
     }
 
-    /* ===== Content cards ===== */
-
-    .module-section {
+    .section-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      padding: 1.3rem 1.5rem 1.4rem;
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
-    .module-section + .module-section {
-      margin-top: 0.2rem;
-    }
-
-    .section-title {
-      margin: 0 0 0.6rem;
+    .section-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent-2);
     }
 
-    .module-section p {
-      margin: 0.3rem 0 0.5rem;
-      font-size: 0.9rem;
+    .section-card p {
+      margin: 0.35rem 0;
+      font-size: 0.92rem;
       line-height: 1.6;
       color: var(--text-muted);
     }
 
-    .source-list {
-      list-style: disc;
+    ul {
+      margin: 0.4rem 0 0.2rem;
       padding-left: 1.2rem;
-      margin: 0.3rem 0 0.1rem;
       font-size: 0.9rem;
       color: var(--text-muted);
     }
 
-    .source-list li + li {
-      margin-top: 0.15rem;
-    }
+    li + li { margin-top: 0.2rem; }
 
-    /* ===== Floating "Back to home" button ===== */
-
-    .back-to-home {
-      position: fixed;
-      right: 1.4rem;
-      bottom: 1.4rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      cursor: pointer;
-      opacity: 0.95;
-      z-index: 40;
-      padding: 0 0.4rem;
-    }
-
-    .back-to-home span {
-      display: inline-block;
-      transform: translateY(0.5px);
-    }
-
-    .back-to-home:hover {
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(-1px);
-    }
-
-    /* ===== Footer ===== */
+    /* Footer */
 
     .footer {
-      margin-top: 2.4rem;
+      margin-top: 2.6rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
@@ -264,33 +201,48 @@
       color: var(--text-muted);
     }
 
-    .footer p {
-      margin: 0.1rem 0;
+    .footer p { margin: 0.1rem 0; }
+
+    /* Floating back-to-home button */
+
+    .back-floating {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fdf7ea;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      cursor: pointer;
+      opacity: 0.95;
+      transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        background-color 0.2s ease-out;
+      z-index: 40;
     }
 
-    /* ===== Responsive tweaks ===== */
-
-    @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 1.4rem;
-      }
-
-      .sidebar {
-        position: static;
-      }
+    .back-floating:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background: #fffaf0;
     }
 
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
+    .back-floating span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- ===== Site header ===== -->
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
@@ -299,123 +251,147 @@
           A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
       </div>
-
-      <nav class="top-nav">
-        <a href="index.html#modules">Project modules</a>
-        <a href="index.html#context">Context</a>
-        <a href="index.html#collaborators">Collaborators</a>
-      </nav>
     </header>
 
-    <main class="layout">
-      <!-- ===== Sticky sidebar / TOC ===== -->
+    <div class="layout">
+      <!-- SIDEBAR -->
       <aside class="sidebar">
-        <h2>General Newspapers</h2>
-        <ul class="sidebar-nav">
-          <li><a href="#sources">Sources used</a></li>
-          <li><a href="#metadata">Metadata</a></li>
-          <li><a href="#text-methodology">Text scraping methodology</a></li>
-        </ul>
-        <p class="sidebar-note">
-          Notes here focus on the large, digitized newspaper collections that complement Legacy.com and targeted obituary sources.
-        </p>
+        <div class="sidebar-card">
+          <h2 class="sidebar-title">General Newspapers</h2>
+          <p class="sidebar-subtitle">
+            Obituaries drawn from state newspaper archives and major digitization projects.
+          </p>
+          <ul class="sidebar-nav">
+            <li><a href="data-collection.html#source-pages">← Back to Data Collection</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#sources">Sources</a></li>
+            <li><a href="#metadata">Metadata</a></li>
+            <li><a href="#text-method">Text scraping methodology</a></li>
+          </ul>
+        </div>
       </aside>
 
-      <!-- ===== Main content ===== -->
-      <div class="content">
-        <!-- --- Sources used --- -->
-        <section id="sources" class="module-section">
-          <h3 class="section-title">Sources Used</h3>
-          <p>
-            The general newspapers corpus currently draws on the following collections, with room to expand as additional archives become available:
-          </p>
-          <ul class="source-list">
-            <li>
-              <a href="https://www.loc.gov/collections/chronicling-america/" target="_blank" rel="noopener noreferrer">
-                Chronicling America
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <!-- OVERVIEW -->
+        <section id="overview" class="content-section">
+          <article class="section-card">
+            <h2>Overview</h2>
+            <p>
+              This component of the project covers obituary content drawn from “general” newspaper collections, primarily
+              state-level archives and U.S. national digitization programs. The goal is to build a baseline view of how
+              obituaries appear in local and regional print media over time, against which more specialized collections
+              (e.g., African American funeral programs) can be compared.
+            </p>
+          </article>
+        </section>
+
+        <!-- SOURCES -->
+        <section id="sources" class="content-section">
+          <article class="section-card">
+            <h2>Sources</h2>
+            <p>
+              Primary sources for general newspaper obituaries include:
+            </p>
+            <ul>
+              <li>
+                <strong>Chronicling America (Library of Congress):</strong>
+                <a href="https://www.loc.gov/collections/chronicling-america/" target="_blank" rel="noopener noreferrer">
+                  https://www.loc.gov/collections/chronicling-america/
+                </a>
+              </li>
+              <li>
+                <strong>Georgia Historic Newspapers:</strong>
+                <a href="https://gahistoricnewspapers.galileo.usg.edu/" target="_blank" rel="noopener noreferrer">
+                  https://gahistoricnewspapers.galileo.usg.edu/
+                </a>
+              </li>
+              <li>
+                <strong>Pennsylvania Newspaper Archive:</strong>
+                <a href="https://panewsarchive.psu.edu/newspapers/" target="_blank" rel="noopener noreferrer">
+                  https://panewsarchive.psu.edu/newspapers/
+                </a>
+              </li>
+              <li>
+                <strong>Other library and funeral home sources:</strong>
+                to be added as we identify relevant digitized runs with obituary coverage for Pennsylvania and Georgia.
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- METADATA -->
+        <section id="metadata" class="content-section">
+          <article class="section-card">
+            <h2>Metadata</h2>
+            <p>
+              A finer dissection of Georgia and Pennsylvania state archive metadata, including title-level details and
+              potential obituary-relevant fields, was carried out by Eunkyung. That work is documented in:
+            </p>
+            <p>
+              <a href="state-archive-data-collection-plan.html" target="_blank" rel="noopener noreferrer">
+                State archive data collection plan (Quarto HTML)
               </a>
-            </li>
-            <li>
-              <a href="https://gahistoricnewspapers.galileo.usg.edu/" target="_blank" rel="noopener noreferrer">
-                Georgia Historic Newspapers
-              </a>
-            </li>
-            <li>
-              <a href="https://panewsarchive.psu.edu/newspapers/" target="_blank" rel="noopener noreferrer">
-                Pennsylvania Newspaper Archive
-              </a>
-            </li>
-            <li>
-              Open to other library and funeral home sources
-            </li>
-          </ul>
+            </p>
+            <p>
+              Even more detailed metadata (e.g., frequency of publication, edition information, and other title-level
+              attributes) was scraped by Bhargav and is present in Excel sheets stored in the relevant Teams folder.
+            </p>
+          </article>
         </section>
 
-        <!-- --- Metadata --- -->
-        <section id="metadata" class="module-section">
-          <h3 class="section-title">Metadata</h3>
-          <p>
-            A finer dissection of the Georgia and Pennsylvania state archive metadata was done by Eunkyung and is documented in
-            <a href="state-archive-data-collection-plan.html">this state archive data collection plan</a>.
-          </p>
-          <p>
-            Even more detailed metadata (for example, frequency of publication and related descriptive variables) was scraped by Bhargav and is present
-            in Excel sheets in the relevant Teams folder.
-          </p>
-        </section>
+        <!-- TEXT SCRAPING METHODOLOGY -->
+        <section id="text-method" class="content-section">
+          <article class="section-card">
+            <h2>Text Scraping Methodology</h2>
+            <p>
+              For general newspapers, we scrape selected pages from carefully chosen titles rather than attempting a
+              complete crawl of all available material. The selection focuses on:
+            </p>
+            <ul>
+              <li>Newspapers with good OCR quality and reasonably structured issue/edition metadata.</li>
+              <li>Titles with sustained coverage of obituaries or death notices.</li>
+              <li>Runs that provide meaningful overlap across the Pennsylvania–Georgia comparison.</li>
+            </ul>
+            <p>
+              Within those titles, we identify candidate pages for scraping using keyword filters. Pages are selected when
+              they contain obituary-indicative terms (e.g., “obituary”, “died”, “funeral”, etc.) and do not contain
+              excluded words that reliably indicate non-obituary content. These wordlists are maintained by collaborators
+              in a shared Google document and are being updated over time.
+            </p>
+            <p>
+              Extracted page text is stored along with issue-level metadata (date, title, page number, and any section
+              labels) so that downstream processes can decide which items qualify as obituary-like and how to code them.
+            </p>
 
-        <!-- --- Text scraping methodology --- -->
-        <section id="text-methodology" class="module-section">
-          <h3 class="section-title">Text Scraping Methodology</h3>
-          <p>
-            We scrape selected newspaper pages from a subset of focal titles in each archive. Candidate pages are first filtered based on the presence
-            of obituary-related keywords and the absence of a list of excluded terms. These wordlists are maintained collaboratively in a shared Google
-            document and are updated as we refine our understanding of obituary language and archive-specific noise.
-          </p>
+            <p style="margin-top: 0.9rem;">
+              For more information on how this data is processed, visit the
+              <a href="data-processing.html">Data Processing &amp; Design</a> page.
+            </p>
+          </article>
         </section>
+      </main>
 
-        <!-- --- Cross-link to data processing page --- -->
-        <section class="module-section">
-          <p>
-            For more information on how this data is processed, visit the
-            <a href="data-processing.html">data processing page</a>.
-          </p>
-        </section>
-      </div>
-    </main>
+      <!-- Floating back-to-home button -->
+      <button class="back-floating" type="button" aria-label="Back to home">
+        <span>Home</span>
+      </button>
+    </div>
 
-    <!-- ===== Footer ===== -->
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
       <p>Website created by Bhargav Dave.</p>
     </footer>
   </div>
 
-  <!-- Floating "Back to home" button -->
-  <button class="back-to-home" type="button" aria-label="Back to home">
-    <span>Home</span>
-  </button>
-
   <script>
-    // Smooth scrolling for sidebar links
-    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          event.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
+    // Floating back-to-home button
+    const backFloating = document.querySelector(".back-floating");
+    if (backFloating) {
+      backFloating.addEventListener("click", function () {
+        window.location.href = "index.html#modules";
       });
-    });
-
-    // Back-to-home button behavior
-    const backToHome = document.querySelector(".back-to-home");
-    backToHome.addEventListener("click", function () {
-      window.location.href = "index.html#modules";
-    });
+    }
   </script>
 </body>
 </html>

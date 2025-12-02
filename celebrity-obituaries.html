@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead | Celebrity Obituaries</title>
+  <title>The Living Dead · Celebrity Obituaries</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Shared fonts with the main site -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-main: #f6f1e4;        /* warm cream background */
-      --bg-card: #fffaf1;        /* lighter card background */
-      --accent-1: #c89b4e;       /* muted gold */
-      --accent-2: #8b6b4a;       /* warm brown */
-      --accent-3: #506b7a;       /* cool slate */
+      --bg-main: #f6f1e4;
+      --bg-card: #fffaf1;
+      --accent-1: #c89b4e;
+      --accent-2: #8b6b4a;
+      --accent-3: #506b7a;
       --text-main: #2e2520;
       --text-muted: #6a5c52;
       --border-soft: rgba(0, 0, 0, 0.06);
@@ -23,9 +22,7 @@
       --transition-fast: 0.18s ease-out;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -37,7 +34,7 @@
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 1.75rem 1.25rem 3.5rem;
     }
@@ -49,36 +46,26 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .page-kicker {
-      margin: 0 0 0.35rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-3);
+      margin-bottom: 2.2rem;
     }
 
     .title-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
+      max-width: 640px;
+      margin: 0 auto;
     }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 3.5vw, 2.9rem);
+      font-size: clamp(2.5rem, 3.6vw, 3.1rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0;
+      margin: 0 0 0.2rem;
       color: #2a211b;
     }
 
     .title-block .tagline {
-      margin: 0.3rem 0 0.15rem;
+      margin: 0.15rem 0 0.2rem;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -86,51 +73,50 @@
     }
 
     .title-block .subtitle {
-      margin: 0.25rem 0 0;
+      margin: 0.35rem 0 0;
       font-size: 0.98rem;
-      max-width: 40rem;
+      max-width: 36rem;
       line-height: 1.5;
       color: var(--text-muted);
-      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Layout */
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+      grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
       gap: 1.8rem;
       align-items: flex-start;
     }
 
-    @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 840px) {
+      .layout { grid-template-columns: 1fr; }
     }
 
     /* Sidebar */
 
     .sidebar {
       position: sticky;
-      top: 1.4rem;
+      top: 1.5rem;
       align-self: flex-start;
     }
 
     .sidebar-card {
-      background: rgba(255, 250, 241, 0.9);
+      background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.2rem;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.1rem 1.2rem 1.2rem;
     }
 
     .sidebar-title {
-      margin: 0 0 0.25rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.02rem;
-      letter-spacing: 0.16em;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      margin: 0 0 0.4rem;
       color: var(--accent-2);
     }
 
@@ -143,120 +129,78 @@
     .sidebar-nav {
       list-style: none;
       padding: 0;
-      margin: 0 0 0.9rem;
+      margin: 0;
       font-size: 0.88rem;
     }
 
-    .sidebar-nav li {
-      margin-bottom: 0.3rem;
-    }
+    .sidebar-nav li + li { margin-top: 0.25rem; }
 
     .sidebar-nav a {
       text-decoration: none;
       color: var(--accent-3);
-      padding: 0.08rem 0;
+      padding: 0.25rem 0;
+      display: inline-block;
       border-bottom: 1px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
-      color: #2f4956;
       border-color: rgba(0, 0, 0, 0.18);
-    }
-
-    .sidebar-footer-link {
-      margin-top: 0.7rem;
-      font-size: 0.82rem;
-    }
-
-    .sidebar-footer-link a {
-      color: var(--accent-2);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    }
-
-    .sidebar-footer-link a:hover {
       color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.35);
     }
 
-    /* Main content */
+    /* Content */
 
-    .content-card {
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .section-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
-      padding: 1.6rem 1.7rem 1.8rem;
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
-    .content-card h2 {
+    .section-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin: 0 0 0.55rem;
       color: var(--accent-2);
     }
 
-    .content-card p {
-      font-size: 0.95rem;
+    .section-card p {
+      margin: 0.35rem 0;
+      font-size: 0.92rem;
       line-height: 1.6;
-      color: var(--text-main);
-      margin: 0 0 0.85rem;
-    }
-
-    .section-block {
-      margin-bottom: 1.6rem;
-    }
-
-    .section-block:last-of-type {
-      margin-bottom: 1.1rem;
-    }
-
-    .source-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.4rem 0 0.4rem;
-    }
-
-    .source-list li {
-      margin-bottom: 0.85rem;
-      font-size: 0.94rem;
-    }
-
-    .source-list strong {
-      display: inline-block;
-      margin-bottom: 0.1rem;
-    }
-
-    .small-note {
-      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 0.3rem;
     }
 
-    .processing-link {
-      margin-top: 1.2rem;
+    ul {
+      margin: 0.4rem 0 0.2rem;
+      padding-left: 1.2rem;
       font-size: 0.9rem;
       color: var(--text-muted);
     }
 
-    .processing-link a {
-      color: var(--accent-2);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    }
+    li + li { margin-top: 0.2rem; }
 
-    .processing-link a:hover {
-      color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.4);
+    .note {
+      margin-top: 0.6rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* Footer */
 
     .footer {
-      margin-top: 2.2rem;
+      margin-top: 2.6rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
@@ -264,26 +208,24 @@
       color: var(--text-muted);
     }
 
-    .footer p {
-      margin: 0.1rem 0;
-    }
+    .footer p { margin: 0.1rem 0; }
 
-    /* Floating Back to Data Collection button */
+    /* Floating back-to-home button */
 
-    .back-to-collection {
+    .back-floating {
       position: fixed;
       right: 1.4rem;
       bottom: 1.4rem;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 999px;
       border: 1px solid rgba(0, 0, 0, 0.12);
       background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 0.78rem;
       cursor: pointer;
       opacity: 0.95;
       transition:
@@ -293,164 +235,168 @@
       z-index: 40;
     }
 
-    .back-to-collection:hover {
+    .back-floating:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
-      background-color: #fffdf6;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background: #fffaf0;
     }
 
-    .back-to-collection span {
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-
-      .back-to-collection {
-        right: 1rem;
-        bottom: 1rem;
-      }
+    .back-floating span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header class="site-header">
-      <p class="page-kicker">Data Collection · Celebrity Obituaries</p>
       <div class="title-block">
         <h1>The Living Dead</h1>
         <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
         <p class="subtitle">
-          A project analyzing how obituaries across centuries reveal changing patterns of connection,
-          inequality, and remembrance.
+          A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
       </div>
     </header>
 
     <div class="layout">
-      <!-- Sidebar -->
+      <!-- SIDEBAR -->
       <aside class="sidebar">
         <div class="sidebar-card">
-          <h2 class="sidebar-title">On this page</h2>
+          <h2 class="sidebar-title">Celebrity Obituaries</h2>
           <p class="sidebar-subtitle">
-            Working notes on the celebrity obituary sample and how it links to local data.
+            Nationally visible deaths covered across multiple outlets and platforms.
           </p>
           <ul class="sidebar-nav">
+            <li><a href="data-collection.html#source-pages">← Back to Data Collection</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#sources">Sources</a></li>
-            <li><a href="#linking-strategy">Linking strategy</a></li>
-            <li><a href="#notes">Notes</a></li>
+            <li><a href="#wikipedia-workflow">Wikipedia-based workflow</a></li>
+            <li><a href="#wikitree-workflow">WikiTree &amp; kinship</a></li>
+            <li><a href="#data-location">Data location</a></li>
           </ul>
-          <p class="sidebar-footer-link">
-            <a href="data-collection.html">← Back to Data Collection</a>
-          </p>
         </div>
       </aside>
 
-      <!-- Main content -->
-      <main class="content-card">
-        <!-- Overview -->
-        <section id="overview" class="section-block">
-          <h2>Overview</h2>
-          <p>
-            The celebrity obituary set provides a complementary perspective to local and regional obituaries.
-            It focuses on nationally visible figures whose deaths are covered across multiple outlets and
-            platforms.
-          </p>
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <!-- OVERVIEW -->
+        <section id="overview" class="content-section">
+          <article class="section-card">
+            <h2>Overview</h2>
+            <p>
+              The celebrity obituary set provides a complementary perspective to local and regional obituaries. It focuses
+              on nationally visible figures whose deaths are covered across multiple outlets and platforms, including
+              major newspapers, online news sites, and collaborative knowledge projects.
+            </p>
+            <p>
+              These obituaries tend to be highly curated, with detailed life histories and clearly articulated public
+              narratives. Comparing them to local obituaries helps highlight differences in how social status, achievement,
+              and kinship are represented in public memory.
+            </p>
+          </article>
         </section>
 
-        <!-- Sources -->
-        <section id="sources" class="section-block">
-          <h2>Sources</h2>
-          <p>
-            For this component we draw on three primary sources, each of which contributes a different angle on
-            nationally visible deaths:
-          </p>
-
-          <ul class="source-list">
-            <li>
-              <strong>Wikipedia lists of deaths by year</strong><br />
-              Used to construct a baseline list of “celebrities” or nationally notable figures with
-              Wikipedia pages who died within specified years. This provides a structured, date-stamped
-              roster of individuals to search for obituary coverage.
-            </li>
-            <li>
-              <strong>WikiTree</strong><br />
-              Used to explore selected individuals’ family trees, kinship ties, and sometimes linked
-              obituaries or memorial pages. WikiTree helps contextualize the social and familial networks
-              around specific well-known figures.
-            </li>
-            <li>
-              <strong>National obituary outlets</strong><br />
-              Includes national newspapers and major media outlets that publish obituaries for notable
-              figures. These outlets are used to locate full-text obituary narratives once a name and
-              date of death are known.
-            </li>
-          </ul>
-
-          <p class="small-note">
-            All compiled celebrity obituary data and intermediate files are stored in the relevant Teams
-            folder rather than on this public-facing site.
-          </p>
+        <!-- SOURCES -->
+        <section id="sources" class="content-section">
+          <article class="section-card">
+            <h2>Sources</h2>
+            <p>
+              The celebrity dataset currently draws on three main types of sources:
+            </p>
+            <ul>
+              <li>
+                <strong>WikiTree:</strong> collaborative family tree entries that often contain obituary text, memorial
+                notes, and detailed kinship structures.
+              </li>
+              <li>
+                <strong>Wikipedia lists:</strong> curated lists of notable individuals, especially lists of deaths by
+                year or specific thematic aggregations, which help identify celebrities who have Wikipedia pages and
+                documented death dates.
+              </li>
+              <li>
+                <strong>National outlets:</strong> obituaries published in major newspapers and magazines (e.g., national
+                U.S. outlets) for highly visible figures.
+              </li>
+            </ul>
+          </article>
         </section>
 
-        <!-- Linking strategy / Methodology -->
-        <section id="linking-strategy" class="section-block">
-          <h2>Linking strategy</h2>
-          <p>
-            The core idea is to start from structured lists of deceased notable individuals, then work
-            outward to connect those names to obituary texts and, where possible, to kinship structures.
-          </p>
-
-          <p>
-            First, Wikipedia lists of deaths by year are used to identify individuals with Wikipedia pages
-            who died within a selected time window. These lists are filtered to the years of interest for
-            the project, and then used to assemble a working list of “dead celebrities.” From that list, we
-            search for obituary coverage across national outlets and other public sources, using the names
-            (and years of death) as anchors.
-          </p>
-
-          <p>
-            Second, for a subset of these individuals, we follow their names into WikiTree. This allows us
-            to retrieve or inspect family trees, kinship ties, and cross-referenced memorial information.
-            In some cases, WikiTree profiles link directly to obituary texts or provide enough structured
-            detail (dates, locations, relationships) to help confirm that a candidate obituary corresponds
-            to the correct person.
-          </p>
-
-          <p>
-            Finally, we use WikiTree in conjunction with the Wikipedia-derived lists and obituary searches
-            to move from “name on a list” to “name with an attached obituary and network context.” This
-            workflow is still being refined, and the exact rules for when and how WikiTree can be used
-            as a systematic bridge from names to obituaries
-            <em>(needs further clarification and documentation internally)</em>.
-          </p>
+        <!-- WIKIPEDIA WORKFLOW -->
+        <section id="wikipedia-workflow" class="content-section">
+          <article class="section-card">
+            <h2>Wikipedia-Based Workflow</h2>
+            <p>
+              A central task is to create structured lists of deceased celebrities and then use those lists to locate
+              associated obituaries and memorials. The rough workflow is:
+            </p>
+            <ul>
+              <li>
+                Use <strong>Wikipedia lists of deaths</strong> (and other relevant lists) to identify people with
+                Wikipedia pages who died within specified year ranges.
+              </li>
+              <li>
+                From these lists, build a consolidated roster of “celebrity” names, with basic attributes such as death
+                date, occupation, and primary geographic ties.
+              </li>
+              <li>
+                Use those names as queries to locate obituaries in national outlets and, where relevant, in Pennsylvania
+                and Georgia–linked newspapers (or other local media).
+              </li>
+            </ul>
+            <p>
+              These steps help us construct separate celebrity lists for Pennsylvania and Georgia, based on either place
+              of birth, residence, or strong life-course connections to those states.
+            </p>
+          </article>
         </section>
 
-        <!-- Notes -->
-        <section id="notes" class="section-block">
-          <h2>Notes</h2>
-          <p>
-            The celebrity obituary component is meant to complement, not replace, the local and regional
-            obituary sets from Georgia and Pennsylvania. It highlights how deaths of highly visible figures
-            are narrated across national venues, which can be compared to more ordinary lives documented
-            in local newspapers and funeral programs.
-          </p>
-          <p>
-            As the project progresses, we may refine inclusion criteria for “celebrity” status, expand
-            or narrow the time window, and standardize how links between Wikipedia, WikiTree, and specific
-            obituary texts are recorded.
-          </p>
+        <!-- WIKITREE & KINSHIP -->
+        <section id="wikitree-workflow" class="content-section">
+          <article class="section-card">
+            <h2>WikiTree &amp; Kinship</h2>
+            <p>
+              WikiTree is used in two ways. First, for particular names on the celebrity lists, we look up their
+              WikiTree profiles to:
+            </p>
+            <ul>
+              <li>Locate obituary text or memorial notes embedded in the profile.</li>
+              <li>Extract kinship ties (parents, spouses, children, siblings) that can later be connected to obituary narratives.</li>
+            </ul>
+            <p>
+              Second, more broadly, we use WikiTree as a large-scale genealogical resource in conjunction with the
+              Wikipedia-derived lists to explore how far one can go from a name to a structured representation of
+              relatives and, ultimately, to candidate obituaries.
+            </p>
+            <p class="note">
+              This broader integration of WikiTree and obituary data is still being clarified and formalized, and the
+              exact procedures may change as the project evolves.
+            </p>
+          </article>
         </section>
 
-        <!-- Link to Data Processing page -->
-        <div class="processing-link">
-          For more information on how this data is processed, visit the
-          <a href="data-processing.html">Data Processing page</a>.
-        </div>
+        <!-- DATA LOCATION -->
+        <section id="data-location" class="content-section">
+          <article class="section-card">
+            <h2>Data Location &amp; Processing</h2>
+            <p>
+              All compiled celebrity lists, intermediate matching files, and scraped obituary texts are stored in the
+              relevant Teams folder. File naming and folder structure are being standardized so that connections to the
+              Pennsylvania and Georgia components are clear.
+            </p>
+            <p style="margin-top: 0.7rem;">
+              For more information on how this data is processed and integrated with the broader corpus, visit the
+              <a href="data-processing.html">Data Processing &amp; Design</a> page.
+            </p>
+          </article>
+        </section>
       </main>
+
+      <!-- Floating back-to-home button -->
+      <button class="back-floating" type="button" aria-label="Back to home">
+        <span>Home</span>
+      </button>
     </div>
 
     <footer class="footer">
@@ -459,29 +405,12 @@
     </footer>
   </div>
 
-  <!-- Floating button back to Data Collection -->
-  <button class="back-to-collection" type="button" aria-label="Back to Data Collection">
-    <span>↩</span>
-  </button>
-
   <script>
-    // Smooth scroll for sidebar links
-    document.querySelectorAll('.sidebar-nav a[href^="#"]').forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        var targetId = this.getAttribute("href").substring(1);
-        var target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-
-    // Floating button → back to Data Collection page
-    const backBtn = document.querySelector(".back-to-collection");
-    if (backBtn) {
-      backBtn.addEventListener("click", function () {
-        window.location.href = "data-collection.html";
+    // Floating back-to-home button
+    const backFloating = document.querySelector(".back-floating");
+    if (backFloating) {
+      backFloating.addEventListener("click", function () {
+        window.location.href = "index.html#modules";
       });
     }
   </script>

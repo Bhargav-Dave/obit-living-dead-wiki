@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead | African American Obituaries</title>
+  <title>The Living Dead · African American Obituaries</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Shared fonts with the main site -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-main: #f6f1e4;        /* warm cream background */
-      --bg-card: #fffaf1;        /* lighter card background */
-      --accent-1: #c89b4e;       /* muted gold */
-      --accent-2: #8b6b4a;       /* warm brown */
-      --accent-3: #506b7a;       /* cool slate */
+      --bg-main: #f6f1e4;
+      --bg-card: #fffaf1;
+      --accent-1: #c89b4e;
+      --accent-2: #8b6b4a;
+      --accent-3: #506b7a;
       --text-main: #2e2520;
       --text-muted: #6a5c52;
       --border-soft: rgba(0, 0, 0, 0.06);
@@ -37,7 +36,7 @@
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 1.75rem 1.25rem 3.5rem;
     }
@@ -49,36 +48,26 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .page-kicker {
-      margin: 0 0 0.35rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-3);
+      margin-bottom: 2.2rem;
     }
 
     .title-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
+      max-width: 640px;
+      margin: 0 auto;
     }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 3.5vw, 2.9rem);
+      font-size: clamp(2.5rem, 3.6vw, 3.1rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0;
+      margin: 0 0 0.2rem;
       color: #2a211b;
     }
 
     .title-block .tagline {
-      margin: 0.3rem 0 0.15rem;
+      margin: 0.15rem 0 0.2rem;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -86,24 +75,25 @@
     }
 
     .title-block .subtitle {
-      margin: 0.25rem 0 0;
+      margin: 0.35rem 0 0;
       font-size: 0.98rem;
-      max-width: 40rem;
+      max-width: 36rem;
       line-height: 1.5;
       color: var(--text-muted);
-      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Layout */
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+      grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
       gap: 1.8rem;
       align-items: flex-start;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 840px) {
       .layout {
         grid-template-columns: 1fr;
       }
@@ -113,24 +103,24 @@
 
     .sidebar {
       position: sticky;
-      top: 1.4rem;
+      top: 1.5rem;
       align-self: flex-start;
     }
 
     .sidebar-card {
-      background: rgba(255, 250, 241, 0.9);
+      background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.2rem;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.1rem 1.2rem 1.2rem;
     }
 
     .sidebar-title {
-      margin: 0 0 0.25rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.02rem;
-      letter-spacing: 0.16em;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      margin: 0 0 0.4rem;
       color: var(--accent-2);
     }
 
@@ -143,120 +133,82 @@
     .sidebar-nav {
       list-style: none;
       padding: 0;
-      margin: 0 0 0.9rem;
+      margin: 0;
       font-size: 0.88rem;
     }
 
-    .sidebar-nav li {
-      margin-bottom: 0.3rem;
+    .sidebar-nav li + li {
+      margin-top: 0.25rem;
     }
 
     .sidebar-nav a {
       text-decoration: none;
       color: var(--accent-3);
-      padding: 0.08rem 0;
+      padding: 0.25rem 0;
+      display: inline-block;
       border-bottom: 1px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
-      color: #2f4956;
       border-color: rgba(0, 0, 0, 0.18);
-    }
-
-    .sidebar-footer-link {
-      margin-top: 0.7rem;
-      font-size: 0.82rem;
-    }
-
-    .sidebar-footer-link a {
-      color: var(--accent-2);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    }
-
-    .sidebar-footer-link a:hover {
       color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.35);
     }
 
-    /* Main content */
+    /* Content */
 
-    .content-card {
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .section-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
-      padding: 1.6rem 1.7rem 1.8rem;
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
-    .content-card h2 {
+    .section-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin: 0 0 0.55rem;
       color: var(--accent-2);
     }
 
-    .content-card p {
-      font-size: 0.95rem;
+    .section-card p {
+      margin: 0.35rem 0;
+      font-size: 0.92rem;
       line-height: 1.6;
-      color: var(--text-main);
-      margin: 0 0 0.85rem;
-    }
-
-    .section-block {
-      margin-bottom: 1.6rem;
-    }
-
-    .section-block:last-of-type {
-      margin-bottom: 1.1rem;
-    }
-
-    .source-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.4rem 0 0.4rem;
-    }
-
-    .source-list li {
-      margin-bottom: 0.85rem;
-      font-size: 0.94rem;
-    }
-
-    .source-list strong {
-      display: inline-block;
-      margin-bottom: 0.1rem;
-    }
-
-    .small-note {
-      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 0.3rem;
     }
 
-    .processing-link {
-      margin-top: 1.2rem;
+    ul {
+      margin: 0.4rem 0 0.2rem;
+      padding-left: 1.2rem;
       font-size: 0.9rem;
       color: var(--text-muted);
     }
 
-    .processing-link a {
-      color: var(--accent-2);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    li + li {
+      margin-top: 0.2rem;
     }
 
-    .processing-link a:hover {
-      color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.4);
+    .note {
+      margin-top: 0.6rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* Footer */
 
     .footer {
-      margin-top: 2.2rem;
+      margin-top: 2.6rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
@@ -268,22 +220,22 @@
       margin: 0.1rem 0;
     }
 
-    /* Floating Back to Data Collection button */
+    /* Floating back-to-home button */
 
-    .back-to-collection {
+    .back-floating {
       position: fixed;
       right: 1.4rem;
       bottom: 1.4rem;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 999px;
       border: 1px solid rgba(0, 0, 0, 0.12);
       background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 0.78rem;
       cursor: pointer;
       opacity: 0.95;
       transition:
@@ -293,232 +245,221 @@
       z-index: 40;
     }
 
-    .back-to-collection:hover {
+    .back-floating:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
-      background-color: #fffdf6;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background: #fffaf0;
     }
 
-    .back-to-collection span {
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-
-      .back-to-collection {
-        right: 1rem;
-        bottom: 1rem;
-      }
+    .back-floating span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header class="site-header">
-      <p class="page-kicker">Data Collection · African American Obituaries</p>
       <div class="title-block">
         <h1>The Living Dead</h1>
         <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
         <p class="subtitle">
-          A project analyzing how obituaries across centuries reveal changing patterns of connection,
-          inequality, and remembrance.
+          A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
       </div>
     </header>
 
     <div class="layout">
-      <!-- Sidebar -->
+      <!-- SIDEBAR -->
       <aside class="sidebar">
         <div class="sidebar-card">
-          <h2 class="sidebar-title">On this page</h2>
+          <h2 class="sidebar-title">African American Obituaries</h2>
           <p class="sidebar-subtitle">
-            Working notes on African American obituary sources, viewers, and in-progress coverage.
+            Targeted collections from African American funeral programs, cemeteries, and related archives.
           </p>
           <ul class="sidebar-nav">
+            <li><a href="data-collection.html#source-pages">← Back to Data Collection</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#sources">Sources</a></li>
-            <li><a href="#obit-viewers">Our data sources / obit viewers</a></li>
-            <li><a href="#notes">Notes</a></li>
+            <li><a href="#additional-sources">Additional archival sources</a></li>
+            <li><a href="#obit-viewers">Obituary viewers</a></li>
+            <li><a href="#notes">Notes &amp; next steps</a></li>
           </ul>
-          <p class="sidebar-footer-link">
-            <a href="data-collection.html">← Back to Data Collection</a>
-          </p>
         </div>
       </aside>
 
-      <!-- Main content -->
-      <main class="content-card">
-        <!-- Overview -->
-        <section id="overview" class="section-block">
-          <h2>Overview</h2>
-          <p>
-            This component brings together African American obituary sources from funeral programs,
-            dedicated cemetery and obituary projects, library collections, and related web resources.
-            The aim is to assemble curated sets that foreground Black communities while keeping source
-            coverage and limitations transparent for the research team.
-          </p>
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <!-- OVERVIEW -->
+        <section id="overview" class="content-section">
+          <article class="section-card">
+            <h2>Overview</h2>
+            <p>
+              This component of the project focuses on African American obituaries and funeral memorials collected from a
+              variety of digital repositories. The aim is to complement mainstream newspaper coverage with materials that
+              center Black communities, institutions, and commemorative practices.
+            </p>
+            <p>
+              Many of these collections are structured as funeral programs, cemetery records, or family-compiled memorial
+              lists rather than traditional newspaper death notices, which shapes both the language and the kinds of
+              social ties that can be observed.
+            </p>
+          </article>
         </section>
 
-        <!-- Sources -->
-        <section id="sources" class="section-block">
-          <h2>Sources</h2>
-          <p>
-            Below is a working list of core sources and collections. This list is intentionally broader
-            than what is currently scraped and will be updated as we refine priorities.
-          </p>
+        <!-- SOURCES -->
+        <section id="sources" class="content-section">
+          <article class="section-card">
+            <h2>Sources</h2>
+            <p>
+              We compile African American obituary-like material from multiple institutional and community sources. Key
+              examples include:
+            </p>
 
-          <ul class="source-list">
-            <li>
-              <strong>Digital Library of Georgia's Funeral Programs</strong><br />
-              Digital collections of African American funeral programs from Georgia communities, hosted
-              by the Digital Library of Georgia.<br />
-              <a href="https://dlg.usg.edu/records?q=african+american+funeral+programs&search_field=both" target="_blank" rel="noopener noreferrer">
-                https://dlg.usg.edu/records?q=african+american+funeral+programs&search_field=both
-              </a>
-            </li>
-
-            <li>
-              <strong>African-American Cemeteries and Obituaries (BlackCemeteries.com)</strong><br />
-              A site dedicated to African American cemeteries and obituary records, including searchable
-              name-based obituary entries.<br />
-              <a href="https://www.blackcemeteries.com/?Inc=obituaries&Type=Name&String=Y" target="_blank" rel="noopener noreferrer">
-                https://www.blackcemeteries.com/?Inc=obituaries&Type=Name&String=Y
-              </a>
-            </li>
-
-            <li>
-              <strong>Georgia Southern Commons (Georgia Southern University)</strong><br />
-              Digitized obituary collections (including African American materials) within the Georgia
-              Southern University institutional repository.<br />
-              <a href="https://digitalcommons.georgiasouthern.edu/willowhillheritage-obituaries/" target="_blank" rel="noopener noreferrer">
-                https://digitalcommons.georgiasouthern.edu/willowhillheritage-obituaries/
-              </a>
-            </li>
-
-            <li>
-              <strong>African American Funeral Programs (Houston Public Library Digital Archives)</strong><br />
-              Digital funeral program collections from Houston Public Library, focusing on African
-              American communities. (Exact collection link to be confirmed and added here.)
-            </li>
-
-            <li>
-              <strong>African American Funeral Programs from the Augusta-Richmond County Public Library System</strong><br />
-              A curated collection of African American funeral programs from Augusta-Richmond County,
-              hosted via the Digital Library of Georgia.<br />
-              <a href="https://dlg.usg.edu/collection/dlg_fpro" target="_blank" rel="noopener noreferrer">
-                https://dlg.usg.edu/collection/dlg_fpro
-              </a>
-            </li>
-
-            <li>
-              <strong>University of Georgia collection(s)</strong><br />
-              Relevant obituary- and funeral-program-related holdings at UGA that include African
-              American materials. Specific collections and call numbers are being catalogued internally.
-            </li>
-
-            <li>
-              <strong>Georgia Fulton County Library System</strong><br />
-              Local news and obituary materials (not exclusively African American) that may intersect
-              with Black communities and institutions. Currently used mainly as contextual background
-              and supplementary obituary leads.
-            </li>
-
-            <li>
-              <strong>The Alford American Family Association</strong><br />
-              Family association obituary compilations with entries specific to Georgia and Pennsylvania.<br />
-              Georgia: <a href="http://www.alfordassociation.org/OBITS/GAOBIT.htm" target="_blank" rel="noopener noreferrer">
-                http://www.alfordassociation.org/OBITS/GAOBIT.htm
-              </a><br />
-              Pennsylvania: <a href="http://www.alfordassociation.org/OBITS/PAOBIT.htm" target="_blank" rel="noopener noreferrer">
-                http://www.alfordassociation.org/OBITS/PAOBIT.htm
-              </a>
-            </li>
-
-            <li>
-              <strong>ProQuest Black Newspapers dataset</strong><br />
-              A licensed dataset of Black newspapers in which we have identified obituary clippings
-              that require additional OCR and text cleaning before integration. These clippings extend
-              coverage beyond open web and library-only sources and will be merged with other Black
-              newspaper samples once processed.
-            </li>
-
-            <li>
-              <strong>Specific Black newspapers from state archives</strong><br />
-              Within the Georgia state archives, several Black newspapers are already tagged and can be
-              selectively targeted for obituary scraping. For Pennsylvania, we maintain curated lists of
-              historically Black newspapers to approximate similar coverage even where archive tagging
-              is incomplete.
-            </li>
-          </ul>
-
-          <p class="small-note">
-            Many of these sources are at different stages (scoping, sampling, active scraping). Detailed
-            harvest logs and intermediate files live in the relevant Teams folder rather than on this site.
-          </p>
+            <ul>
+              <li>
+                <strong>Digital Library of Georgia – Funeral Programs:</strong>
+                <a href="https://dlg.usg.edu/records?q=african+american+funeral+programs&amp;search_field=both" target="_blank" rel="noopener noreferrer">
+                  https://dlg.usg.edu/records?q=african+american+funeral+programs&amp;search_field=both
+                </a>
+              </li>
+              <li>
+                <strong>African-American Cemeteries and Obituaries (BlackCemeteries.com):</strong>
+                <a href="https://www.blackcemeteries.com/?Inc=obituaries&amp;Type=Name&amp;String=Y" target="_blank" rel="noopener noreferrer">
+                  https://www.blackcemeteries.com/?Inc=obituaries&amp;Type=Name&amp;String=Y
+                </a>
+              </li>
+              <li>
+                <strong>Georgia Southern Commons – Willow Hill Heritage Obituaries (Georgia Southern University):</strong>
+                <a href="https://digitalcommons.georgiasouthern.edu/willowhillheritage-obituaries/" target="_blank" rel="noopener noreferrer">
+                  https://digitalcommons.georgiasouthern.edu/willowhillheritage-obituaries/
+                </a>
+              </li>
+              <li>
+                <strong>African American Funeral Programs (Houston Public Library Digital Archives):</strong>
+                (link and access details to be documented).
+              </li>
+              <li>
+                <strong>African American Funeral Programs from the Augusta-Richmond County Public Library System:</strong>
+                <a href="https://dlg.usg.edu/collection/dlg_fpro" target="_blank" rel="noopener noreferrer">
+                  https://dlg.usg.edu/collection/dlg_fpro
+                </a>
+              </li>
+              <li>
+                <strong>University of Georgia collections:</strong>
+                various obituary and funeral program holdings, to be inventoried.
+              </li>
+              <li>
+                <strong>Georgia Fulton County Library System:</strong>
+                selected news and obituary materials, with an emphasis on African American coverage where available.
+              </li>
+              <li>
+                <strong>The Alford American Family Association (AAFA):</strong>
+                <br />
+                Georgia: 
+                <a href="http://www.alfordassociation.org/OBITS/GAOBIT.htm" target="_blank" rel="noopener noreferrer">
+                  http://www.alfordassociation.org/OBITS/GAOBIT.htm
+                </a>
+                <br />
+                Pennsylvania: 
+                <a href="http://www.alfordassociation.org/OBITS/PAOBIT.htm" target="_blank" rel="noopener noreferrer">
+                  http://www.alfordassociation.org/OBITS/PAOBIT.htm
+                </a>
+              </li>
+            </ul>
+          </article>
         </section>
 
-        <!-- Our data sources / obit viewers -->
-        <section id="obit-viewers" class="section-block">
-          <h2>Our data sources / obit viewers</h2>
-          <p>
-            Most working data files for African American obituaries are stored in the relevant Teams
-            folder. In addition, we maintain a set of exploratory “obit viewers” (Shiny apps) that help
-            us inspect coverage, test filters, and spot systematic gaps. The descriptions below are
-            provisional and should be verified against the latest internal documentation.
-          </p>
-
-          <ul class="source-list">
-            <li>
-              <strong>Black Cemeteries only obit finder</strong><br />
-              A Shiny app that focuses on obituary and burial records linked specifically to Black
-              cemeteries indexed on BlackCemeteries.com. Useful for quickly scanning name distributions
-              and checking which cemeteries or time periods are well represented.<br />
-              <a href="https://newbruns19.shinyapps.io/blackcemeteries_cemeterieslist_shinyapp/" target="_blank" rel="noopener noreferrer">
-                https://newbruns19.shinyapps.io/blackcemeteries_cemeterieslist_shinyapp/
-              </a>
-            </li>
-
-            <li>
-              <strong>African American Obituary Finder</strong><br />
-              A Shiny app that focuses on obituary entries from BlackCemeteries.com and related sources,
-              designed to make it easier to search by name, date, and location. This tool is used to
-              locate candidate obituaries that can then be followed up in more detail.<br />
-              <a href="https://newbruns19.shinyapps.io/blackcemeteriescom_shinyapp/" target="_blank" rel="noopener noreferrer">
-                https://newbruns19.shinyapps.io/blackcemeteriescom_shinyapp/
-              </a>
-            </li>
-          </ul>
-
-          <p class="small-note">
-            Additional viewers and dashboards are likely to be added as the project grows, especially
-            for funeral-program-based collections and ProQuest-derived samples.
-          </p>
+        <!-- ADDITIONAL ARCHIVAL SOURCES -->
+        <section id="additional-sources" class="content-section">
+          <article class="section-card">
+            <h2>Additional Archival Sources</h2>
+            <p>
+              Beyond the repositories above, we are also incorporating or planning to incorporate:
+            </p>
+            <ul>
+              <li>
+                <strong>ProQuest Black Newspapers dataset:</strong> contains obituary clippings and death notices
+                that require OCR extraction and additional cleaning.
+              </li>
+              <li>
+                <strong>Specific Black newspapers in state archives:</strong> in Georgia, many such titles are already
+                tagged; in Pennsylvania, similar titles have been curated but may not yet be consistently flagged in the
+                metadata. These curated lists will guide targeted scraping.
+              </li>
+            </ul>
+            <p>
+              Together, these sources are intended to capture commemorative practices that might not be visible in
+              mainstream or majority-white newspapers.
+            </p>
+          </article>
         </section>
 
-        <!-- Notes -->
-        <section id="notes" class="section-block">
-          <h2>Notes</h2>
-          <p>
-            This page is meant to function as a living checklist of African American obituary sources,
-            rather than a finalized inventory. As coverage improves, we may add more granular notes
-            about temporal ranges, geographic focus, and which collections have usable full text versus
-            image-only scans.
-          </p>
-          <p>
-            When in doubt, internal Teams documentation and scraping notebooks should be treated as the
-            authoritative record of what has actually been collected and processed.
-          </p>
+        <!-- OBIT VIEWERS -->
+        <section id="obit-viewers" class="content-section">
+          <article class="section-card">
+            <h2>Our Data Sources &amp; Obituary Viewers</h2>
+            <p>
+              Most of the curated data and intermediate files are present in the relevant Teams folder. To help navigate
+              and explore these collections, we also rely on internal “obit viewer” tools built in Shiny. The descriptions
+              below reflect current understanding and may need verification.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Black Cemeteries only obit finder:</strong>
+                <a href="https://newbruns19.shinyapps.io/blackcemeteries_cemeterieslist_shinyapp/" target="_blank" rel="noopener noreferrer">
+                  https://newbruns19.shinyapps.io/blackcemeteries_cemeterieslist_shinyapp/
+                </a>
+                <br />
+                Used to browse cemetery-specific records and identify obituary-like entries tied to African American
+                burial grounds.
+              </li>
+              <li>
+                <strong>African American Obituary Finder:</strong>
+                <a href="https://newbruns19.shinyapps.io/blackcemeteriescom_shinyapp/" target="_blank" rel="noopener noreferrer">
+                  https://newbruns19.shinyapps.io/blackcemeteriescom_shinyapp/
+                </a>
+                <br />
+                Helps surface individual obituaries and related records drawn from BlackCemeteries.com and associated
+                databases.
+              </li>
+            </ul>
+
+            <p class="note">
+              Note: source coverage, field definitions, and viewer behavior should be rechecked as these tools and
+              collections are updated.
+            </p>
+
+            <p style="margin-top: 0.9rem;">
+              For more information on how this data is processed, visit the
+              <a href="data-processing.html">Data Processing &amp; Design</a> page.
+            </p>
+          </article>
         </section>
 
-        <!-- Link to Data Processing page -->
-        <div class="processing-link">
-          For more information on how this data is processed, visit the
-          <a href="data-processing.html">Data Processing page</a>.
-        </div>
+        <!-- NOTES -->
+        <section id="notes" class="content-section">
+          <article class="section-card">
+            <h2>Notes &amp; Next Steps</h2>
+            <p>
+              Additional sources are likely to be added as we learn more about existing collections and uncover new
+              repositories. Future work includes:
+            </p>
+            <ul>
+              <li>Developing standardized scraping and OCR workflows for each repository.</li>
+              <li>Tracking coverage by geography, denomination, and institution.</li>
+              <li>Aligning naming and metadata conventions across funeral programs, cemetery records, and newspaper obituaries.</li>
+            </ul>
+          </article>
+        </section>
       </main>
+
+      <!-- Floating back-to-home button -->
+      <button class="back-floating" type="button" aria-label="Back to home">
+        <span>Home</span>
+      </button>
     </div>
 
     <footer class="footer">
@@ -527,29 +468,12 @@
     </footer>
   </div>
 
-  <!-- Floating button back to Data Collection -->
-  <button class="back-to-collection" type="button" aria-label="Back to Data Collection">
-    <span>↩</span>
-  </button>
-
   <script>
-    // Smooth scroll for sidebar links
-    document.querySelectorAll('.sidebar-nav a[href^="#"]').forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        var targetId = this.getAttribute("href").substring(1);
-        var target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-
-    // Floating button → back to Data Collection page
-    const backBtn = document.querySelector(".back-to-collection");
-    if (backBtn) {
-      backBtn.addEventListener("click", function () {
-        window.location.href = "data-collection.html";
+    // Floating back-to-home button
+    const backFloating = document.querySelector(".back-floating");
+    if (backFloating) {
+      backFloating.addEventListener("click", function () {
+        window.location.href = "index.html#modules";
       });
     }
   </script>
