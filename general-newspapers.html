@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>General Newspapers · The Living Dead</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #f6f1e4;
+      --bg-card: #fffaf1;
+      --accent-1: #c89b4e;
+      --accent-2: #8b6b4a;
+      --accent-3: #506b7a;
+      --text-main: #2e2520;
+      --text-muted: #6a5c52;
+      --border-soft: rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.16);
+      --radius-card: 18px;
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #fdf7e8 0%, #f6f1e4 45%, #f3ecde 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3.5rem;
+    }
+
+    .site-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .title-block h1 {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-weight: 600;
+      font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.3rem;
+      color: #2a211b;
+    }
+
+    .title-block .tagline {
+      margin: 0.1rem 0 0.35rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+    }
+
+    .title-block .subtitle {
+      margin: 0.4rem 0 0;
+      font-size: 0.98rem;
+      max-width: 42rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    main.module-layout {
+      display: grid;
+      grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    .module-sidebar {
+      position: sticky;
+      top: 1.25rem;
+      align-self: flex-start;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      padding: 1.1rem 1.2rem 1.2rem;
+    }
+
+    .sidebar-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin: 0 0 0.6rem;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 0.15rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.4rem;
+      transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--accent-2);
+      border-color: rgba(0, 0, 0, 0.18);
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .sidebar-nav a.active {
+      color: var(--accent-2);
+      border-color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    .module-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.9rem;
+    }
+
+    .section-block {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.4rem 1.5rem 1.55rem;
+    }
+
+    .section-block h2 {
+      margin: 0 0 0.6rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .section-block p {
+      margin: 0.25rem 0 0.4rem;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      margin-top: 2.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer p {
+      margin: 0.1rem 0;
+    }
+
+    .back-home {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fdf7ea;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 0.95rem;
+      font-size: 0.85rem;
+      gap: 0.35rem;
+      cursor: pointer;
+      z-index: 40;
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        background-color 0.18s ease-out;
+    }
+
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background-color: #fffaf0;
+    }
+
+    .back-home span.icon {
+      font-size: 1rem;
+      transform: translateY(-0.5px);
+    }
+
+    @media (max-width: 800px) {
+      main.module-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .module-sidebar {
+        position: static;
+      }
+
+      .page {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="title-block">
+        <h1>General Newspapers</h1>
+        <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
+        <p class="subtitle">
+          Notes on obituary data drawn from general newspaper portals, including Chronicling
+          America, state archives, and related digitized collections.
+        </p>
+      </div>
+    </header>
+
+    <main class="module-layout">
+      <aside class="module-sidebar">
+        <div class="sidebar-card">
+          <h2 class="sidebar-title">Newspaper Sources</h2>
+          <nav>
+            <ul class="sidebar-nav">
+              <li><a href="#overview" class="sidebar-link active">Overview</a></li>
+              <li><a href="#portals" class="sidebar-link">Portals</a></li>
+              <li><a href="#coverage" class="sidebar-link">Coverage & Gaps</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <section class="module-main">
+        <section id="overview" class="section-block">
+          <h2>Overview</h2>
+          <p>
+            This page tracks obituary data drawn from general newspaper digitization projects rather
+            than focused aggregators. These sources often provide long historical runs, but with
+            uneven coverage across states, newspapers, and time periods.
+          </p>
+          <p>
+            The goal here is to record what portals we are using, how we construct queries, and how
+            we handle issues like OCR quality, missing issues, and misclassified content.
+          </p>
+        </section>
+
+        <section id="portals" class="section-block">
+          <h2>Portals</h2>
+          <p>
+            Candidate portals for Pennsylvania and Georgia (TBA):
+          </p>
+          <p>
+            — Chronicling America (Library of Congress).<br />
+            — State-level digital newspaper programs or archives.<br />
+            — University-based digitization projects that host local or regional newspapers.<br />
+            — Commercial or subscription databases used for historical newspapers, if applicable.
+          </p>
+          <p>
+            As we lock in exact sources and access methods, we can list them here with links and
+            brief notes.
+          </p>
+        </section>
+
+        <section id="coverage" class="section-block">
+          <h2>Coverage &amp; Gaps</h2>
+          <p>
+            This section is for summarizing where general newspaper sources provide robust obituary
+            coverage and where we expect gaps, including:
+          </p>
+          <p>
+            — Periods before digitization starts or after it ends for key titles.<br />
+            — Regions or demographic groups underrepresented in surviving runs.<br />
+            — Newspaper types (e.g., small-town weeklies vs. metropolitan dailies) that may skew
+            the kinds of obituaries we see.
+          </p>
+          <p>
+            These notes can feed back into the high-level “Obituary Data Overview” table and guide
+            where targeted collection is most urgent.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 The Living Dead Project. All rights reserved.</p>
+      <p>Website created by Bhargav Dave.</p>
+    </footer>
+  </div>
+
+  <button class="back-home" type="button" aria-label="Back to home">
+    <span class="icon">←</span>
+    <span>Back to home</span>
+  </button>
+
+  <script>
+    document.querySelectorAll(".sidebar-link").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 16,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    const sections = document.querySelectorAll(".section-block[id]");
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+
+    window.addEventListener("scroll", function () {
+      let currentId = null;
+      sections.forEach(function (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          currentId = section.id;
+        }
+      });
+
+      sidebarLinks.forEach(function (link) {
+        const hrefId = link.getAttribute("href").slice(1);
+        link.classList.toggle("active", hrefId === currentId);
+      });
+    });
+
+    document.querySelector(".back-home").addEventListener("click", function () {
+      window.location.href = "index.html#modules";
+    });
+  </script>
+</body>
+</html>
