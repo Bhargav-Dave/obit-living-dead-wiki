@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead – Legacy.com</title>
+  <title>Legacy.com | The Living Dead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Shared fonts with the rest of the project -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
@@ -42,78 +41,45 @@
       padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    /* ===== Header / Site title ===== */
-
     .site-header {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
       align-items: center;
       text-align: center;
-      margin-bottom: 2.1rem;
-    }
-
-    .title-block {
-      max-width: 40rem;
-      margin: 0 auto;
+      margin-bottom: 2rem;
     }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 3.2vw, 2.8rem);
+      font-size: clamp(2.4rem, 3.4vw, 3rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0 0 0.2rem;
+      margin: 0;
       color: #2a211b;
     }
 
     .title-block .tagline {
-      margin: 0.2rem 0 0.3rem;
-      font-size: 0.95rem;
+      margin: 0;
+      font-size: 0.98rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-3);
     }
 
     .title-block .subtitle {
-      margin: 0.35rem auto 0;
-      font-size: 0.96rem;
-      max-width: 36rem;
-      line-height: 1.55;
+      margin: 0;
+      font-size: 0.98rem;
+      max-width: 40rem;
+      line-height: 1.5;
       color: var(--text-muted);
     }
 
-    .top-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.1rem;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .top-nav a {
-      text-decoration: none;
-      font-size: 0.86rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      padding-bottom: 0.1rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .top-nav a:hover {
-      border-color: rgba(0, 0, 0, 0.18);
-      color: #3d2f22;
-    }
-
-    /* ===== Layout: sidebar + content ===== */
-
-    .layout {
+    .main-layout {
       display: grid;
-      grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
-      gap: 2rem;
+      grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
+      gap: 1.8rem;
       align-items: flex-start;
     }
 
@@ -121,229 +87,144 @@
       position: sticky;
       top: 1.5rem;
       align-self: flex-start;
-      background: rgba(255, 250, 241, 0.9);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.1rem 1.2rem;
-      backdrop-filter: blur(4px);
     }
 
-    .sidebar h2 {
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-card h2,
+    .sidebar-card h3 {
       margin: 0 0 0.6rem;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.05rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent-2);
     }
 
     .sidebar-nav {
-      list-style: none;
-      padding: 0;
-      margin: 0.1rem 0 0.9rem;
-      font-size: 0.9rem;
-    }
-
-    .sidebar-nav li + li {
-      margin-top: 0.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .sidebar-nav a {
       text-decoration: none;
-      color: var(--text-muted);
-      padding: 0.16rem 0;
-      display: inline-block;
+      font-size: 0.86rem;
+      color: var(--accent-3);
+      padding: 0.12rem 0;
       border-bottom: 1px solid transparent;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       transition: color var(--transition-fast), border-color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
-      color: var(--accent-2);
-      border-color: rgba(0, 0, 0, 0.12);
+      color: #3d2f22;
+      border-color: rgba(0, 0, 0, 0.14);
     }
 
-    .sidebar-note {
-      margin: 0.6rem 0 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    main {
+      min-width: 0;
     }
 
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.9rem;
-    }
-
-    /* ===== Content cards ===== */
-
-    .module-section {
+    .content-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      padding: 1.3rem 1.5rem 1.4rem;
+      padding: 1.35rem 1.5rem 1.45rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
-    .module-section + .module-section {
-      margin-top: 0.2rem;
-    }
-
-    .section-title {
-      margin: 0 0 0.6rem;
+    .content-card h1 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .content-card h2 {
+      margin: 0 0 0.5rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent-2);
     }
 
-    .module-section p {
-      margin: 0.3rem 0 0.5rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .content-card p {
+      margin: 0.35rem 0 0.35rem;
+      font-size: 0.94rem;
+      line-height: 1.65;
       color: var(--text-muted);
     }
 
-    .data-overview-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.4rem 0 0.1rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    /* Methodology flow */
 
-    .data-overview-list li + li {
-      margin-top: 0.15rem;
-    }
-
-    /* ===== Methodology diagram ===== */
-
-    .flow-diagram {
+    .method-flow {
+      margin-top: 0.7rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
-    }
-
-    .flow-step {
-      flex: 1 1 180px;
-      min-width: 160px;
-      background: #fbf6ea;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 0.7rem 1.4rem 0.7rem 0.8rem; /* extra right padding for arrow */
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-      position: relative;
-    }
-
-    .flow-step-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      margin: 0 0 0.2rem;
-    }
-
-    .flow-step-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* Arrows between steps */
-    .flow-step::after {
-      content: "➝";
-      position: absolute;
-      right: 0.35rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.1rem;
-      color: rgba(80, 107, 122, 0.8); /* muted slate */
-    }
-
-    .flow-step:last-child::after {
-      content: "";
-    }
-
-    /* ===== Figure styling (for the two comparison charts) ===== */
-
-    .figure-wrapper {
-      margin-top: 0.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .figure-frame {
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.07);
-      overflow: hidden;
-      background: #f9f3e6;
-      padding: 0.55rem;
-    }
-
-    .figure-frame-inner {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fdfaf4;
-      display: flex;
       align-items: center;
+      gap: 0.45rem;
       justify-content: center;
-      padding: 0.75rem;
     }
 
-    .figure-frame img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+    .method-step {
+      background: #fffdf7;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      padding: 0.6rem 0.9rem;
+      font-size: 0.86rem;
+      text-align: center;
+      min-width: 150px;
+      max-width: 200px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .figure-caption {
-      margin: 0.3rem 0 0;
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .method-arrow {
+      font-size: 1.1rem;
+      color: var(--accent-3);
+      padding: 0 0.15rem;
+    }
+
+    /* Figures */
+
+    .figure-grid {
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.1rem;
+    }
+
+    .figure-card {
       text-align: center;
     }
 
-    /* ===== Floating "Back to home" button ===== */
-
-    .back-to-home {
-      position: fixed;
-      right: 1.4rem;
-      bottom: 1.4rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      cursor: pointer;
-      opacity: 0.95;
-      z-index: 40;
-      padding: 0 0.4rem;
+    .figure-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .back-to-home span {
-      display: inline-block;
-      transform: translateY(0.5px);
+    .figure-card figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
 
-    .back-to-home:hover {
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(-1px);
-    }
-
-    /* ===== Footer ===== */
+    /* Footer */
 
     .footer {
       margin-top: 2.4rem;
@@ -358,29 +239,60 @@
       margin: 0.1rem 0;
     }
 
-    /* ===== Responsive tweaks ===== */
+    /* Back-to-top button */
 
-    @media (max-width: 800px) {
-      .layout {
+    .back-to-top {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fdf7ea;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.2s ease-out,
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out;
+      z-index: 40;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top span {
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 860px) {
+      .main-layout {
         grid-template-columns: 1fr;
-        gap: 1.4rem;
       }
 
       .sidebar {
         position: static;
       }
     }
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- ===== Site header ===== -->
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
@@ -389,182 +301,135 @@
           A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
       </div>
-
-      <nav class="top-nav">
-        <a href="index.html#modules">Project modules</a>
-        <a href="index.html#context">Context</a>
-        <a href="index.html#collaborators">Collaborators</a>
-      </nav>
     </header>
 
-    <main class="layout">
-      <!-- ===== Sticky sidebar / TOC ===== -->
+    <div class="main-layout">
       <aside class="sidebar">
-        <h2>Legacy.com</h2>
-        <ul class="sidebar-nav">
-          <li><a href="#data-overview">Data overview</a></li>
-          <li><a href="#data-source">Data source</a></li>
-          <li><a href="#methodology">Methodology</a></li>
-          <li><a href="#coverage-checks">Coverage checks</a></li>
-        </ul>
-        <p class="sidebar-note">
-          Lightweight internal-facing notes on how Legacy.com fits into the overall obituary corpus. Detailed technical documentation lives elsewhere.
-        </p>
+        <div class="sidebar-card">
+          <h2>Contents</h2>
+          <nav class="sidebar-nav">
+            <a href="#overview">Overview</a>
+            <a href="#data-overview">Data overview</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#figures">Figures</a>
+            <a href="#processing-link">Processing link</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Navigate</h3>
+          <nav class="sidebar-nav">
+            <a href="index.html#modules">← Back to home</a>
+            <a href="data-collection.html">← Back to data collection</a>
+          </nav>
+        </div>
       </aside>
 
-      <!-- ===== Main content ===== -->
-      <div class="content">
-        <!-- --- Data Overview --- -->
-        <section id="data-overview" class="module-section">
-          <h3 class="section-title">Data Overview</h3>
+      <main>
+        <section id="overview" class="content-card">
+          <h1>Legacy.com</h1>
           <p>
-            High-level snapshot of the Legacy.com subset currently included in the project’s working corpus.
+            Legacy.com hosts obituary content from a wide range of partner newspapers and funeral homes.
           </p>
-          <ul class="data-overview-list">
-            <li><strong>States:</strong> Georgia and Pennsylvania</li>
-            <li><strong>Years covered:</strong> 2000 to 2024 (inclusive)</li>
-            <li><strong>Total # of obituaries:</strong> TBA &mdash; approximately ~80,000</li>
-          </ul>
         </section>
 
-        <!-- --- Data Source --- -->
-        <section id="data-source" class="module-section">
-          <h3 class="section-title">Data Source</h3>
+        <section id="data-overview" class="content-card">
+          <h2>Data overview</h2>
+          <p>
+            <strong>States:</strong> Georgia and Pennsylvania<br />
+            <strong>Years covered:</strong> 2000 to 2024<br />
+            <strong>Total # of obits:</strong> TBA (approximately ~80,000)
+          </p>
           <p>
             Data present in the relevant Teams folder.
           </p>
         </section>
 
-        <!-- --- Methodology --- -->
-        <section id="methodology" class="module-section">
-          <h3 class="section-title">Methodology</h3>
+        <section id="methodology" class="content-card">
+          <h2>Methodology</h2>
           <p>
-            For Legacy.com, we collected obituaries for the states of Georgia and Pennsylvania across the years 2000 to 2024 (both inclusive). For each
-            year in each state, we randomly selected two months that are approximately six months apart (for example, April and October). Within each
-            selected month, we then gathered the first 1,000 obituaries that appeared after applying the relevant filters.
-          </p>
-          <p>
-            This design provides a regular temporal sampling frame across a 25-year window while keeping scraping volume tractable and making it easier
-            to compare patterns across states and years.
+            Collected obituaries for the states of Georgia and Pennsylvania for the years 2000 to 2024 (inclusive). For each
+            year in each state, we randomly selected two months that are approximately six months apart (for example, April
+            and October). Within each chosen month, we scraped the first 1,000 obituaries returned after applying the
+            appropriate filters.
           </p>
 
-          <!-- Visual flow diagram of the sampling process -->
-          <div class="flow-diagram" aria-label="Sampling steps for Legacy.com obituaries">
-            <div class="flow-step">
-              <p class="flow-step-title">Step 1</p>
-              <p class="flow-step-text">
-                Go to Legacy.com and access the obituary search interface.
-              </p>
+          <div class="method-flow">
+            <div class="method-step">
+              Go to Legacy.com
             </div>
-            <div class="flow-step">
-              <p class="flow-step-title">Step 2</p>
-              <p class="flow-step-text">
-                Filter by state (Georgia or Pennsylvania).
-              </p>
+            <span class="method-arrow">➝</span>
+            <div class="method-step">
+              Filter by state (Georgia / Pennsylvania)
             </div>
-            <div class="flow-step">
-              <p class="flow-step-title">Step 3</p>
-              <p class="flow-step-text">
-                Choose a specific year between 2000 and 2024.
-              </p>
+            <span class="method-arrow">➝</span>
+            <div class="method-step">
+              Select two months per year
+              <br />(~6 months apart)
             </div>
-            <div class="flow-step">
-              <p class="flow-step-title">Step 4</p>
-              <p class="flow-step-text">
-                For that state–year combination, randomly select two months that are roughly six months apart (e.g., April and October).
-              </p>
-            </div>
-            <div class="flow-step">
-              <p class="flow-step-title">Step 5</p>
-              <p class="flow-step-text">
-                For each selected month, apply the month filter and retrieve the first 1,000 obituaries returned by the search.
-              </p>
-            </div>
-            <div class="flow-step">
-              <p class="flow-step-title">Step 6</p>
-              <p class="flow-step-text">
-                Store obituary text and key metadata (dates, locations, and basic identifiers) in the project’s standardized schema.
-              </p>
+            <span class="method-arrow">➝</span>
+            <div class="method-step">
+              For each month, scrape
+              <br />the first 1,000 obituaries
             </div>
           </div>
         </section>
 
-        <!-- --- Coverage checks --- -->
-        <section id="coverage-checks" class="module-section">
-          <h3 class="section-title">Coverage Checks</h3>
-          <p>
-            To understand how our sampled obituaries compare to the total volume available on Legacy.com for each granular search, we track the ratio of
-            scraped results to total results by state, year, and month.
-          </p>
+        <section id="figures" class="content-card">
+          <h2>Figures (coverage checks)</h2>
+          <div class="figure-grid">
+            <figure class="figure-card">
+              <img src="assets/data-collection/legacy/result-comparison-georgia.png" alt="Result comparison for Georgia Legacy.com searches" />
+              <figcaption>
+                Comparison of the total results available for each granular search in Georgia versus the results scraped for each search.
+              </figcaption>
+            </figure>
 
-          <div class="figure-wrapper">
-            <!-- Georgia figure -->
-            <div class="figure-frame">
-              <div class="figure-frame-inner">
-                <img
-                  src="assets/data-collection/legacy/result-comparison-georgia.png"
-                  alt="Comparison chart of results vs scraped obituaries for Georgia Legacy.com searches."
-                />
-              </div>
-            </div>
-
-            <!-- Pennsylvania figure -->
-            <div class="figure-frame">
-              <div class="figure-frame-inner">
-                <img
-                  src="assets/data-collection/legacy/result-comparison-pennsylvania.png"
-                  alt="Comparison chart of results vs scraped obituaries for Pennsylvania Legacy.com searches."
-                />
-              </div>
-            </div>
+            <figure class="figure-card">
+              <img src="assets/data-collection/legacy/result-comparison-pennsylvania.png" alt="Result comparison for Pennsylvania Legacy.com searches" />
+              <figcaption>
+                Comparison of the total results available for each granular search in Pennsylvania versus the results scraped for each search.
+              </figcaption>
+            </figure>
           </div>
-
-          <p class="figure-caption">
-            Comparison of the total results available for each granular search for both the states vs the results scraped for each granular search.
-          </p>
         </section>
 
-        <!-- --- Cross-link to data processing page --- -->
-        <section class="module-section">
+        <section id="processing-link" class="content-card">
+          <h2>Next steps</h2>
           <p>
             For more information on how this data is processed, visit the
             <a href="data-processing.html">data processing page</a>.
           </p>
         </section>
-      </div>
-    </main>
+      </main>
+    </div>
 
-    <!-- ===== Footer ===== -->
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
       <p>Website created by Bhargav Dave.</p>
     </footer>
   </div>
 
-  <!-- Floating "Back to home" button -->
-  <button class="back-to-home" type="button" aria-label="Back to home">
-    <span>Home</span>
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <span>↑</span>
   </button>
 
   <script>
-    // Smooth scrolling for sidebar links
-    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          event.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-      });
+    const backToTop = document.querySelector(".back-to-top");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 260) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
     });
 
-    // Back-to-home button behavior
-    const backToHome = document.querySelector(".back-to-home");
-    backToHome.addEventListener("click", function () {
-      window.location.href = "index.html#modules";
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   </script>
 </body>
