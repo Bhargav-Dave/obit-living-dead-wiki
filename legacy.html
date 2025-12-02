@@ -233,7 +233,7 @@
       background: #fbf6ea;
       border-radius: 12px;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 0.7rem 0.8rem;
+      padding: 0.7rem 1.4rem 0.7rem 0.8rem; /* extra right padding for arrow */
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
       position: relative;
     }
@@ -251,6 +251,21 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       margin: 0;
+    }
+
+    /* Arrows between steps */
+    .flow-step::after {
+      content: "➝";
+      position: absolute;
+      right: 0.35rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: rgba(80, 107, 122, 0.8); /* muted slate */
+    }
+
+    .flow-step:last-child::after {
+      content: "";
     }
 
     /* ===== Figure styling (for the two comparison charts) ===== */
@@ -365,7 +380,7 @@
 </head>
 <body>
   <div class="page">
-    <!-- ===== Site header (shared look-and-feel) ===== -->
+    <!-- ===== Site header ===== -->
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
@@ -412,7 +427,7 @@
           </ul>
         </section>
 
-        <!-- --- Data Source (simplified text, no link) --- -->
+        <!-- --- Data Source --- -->
         <section id="data-source" class="module-section">
           <h3 class="section-title">Data Source</h3>
           <p>
@@ -420,7 +435,7 @@
           </p>
         </section>
 
-        <!-- --- Methodology (text + flow diagram) --- -->
+        <!-- --- Methodology --- -->
         <section id="methodology" class="module-section">
           <h3 class="section-title">Methodology</h3>
           <p>
@@ -474,7 +489,7 @@
           </div>
         </section>
 
-        <!-- --- Coverage checks (two comparison figures) --- -->
+        <!-- --- Coverage checks --- -->
         <section id="coverage-checks" class="module-section">
           <h3 class="section-title">Coverage Checks</h3>
           <p>
@@ -486,7 +501,6 @@
             <!-- Georgia figure -->
             <div class="figure-frame">
               <div class="figure-frame-inner">
-                <!-- Image path relative to the site root, matching the data-collection assets structure -->
                 <img
                   src="assets/data-collection/legacy/result-comparison-georgia.png"
                   alt="Comparison chart of results vs scraped obituaries for Georgia Legacy.com searches."
@@ -509,6 +523,14 @@
             Comparison of the total results available for each granular search for both the states vs the results scraped for each granular search.
           </p>
         </section>
+
+        <!-- --- Cross-link to data processing page --- -->
+        <section class="module-section">
+          <p>
+            For more information on how this data is processed, visit the
+            <a href="data-processing.html">data processing page</a>.
+          </p>
+        </section>
       </div>
     </main>
 
@@ -519,7 +541,7 @@
     </footer>
   </div>
 
-  <!-- Floating "Back to home" button (same behavior as other module pages) -->
+  <!-- Floating "Back to home" button -->
   <button class="back-to-home" type="button" aria-label="Back to home">
     <span>Home</span>
   </button>
@@ -539,7 +561,7 @@
       });
     });
 
-    // Back-to-home button behavior: send user back to main modules on the index
+    // Back-to-home button behavior
     const backToHome = document.querySelector(".back-to-home");
     backToHome.addEventListener("click", function () {
       window.location.href = "index.html#modules";
