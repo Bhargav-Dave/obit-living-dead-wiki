@@ -241,11 +241,10 @@
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: auto; /* let percentages from colgroup guide width */
+      table-layout: auto;
       font-size: 0.85rem;
     }
 
-    /* Column widths: slightly wider Source column, slightly narrower others */
     .data-table col.col-source {
       width: 22%;
     }
@@ -291,6 +290,7 @@
     .data-table tfoot td {
       font-weight: 500;
       background: #f4ebdd;
+      text-align: center;
     }
 
     .table-note {
@@ -348,7 +348,7 @@
 
     .source-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 0.2rem;
     }
@@ -389,8 +389,6 @@
       color: var(--text-muted);
       line-height: 1.5;
     }
-
-    /* Slight green tint for fully collected dataset (Legacy.com) */
 
     .source-card.data-complete {
       background: #f3f8f3;
@@ -467,6 +465,12 @@
     @media (max-width: 700px) {
       .page {
         padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .source-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -615,11 +619,11 @@
               <tfoot>
                 <tr>
                   <td><strong>Total</strong></td>
+                  <td></td>
+                  <td></td>
                   <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
+                  <td></td>
+                  <td></td>
                   <td>TBA</td>
                 </tr>
               </tfoot>
@@ -668,7 +672,7 @@
             <article class="source-card data-complete" data-target="legacy.html">
               <h3>Legacy.com</h3>
               <p>
-                Commercial obituary platform with broad coverage from 2000 onward. Tracks scraping configuration, regional filters, and completeness checks.
+                Commercial obituary platform with broad coverage from 2000 onward. Tracks coverage, regional focus, and internal completeness checks.
               </p>
             </article>
 
