@@ -207,6 +207,11 @@
       padding: 1.2rem 1.4rem 1.35rem;
     }
 
+    /* Slightly larger box for the data table section */
+    #obituary-data-overview.module-section {
+      padding: 1.35rem 1.6rem 1.45rem;
+    }
+
     .module-section + .module-section {
       margin-top: 0.2rem;
     }
@@ -236,8 +241,18 @@
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: fixed; /* helps avoid horizontal scroll; cells will wrap */
+      table-layout: auto; /* let percentages from colgroup guide width */
       font-size: 0.85rem;
+    }
+
+    /* Column widths: slightly wider Source column, slightly narrower others */
+    .data-table col.col-source {
+      width: 22%;
+    }
+
+    .data-table col.col-pa,
+    .data-table col.col-ga {
+      width: 13%;
     }
 
     .data-table thead th {
@@ -319,6 +334,7 @@
       margin: 0.45rem 0 0;
       font-size: 0.82rem;
       color: var(--text-muted);
+      text-align: center;
     }
 
     /* Source cards */
@@ -510,6 +526,11 @@
 
           <div class="data-table-wrapper">
             <table class="data-table">
+              <colgroup>
+                <col class="col-source" />
+                <col class="col-pa" span="3" />
+                <col class="col-ga" span="3" />
+              </colgroup>
               <thead>
                 <tr>
                   <th scope="col"></th>
@@ -625,7 +646,6 @@
           <div class="figure-wrapper">
             <div class="figure-frame">
               <div class="figure-frame-inner">
-                <!-- IMPORTANT: use forward slashes and a relative path from the HTML file -->
                 <img src="assets/data-collection/sources-timeline-v1.png" alt="Timeline sketch of obituary sources across Pennsylvania and Georgia." />
               </div>
             </div>
