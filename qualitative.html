@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead · Qualitative Work</title>
+  <title>Qualitative Work | The Living Dead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -14,6 +14,7 @@
       --accent-1: #c89b4e;
       --accent-2: #8b6b4a;
       --accent-3: #506b7a;
+      --accent-complete: #e3f2e7;
       --text-main: #2e2520;
       --text-muted: #6a5c52;
       --border-soft: rgba(0, 0, 0, 0.06);
@@ -41,15 +42,17 @@
       padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    /* Header */
-
     .site-header {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 1rem;
       align-items: center;
       text-align: center;
       margin-bottom: 2rem;
+    }
+
+    .title-block {
+      text-align: center;
     }
 
     .title-block h1 {
@@ -58,100 +61,106 @@
       font-size: clamp(2.4rem, 3.4vw, 3rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0 0 0.2rem;
+      margin: 0;
       color: #2a211b;
     }
 
     .title-block .tagline {
-      margin: 0.1rem 0 0.35rem;
-      font-size: 0.9rem;
+      margin: 0;
+      font-size: 0.98rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-3);
     }
 
     .title-block .subtitle {
-      margin: 0.2rem 0 0;
-      font-size: 0.95rem;
-      max-width: 42rem;
+      margin: 0;
+      font-size: 0.98rem;
+      max-width: 40rem;
       line-height: 1.5;
       color: var(--text-muted);
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .module-label {
-      margin-top: 0.35rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    /* Layout: sidebar + content */
-
-    .module-layout {
-      display: flex;
+    .main-layout {
+      display: grid;
+      grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
       gap: 1.8rem;
       align-items: flex-start;
     }
 
     .sidebar {
-      flex: 0 0 230px;
       position: sticky;
       top: 1.5rem;
       align-self: flex-start;
     }
 
-    .sidebar-nav {
+    .sidebar-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.1rem 1.2rem;
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1rem;
     }
 
-    .sidebar-label {
-      font-size: 0.78rem;
+    .sidebar-card h2,
+    .sidebar-card h3 {
+      margin: 0 0 0.6rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-3);
-      margin-bottom: 0.4rem;
+      color: var(--accent-2);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .sidebar-nav a {
-      display: block;
       text-decoration: none;
-      font-size: 0.88rem;
-      padding: 0.3rem 0;
-      color: var(--text-muted);
-      border-left: 2px solid transparent;
-      padding-left: 0.4rem;
-      transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+      font-size: 0.86rem;
+      color: var(--accent-3);
+      padding: 0.12rem 0;
+      border-bottom: 1px solid transparent;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
       color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.2);
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 6px;
+      border-color: rgba(0, 0, 0, 0.14);
     }
 
-    .module-content {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
+    main {
+      min-width: 0;
     }
 
-    .section-card {
+    .content-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      padding: 1.35rem 1.5rem 1.5rem;
+      padding: 1.35rem 1.5rem 1.45rem;
+      margin-bottom: 1.2rem;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
-    .section-card h2 {
-      margin: 0 0 0.45rem;
+    .content-card h1 {
+      margin: 0 0 0.5rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .content-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.2rem;
       letter-spacing: 0.08em;
@@ -159,32 +168,24 @@
       color: var(--accent-2);
     }
 
-    .section-card p {
-      margin: 0.3rem 0;
-      font-size: 0.9rem;
+    .content-card p {
+      margin: 0.35rem 0 0.35rem;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .content-card ul {
+      margin: 0.4rem 0 0.4rem 1.1rem;
+      padding-left: 0.4rem;
+      font-size: 0.94rem;
       line-height: 1.6;
       color: var(--text-muted);
     }
 
-    .section-card ul {
-      margin: 0.4rem 0 0.1rem 1.2rem;
-      padding: 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-muted);
+    .content-card li {
+      margin-bottom: 0.25rem;
     }
-
-    .section-card li + li {
-      margin-top: 0.2rem;
-    }
-
-    .section-tagline {
-      font-size: 0.82rem;
-      color: var(--accent-3);
-      margin-top: 0.1rem;
-    }
-
-    /* Footer */
 
     .footer {
       margin-top: 2.4rem;
@@ -199,14 +200,12 @@
       margin: 0.1rem 0;
     }
 
-    /* Back-to-home floating button */
-
-    .back-home {
+    .back-to-top {
       position: fixed;
       right: 1.4rem;
       bottom: 1.4rem;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 1px solid rgba(0, 0, 0, 0.12);
       background: #fdf7ea;
@@ -216,43 +215,37 @@
       justify-content: center;
       font-size: 1.1rem;
       cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
       transition:
+        opacity 0.2s ease-out,
         transform 0.2s ease-out,
-        box-shadow 0.2s ease-out,
-        background-color 0.2s ease-out;
+        box-shadow 0.2s ease-out;
       z-index: 40;
     }
 
-    .back-home:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-      background-color: #fffaf1;
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
-    .back-home span {
+    .back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top span {
       transform: translateY(-1px);
     }
 
-    /* Responsive tweaks */
-
     @media (max-width: 860px) {
-      .module-layout {
-        flex-direction: column;
+      .main-layout {
+        grid-template-columns: 1fr;
       }
 
       .sidebar {
         position: static;
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-
-      .section-card {
-        padding-inline: 1.1rem;
       }
     }
   </style>
@@ -262,121 +255,139 @@
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
-        <p class="tagline">Obituaries, social connection, and public memory</p>
+        <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
         <p class="subtitle">
           A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
-        <p class="module-label">Module · Qualitative Work</p>
       </div>
     </header>
 
-    <main class="module-layout">
+    <div class="main-layout">
       <aside class="sidebar">
-        <nav class="sidebar-nav">
-          <div class="sidebar-label">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#guiding-questions">Guiding questions</a>
-          <a href="#methods">Methods &amp; materials</a>
-          <a href="#coding-schemes">Coding schemes</a>
-          <a href="#current-decisions">Current decisions</a>
-          <a href="#open-questions">Open questions</a>
-        </nav>
+        <div class="sidebar-card">
+          <h2>Contents</h2>
+          <nav class="sidebar-nav">
+            <a href="#overview">Overview</a>
+            <a href="#why-pa-ga">Why Pennsylvania &amp; Georgia?</a>
+            <a href="#coding-scheme">Coding scheme</a>
+            <a href="#analysis-plan">Qualitative analysis plan</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Navigate</h3>
+          <nav class="sidebar-nav">
+            <a href="index.html#modules">← Back to home</a>
+            <a href="data-collection.html">Data collection</a>
+            <a href="data-processing.html">Data processing</a>
+          </nav>
+        </div>
       </aside>
 
-      <div class="module-content">
-        <section id="overview" class="section-card">
-          <h2>Overview</h2>
+      <main>
+        <section id="overview" class="content-card">
+          <h1>Qualitative Work</h1>
           <p>
-            The qualitative component of <em>The Living Dead</em> focuses on close reading of obituary texts
-            to understand how people and institutions narrate lives, deaths, and relationships across time.
-            This work informs how we define entities, ties, and categories in the quantitative pipeline.
+            The qualitative module focuses on how we interpret obituary texts as historical and social documents. Here we ask what
+            obituaries reveal about kinship, community, inequality, and remembrance, and how those patterns change across time and
+            place.
           </p>
-          <p class="section-tagline">
-            Short version: slow reading first, then careful abstraction into codes and concepts.
+          <p>
+            At this stage many details are still to be finalized. This page records high-level decisions that anchor the qualitative
+            work: why we selected Pennsylvania and Georgia, how our coding scheme is being developed, and how close reading will be
+            coordinated with other parts of the project.
           </p>
         </section>
 
-        <section id="guiding-questions" class="section-card">
-          <h2>Guiding questions</h2>
-          <p>Some of the questions driving the qualitative work include:</p>
-          <ul>
-            <li>How do obituaries describe kin, friends, co-workers, neighbors, and organizational ties?</li>
-            <li>Which forms of inequality (race, class, gender, religion, migration status) are made visible or hidden?</li>
-            <li>How do narrative structures and tone change across time, place, and publication type?</li>
-            <li>What counts as an “obituary” versus a death notice, memorial, or news article about a death?</li>
-          </ul>
-        </section>
-
-        <section id="methods" class="section-card">
-          <h2>Methods &amp; materials</h2>
+        <section id="why-pa-ga" class="content-card">
+          <h2>Why Pennsylvania &amp; Georgia?</h2>
           <p>
-            The qualitative work combines classic interpretive methods with structured note-taking, so that
-            insights can be translated into coding rules and data definitions.
+            Pennsylvania and Georgia were selected for their locations in the Northeast and Southeast, respectively, and for their
+            historically significant Black populations. Together they give us two states in distinctive regions with long historical
+            records and rich Black press traditions.
           </p>
           <ul>
-            <li>Close reading of sampled obituaries from different time periods, locations, and outlets.</li>
-            <li>Analytic memos that track emerging concepts, tensions, and edge cases.</li>
-            <li>Side-by-side comparison of obituaries within families, across racialized groups, and across publications.</li>
-            <li>Coordination with the data processing team to flag patterns that need special handling (e.g., nicknames, titles).</li>
-          </ul>
-        </section>
-
-        <section id="coding-schemes" class="section-card">
-          <h2>Coding schemes</h2>
-          <p>
-            Qualitative work underpins the coding schemes that later get operationalized as structured variables
-            or patterns for automated detection.
-          </p>
-          <ul>
-            <li>Proposed categories for relationship types (e.g., spouse, child, church member, civic role).</li>
-            <li>Indicators of inequality and stratification (e.g., occupational prestige, property ownership, honors).</li>
-            <li>Markers of place and mobility (e.g., birthplaces, migrations, military service, diaspora links).</li>
             <li>
-              Narrative features (e.g., length, voice, evaluative language) that may correlate with race, class,
-              or newspaper type.
+              <strong>Regional contrast with long coverage.</strong> Georgia represents the South and Pennsylvania the Northeast. Both
+              have state-sponsored newspaper archives with content going back to the eighteenth century (for example, Georgia Historic
+              Newspapers starts in 1763), giving us extended time series for historic obituaries.
+            </li>
+            <li>
+              <strong>Downloadable and comparable sources.</strong> Both states provide large, relatively accessible sets of digitized
+              newspaper pages and obituaries (through state archives and Chronicling America), which can be sampled in parallel ways.
+            </li>
+            <li>
+              <strong>Population scale.</strong> Today the two states have broadly comparable population sizes, supporting comparisons
+              in the volume and composition of obituaries over time.
+            </li>
+            <li>
+              <strong>Black newspapers and communities.</strong> Each state has historically important Black communities and Black
+              newspapers, allowing us to study how race, region, and local histories shape obituary practices.
             </li>
           </ul>
           <p>
-            As these schemes stabilize, they will be documented here with examples and links to internal coding manuals.
+            More detailed justification, including maps of newspaper locations, counts of titles, and tables of African American
+            newspapers by state, is documented in the team Google doc and related internal memos.
           </p>
         </section>
 
-        <section id="current-decisions" class="section-card">
-          <h2>Current decisions</h2>
-          <p>Some working decisions (subject to revision as the project evolves):</p>
-          <ul>
-            <li>
-              Treat “obituaries” broadly at first, then refine into subtypes (formal obituary, brief notice,
-              memorial piece) as we see stable patterns.
-            </li>
-            <li>
-              Anchor relationship coding on explicit textual cues (e.g., “beloved sister of”) before inferring
-              more ambiguous social roles.
-            </li>
-            <li>
-              Use qualitative examples to test and critique automated extraction rules before scaling up.
-            </li>
-            <li>
-              Maintain a shared set of “tricky cases” (PDFs, clippings, borderline texts) as teaching examples
-              for the team.
-            </li>
-          </ul>
-        </section>
-
-        <section id="open-questions" class="section-card">
-          <h2>Open questions</h2>
+        <section id="coding-scheme" class="content-card">
+          <h2>Coding scheme</h2>
           <p>
-            This module is intentionally iterative. Some questions we expect to revisit:
+            A draft coding scheme for qualitative work has already been developed and saved by Eunkyung in the relevant Teams folder.
+            That scheme is our starting point for reading and annotating obituaries.
+          </p>
+          <p>
+            At a high level, the coding scheme is designed to capture:
           </p>
           <ul>
-            <li>When does a mention of someone become a “tie” we want to represent in the network?</li>
-            <li>How do we handle euphemistic or coded language around race, sexuality, or cause of death?</li>
-            <li>What kinds of stories or communities are systematically missing from our sources?</li>
-            <li>How should qualitative findings be archived so they remain useful as the project expands?</li>
+            <li>Basic descriptive information (where available) such as age, gender, race, occupation, and religious affiliation,</li>
+            <li>
+              Kinship and household ties (spouses, children, siblings, extended kin, and non-kin who are described in kin-like ways),
+            </li>
+            <li>
+              References to status, inequality, and community roles (e.g., public offices, organizational memberships, military
+              service, and civic contributions),
+            </li>
+            <li>
+              Narrative features such as how a life story is structured, what kinds of events are highlighted, and how loss and memory
+              are framed.
+            </li>
           </ul>
+          <p>
+            As we begin close reading, we expect to refine this coding scheme iteratively and record any revisions back into the Teams
+            materials.
+          </p>
         </section>
-      </div>
-    </main>
+
+        <section id="analysis-plan" class="content-card">
+          <h2>Qualitative analysis plan</h2>
+          <p>
+            The core of the qualitative work will be close reading of obituaries sampled across time, place, and source. We are
+            especially interested in how descriptions of kin ties, community ties, and inequality shift from the eighteenth century to
+            the present.
+          </p>
+          <ul>
+            <li>
+              We will select sets of obituaries from Pennsylvania and Georgia at different time points and from different kinds of
+              outlets (state archives, Black newspapers, contemporary platforms such as Legacy.com).
+            </li>
+            <li>
+              For each set, readers will annotate obituaries using the shared coding scheme, with attention to kin relationships,
+              language of belonging and exclusion, and how the dead are located in families, neighborhoods, and institutions.
+            </li>
+            <li>
+              We will compare coded patterns across periods and between states, asking how the portrayal of kinship, race, class, and
+              community changes over time and across media.
+            </li>
+          </ul>
+          <p>
+            These qualitative readings will both stand on their own and inform subsequent computational work, including how variables
+            and training examples are defined for information extraction and network construction.
+          </p>
+        </section>
+      </main>
+    </div>
 
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
@@ -384,25 +395,26 @@
     </footer>
   </div>
 
-  <button class="back-home" type="button" aria-label="Back to home">
-    <span>←</span>
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <span>↑</span>
   </button>
 
   <script>
-    // Smooth scroll for sidebar links
-    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        var target = document.querySelector(link.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
+    const backToTop = document.querySelector(".back-to-top");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 260) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
     });
 
-    // Back to home (modules section)
-    document.querySelector(".back-home").addEventListener("click", function () {
-      window.location.href = "index.html#modules";
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   </script>
 </body>
