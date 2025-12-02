@@ -5,6 +5,7 @@
   <title>The Living Dead – Legacy.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Shared fonts with the rest of the project -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
@@ -41,7 +42,7 @@
       padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    /* Header */
+    /* ===== Header / Site title ===== */
 
     .site-header {
       display: flex;
@@ -107,7 +108,7 @@
       color: #3d2f22;
     }
 
-    /* Layout: sidebar + content */
+    /* ===== Layout: sidebar + content ===== */
 
     .layout {
       display: grid;
@@ -175,36 +176,14 @@
       gap: 1.9rem;
     }
 
-    .module-header {
-      background: var(--bg-card);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
-      padding: 1.3rem 1.4rem 1.4rem;
-    }
-
-    .module-header h2 {
-      margin: 0 0 0.35rem;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.35rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    .module-header p {
-      margin: 0.25rem 0 0;
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
+    /* ===== Content cards ===== */
 
     .module-section {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      padding: 1.2rem 1.4rem 1.35rem;
+      padding: 1.3rem 1.5rem 1.4rem;
     }
 
     .module-section + .module-section {
@@ -227,7 +206,94 @@
       color: var(--text-muted);
     }
 
-    /* Floating "Back to home" button */
+    .data-overview-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 0.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .data-overview-list li + li {
+      margin-top: 0.15rem;
+    }
+
+    /* ===== Methodology diagram ===== */
+
+    .flow-diagram {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .flow-step {
+      flex: 1 1 180px;
+      min-width: 160px;
+      background: #fbf6ea;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0.7rem 0.8rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .flow-step-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin: 0 0 0.2rem;
+    }
+
+    .flow-step-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ===== Figure styling (for the two comparison charts) ===== */
+
+    .figure-wrapper {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .figure-frame {
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      background: #f9f3e6;
+      padding: 0.55rem;
+    }
+
+    .figure-frame-inner {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fdfaf4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+    }
+
+    .figure-frame img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .figure-caption {
+      margin: 0.3rem 0 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== Floating "Back to home" button ===== */
 
     .back-to-home {
       position: fixed;
@@ -262,7 +328,7 @@
       transform: translateY(-1px);
     }
 
-    /* Footer */
+    /* ===== Footer ===== */
 
     .footer {
       margin-top: 2.4rem;
@@ -277,7 +343,7 @@
       margin: 0.1rem 0;
     }
 
-    /* Responsive */
+    /* ===== Responsive tweaks ===== */
 
     @media (max-width: 800px) {
       .layout {
@@ -299,6 +365,7 @@
 </head>
 <body>
   <div class="page">
+    <!-- ===== Site header (shared look-and-feel) ===== -->
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
@@ -316,64 +383,149 @@
     </header>
 
     <main class="layout">
-      <!-- Sidebar -->
+      <!-- ===== Sticky sidebar / TOC ===== -->
       <aside class="sidebar">
         <h2>Legacy.com</h2>
         <ul class="sidebar-nav">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#data-coverage">Data coverage</a></li>
-          <li><a href="#notes">Notes</a></li>
+          <li><a href="#data-overview">Data overview</a></li>
+          <li><a href="#data-source">Data source</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#coverage-checks">Coverage checks</a></li>
         </ul>
         <p class="sidebar-note">
-          This page is a lightweight pointer for internal reference. Detailed technical notes are kept in non-public documentation.
+          Lightweight internal-facing notes on how Legacy.com fits into the overall obituary corpus. Detailed technical documentation lives elsewhere.
         </p>
       </aside>
 
-      <!-- Main content -->
+      <!-- ===== Main content ===== -->
       <div class="content">
-        <!-- Overview -->
-        <section id="overview" class="module-header">
-          <h2>Legacy.com</h2>
+        <!-- --- Data Overview --- -->
+        <section id="data-overview" class="module-section">
+          <h3 class="section-title">Data Overview</h3>
           <p>
-            Legacy.com hosts obituary content from a wide range of partner newspapers and funeral homes.
+            High-level snapshot of the Legacy.com subset currently included in the project’s working corpus.
+          </p>
+          <ul class="data-overview-list">
+            <li><strong>States:</strong> Georgia and Pennsylvania</li>
+            <li><strong>Years covered:</strong> 2000 to 2024 (inclusive)</li>
+            <li><strong>Total # of obituaries:</strong> TBA &mdash; approximately ~80,000</li>
+          </ul>
+        </section>
+
+        <!-- --- Data Source (simplified text, no link) --- -->
+        <section id="data-source" class="module-section">
+          <h3 class="section-title">Data Source</h3>
+          <p>
+            Data present in the relevant Teams folder.
           </p>
         </section>
 
-        <!-- Data coverage (high-level, non-technical) -->
-        <section id="data-coverage" class="module-section">
-          <h3 class="section-title">Data Coverage</h3>
+        <!-- --- Methodology (text + flow diagram) --- -->
+        <section id="methodology" class="module-section">
+          <h3 class="section-title">Methodology</h3>
           <p>
-            For project purposes, Legacy.com is used as a broad, late-twentieth and twenty-first century source of obituary material. Internally,
-            we track which regions and time periods are represented, and how that coverage compares to other sources such as state archives and
-            historical newspaper collections.
+            For Legacy.com, we collected obituaries for the states of Georgia and Pennsylvania across the years 2000 to 2024 (both inclusive). For each
+            year in each state, we randomly selected two months that are approximately six months apart (for example, April and October). Within each
+            selected month, we then gathered the first 1,000 obituaries that appeared after applying the relevant filters.
           </p>
+          <p>
+            This design provides a regular temporal sampling frame across a 25-year window while keeping scraping volume tractable and making it easier
+            to compare patterns across states and years.
+          </p>
+
+          <!-- Visual flow diagram of the sampling process -->
+          <div class="flow-diagram" aria-label="Sampling steps for Legacy.com obituaries">
+            <div class="flow-step">
+              <p class="flow-step-title">Step 1</p>
+              <p class="flow-step-text">
+                Go to Legacy.com and access the obituary search interface.
+              </p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-title">Step 2</p>
+              <p class="flow-step-text">
+                Filter by state (Georgia or Pennsylvania).
+              </p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-title">Step 3</p>
+              <p class="flow-step-text">
+                Choose a specific year between 2000 and 2024.
+              </p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-title">Step 4</p>
+              <p class="flow-step-text">
+                For that state–year combination, randomly select two months that are roughly six months apart (e.g., April and October).
+              </p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-title">Step 5</p>
+              <p class="flow-step-text">
+                For each selected month, apply the month filter and retrieve the first 1,000 obituaries returned by the search.
+              </p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-title">Step 6</p>
+              <p class="flow-step-text">
+                Store obituary text and key metadata (dates, locations, and basic identifiers) in the project’s standardized schema.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <!-- Notes (kept vague) -->
-        <section id="notes" class="module-section">
-          <h3 class="section-title">Notes &amp; Reminders</h3>
+        <!-- --- Coverage checks (two comparison figures) --- -->
+        <section id="coverage-checks" class="module-section">
+          <h3 class="section-title">Coverage Checks</h3>
           <p>
-            Technical configuration details, quality checks, and sampling decisions related to Legacy.com are documented in separate internal files
-            rather than on this public wiki. This page is meant only to signal that Legacy.com is one of the contemporary sources contributing to
-            the overall obituary corpus.
+            To understand how our sampled obituaries compare to the total volume available on Legacy.com for each granular search, we track the ratio of
+            scraped results to total results by state, year, and month.
+          </p>
+
+          <div class="figure-wrapper">
+            <!-- Georgia figure -->
+            <div class="figure-frame">
+              <div class="figure-frame-inner">
+                <!-- Image path relative to the site root, matching the data-collection assets structure -->
+                <img
+                  src="assets/data-collection/legacy/result-comparison-georgia.png"
+                  alt="Comparison chart of results vs scraped obituaries for Georgia Legacy.com searches."
+                />
+              </div>
+            </div>
+
+            <!-- Pennsylvania figure -->
+            <div class="figure-frame">
+              <div class="figure-frame-inner">
+                <img
+                  src="assets/data-collection/legacy/result-comparison-pennsylvania.png"
+                  alt="Comparison chart of results vs scraped obituaries for Pennsylvania Legacy.com searches."
+                />
+              </div>
+            </div>
+          </div>
+
+          <p class="figure-caption">
+            Comparison of the total results available for each granular search for both the states vs the results scraped for each granular search.
           </p>
         </section>
       </div>
     </main>
 
+    <!-- ===== Footer ===== -->
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
       <p>Website created by Bhargav Dave.</p>
     </footer>
   </div>
 
-  <!-- Floating "Back to home" button -->
+  <!-- Floating "Back to home" button (same behavior as other module pages) -->
   <button class="back-to-home" type="button" aria-label="Back to home">
     <span>Home</span>
   </button>
 
   <script>
-    // Sidebar smooth scrolling
+    // Smooth scrolling for sidebar links
     document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
       link.addEventListener("click", function (event) {
         const href = link.getAttribute("href");
@@ -387,7 +539,7 @@
       });
     });
 
-    // Back-to-home button behavior
+    // Back-to-home button behavior: send user back to main modules on the index
     const backToHome = document.querySelector(".back-to-home");
     backToHome.addEventListener("click", function () {
       window.location.href = "index.html#modules";
