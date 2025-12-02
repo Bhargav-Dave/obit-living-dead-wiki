@@ -173,22 +173,31 @@
     .pipeline-steps {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
       margin-top: 0.6rem;
     }
 
     .pipeline-step {
-      flex: 1 1 180px;
-      max-width: 230px;
+      flex: 0 0 auto;
       background: #fffdf7;
       border-radius: 12px;
       border: 1px solid var(--border-soft);
-      padding: 0.7rem 0.9rem;
+      padding: 0.6rem 0.9rem;
       font-size: 0.86rem;
       line-height: 1.4;
       text-align: center;
+      min-width: 160px;
+      max-width: 220px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .pipeline-arrow {
+      font-size: 1.1rem;
+      color: var(--accent-3);
+      padding: 0 0.1rem;
+      flex: 0 0 auto;
     }
 
     /* Table */
@@ -199,13 +208,22 @@
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       padding: 1rem 1rem 0.75rem;
-      overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.86rem;
+      font-size: 0.82rem;
+      table-layout: fixed;
+    }
+
+    col.col-source {
+      width: 24%;
+    }
+
+    col.col-pa,
+    col.col-ga {
+      width: 12.666%;
     }
 
     thead th {
@@ -214,20 +232,20 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       background: #f9f1e3;
       font-weight: 500;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     tbody td {
       padding: 0.35rem 0.35rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       text-align: center;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     tbody td:first-child,
     thead th:first-child {
       text-align: left;
-      min-width: 170px;
+      min-width: 150px;
     }
 
     .total-row td {
@@ -437,12 +455,15 @@
             <div class="pipeline-step">
               Identify obituary sources and locations
             </div>
+            <span class="pipeline-arrow">➝</span>
             <div class="pipeline-step">
               Set time window (18th century to 2024)
             </div>
+            <span class="pipeline-arrow">➝</span>
             <div class="pipeline-step">
               Plan scraping approach and available metadata
             </div>
+            <span class="pipeline-arrow">➝</span>
             <div class="pipeline-step">
               Define sampling strategy for obituaries
             </div>
@@ -451,8 +472,21 @@
 
         <section id="obit-table" class="content-card">
           <h2>Obituary data overview</h2>
+          <p>
+            The table below tracks, at a high level, our intended coverage by state and source. Counts are provisional and will be
+            updated as collection progresses.
+          </p>
           <div class="table-wrapper">
             <table>
+              <colgroup>
+                <col class="col-source" />
+                <col class="col-pa" />
+                <col class="col-pa" />
+                <col class="col-pa" />
+                <col class="col-ga" />
+                <col class="col-ga" />
+                <col class="col-ga" />
+              </colgroup>
               <thead>
                 <tr>
                   <th rowspan="2">Source</th>
