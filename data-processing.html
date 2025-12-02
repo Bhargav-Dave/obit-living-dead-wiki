@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead · Data Collection</title>
+  <title>Data Processing &amp; Design | The Living Dead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -14,6 +14,7 @@
       --accent-1: #c89b4e;
       --accent-2: #8b6b4a;
       --accent-3: #506b7a;
+      --accent-complete: #e3f2e7;
       --text-main: #2e2520;
       --text-muted: #6a5c52;
       --border-soft: rgba(0, 0, 0, 0.06);
@@ -41,15 +42,17 @@
       padding: 1.75rem 1.25rem 3.5rem;
     }
 
-    /* Header */
-
     .site-header {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 1rem;
       align-items: center;
       text-align: center;
       margin-bottom: 2rem;
+    }
+
+    .title-block {
+      text-align: center;
     }
 
     .title-block h1 {
@@ -58,100 +61,106 @@
       font-size: clamp(2.4rem, 3.4vw, 3rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0 0 0.2rem;
+      margin: 0;
       color: #2a211b;
     }
 
     .title-block .tagline {
-      margin: 0.1rem 0 0.35rem;
-      font-size: 0.9rem;
+      margin: 0;
+      font-size: 0.98rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-3);
     }
 
     .title-block .subtitle {
-      margin: 0.2rem 0 0;
-      font-size: 0.95rem;
-      max-width: 42rem;
+      margin: 0;
+      font-size: 0.98rem;
+      max-width: 40rem;
       line-height: 1.5;
       color: var(--text-muted);
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .module-label {
-      margin-top: 0.35rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    /* Layout: sidebar + content */
-
-    .module-layout {
-      display: flex;
+    .main-layout {
+      display: grid;
+      grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
       gap: 1.8rem;
       align-items: flex-start;
     }
 
     .sidebar {
-      flex: 0 0 230px;
       position: sticky;
       top: 1.5rem;
       align-self: flex-start;
     }
 
-    .sidebar-nav {
+    .sidebar-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.1rem 1.2rem;
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1rem;
     }
 
-    .sidebar-label {
-      font-size: 0.78rem;
+    .sidebar-card h2,
+    .sidebar-card h3 {
+      margin: 0 0 0.6rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-3);
-      margin-bottom: 0.4rem;
+      color: var(--accent-2);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .sidebar-nav a {
-      display: block;
       text-decoration: none;
-      font-size: 0.88rem;
-      padding: 0.3rem 0;
-      color: var(--text-muted);
-      border-left: 2px solid transparent;
-      padding-left: 0.4rem;
-      transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+      font-size: 0.86rem;
+      color: var(--accent-3);
+      padding: 0.12rem 0;
+      border-bottom: 1px solid transparent;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
       color: #3d2f22;
-      border-color: rgba(0, 0, 0, 0.2);
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 6px;
+      border-color: rgba(0, 0, 0, 0.14);
     }
 
-    .module-content {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
+    main {
+      min-width: 0;
     }
 
-    .section-card {
+    .content-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      padding: 1.35rem 1.5rem 1.5rem;
+      padding: 1.35rem 1.5rem 1.45rem;
+      margin-bottom: 1.2rem;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
-    .section-card h2 {
-      margin: 0 0 0.45rem;
+    .content-card h1 {
+      margin: 0 0 0.5rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .content-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.2rem;
       letter-spacing: 0.08em;
@@ -159,32 +168,24 @@
       color: var(--accent-2);
     }
 
-    .section-card p {
-      margin: 0.3rem 0;
-      font-size: 0.9rem;
+    .content-card p {
+      margin: 0.35rem 0 0.35rem;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .content-card ul {
+      margin: 0.4rem 0 0.4rem 1.1rem;
+      padding-left: 0.4rem;
+      font-size: 0.94rem;
       line-height: 1.6;
       color: var(--text-muted);
     }
 
-    .section-card ul {
-      margin: 0.4rem 0 0.1rem 1.2rem;
-      padding: 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-muted);
+    .content-card li {
+      margin-bottom: 0.25rem;
     }
-
-    .section-card li + li {
-      margin-top: 0.2rem;
-    }
-
-    .section-tagline {
-      font-size: 0.82rem;
-      color: var(--accent-3);
-      margin-top: 0.1rem;
-    }
-
-    /* Footer */
 
     .footer {
       margin-top: 2.4rem;
@@ -199,14 +200,12 @@
       margin: 0.1rem 0;
     }
 
-    /* Back-to-home floating button */
-
-    .back-home {
+    .back-to-top {
       position: fixed;
       right: 1.4rem;
       bottom: 1.4rem;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 1px solid rgba(0, 0, 0, 0.12);
       background: #fdf7ea;
@@ -216,43 +215,37 @@
       justify-content: center;
       font-size: 1.1rem;
       cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
       transition:
+        opacity 0.2s ease-out,
         transform 0.2s ease-out,
-        box-shadow 0.2s ease-out,
-        background-color 0.2s ease-out;
+        box-shadow 0.2s ease-out;
       z-index: 40;
     }
 
-    .back-home:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-      background-color: #fffaf1;
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
-    .back-home span {
+    .back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top span {
       transform: translateY(-1px);
     }
 
-    /* Responsive tweaks */
-
     @media (max-width: 860px) {
-      .module-layout {
-        flex-direction: column;
+      .main-layout {
+        grid-template-columns: 1fr;
       }
 
       .sidebar {
         position: static;
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
-
-      .section-card {
-        padding-inline: 1.1rem;
       }
     }
   </style>
@@ -262,138 +255,162 @@
     <header class="site-header">
       <div class="title-block">
         <h1>The Living Dead</h1>
-        <p class="tagline">Obituaries, social connection, and public memory</p>
+        <p class="tagline">Revealing Social Connection over the Centuries in Obituaries</p>
         <p class="subtitle">
           A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
-        <p class="module-label">Module · Data Collection</p>
       </div>
     </header>
 
-    <main class="module-layout">
+    <div class="main-layout">
       <aside class="sidebar">
-        <nav class="sidebar-nav">
-          <div class="sidebar-label">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#sources">Sources &amp; coverage</a>
-          <a href="#workflows">Workflows &amp; tooling</a>
-          <a href="#metadata">Metadata &amp; tracking</a>
-          <a href="#current-decisions">Current decisions</a>
-          <a href="#risks-open">Risks &amp; open questions</a>
-        </nav>
+        <div class="sidebar-card">
+          <h2>Contents</h2>
+          <nav class="sidebar-nav">
+            <a href="#overview">Overview</a>
+            <a href="#input-formats">Input formats</a>
+            <a href="#cleaning-modernization">Cleaning &amp; modernization</a>
+            <a href="#structuring-extraction">Structuring &amp; information extraction</a>
+            <a href="#outputs-linkage">Outputs &amp; linkage</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Navigate</h3>
+          <nav class="sidebar-nav">
+            <a href="index.html#modules">← Back to home</a>
+            <a href="data-collection.html">Data collection</a>
+            <a href="qualitative.html">Qualitative work</a>
+          </nav>
+        </div>
       </aside>
 
-      <div class="module-content">
-        <section id="overview" class="section-card">
-          <h2>Overview</h2>
+      <main>
+        <section id="overview" class="content-card">
+          <h1>Data Processing &amp; Design</h1>
           <p>
-            The data collection module coordinates how we acquire obituary texts and related metadata from
-            a variety of sources, including digitized newspapers, online archives, and funeral program collections.
-            The goal is to assemble a transparent, reproducible corpus that can support both qualitative and
-            computational analysis.
+            This module focuses on how raw obituary materials are transformed into research-ready data. A driving question for this
+            section is: <em>In what formats do the obituaries arrive, and what work is required to make them usable for analysis?</em>
           </p>
-          <p class="section-tagline">
-            Short version: where our texts come from, what we keep, and how we keep track of them.
+          <p>
+            Across sources, obituaries may appear as page images, PDF documents, HTML snippets, or already extracted text. For each
+            format, we document how the text is obtained, how language and layout are cleaned, and how information is structured into
+            variables that support qualitative interpretation, descriptive statistics, and network analysis.
           </p>
         </section>
 
-        <section id="sources" class="section-card">
-          <h2>Sources &amp; coverage</h2>
+        <section id="input-formats" class="content-card">
+          <h2>Input formats</h2>
           <p>
-            We are currently focusing on English-language obituaries from Pennsylvania and Georgia, with particular
-            attention to Black newspapers and community funeral programs. Over time, the corpus may expand.
-          </p>
-          <ul>
-            <li>Digitized historical newspapers (e.g., state and library portals, ProQuest collections).</li>
-            <li>Community and Black press outlets with obituary sections or death notices.</li>
-            <li>Funeral programs and memorial brochures (scanned PDFs or images with OCR).</li>
-            <li>Supplementary local histories or directories when they help identify individuals or institutions.</li>
-          </ul>
-          <p>
-            Each source brings its own constraints on what can be scraped or downloaded, which are documented here
-            as they arise.
-          </p>
-        </section>
-
-        <section id="workflows" class="section-card">
-          <h2>Workflows &amp; tooling</h2>
-          <p>
-            Data collection relies on a mix of manual download, semi-automated scripts, and fully automated scraping,
-            depending on the site and its terms of use.
+            Different sources deliver obituary content in different technical formats. This shapes the first steps of the processing
+            pipeline.
           </p>
           <ul>
             <li>
-              Manual curation and download for small or sensitive collections (e.g., community funeral programs).
+              <strong>PDFs and page images.</strong> Many archival sources (state archives, historic newspapers, some funeral program
+              collections) provide page-level PDFs or image files. These require conversion to machine-readable text, either through
+              built-in text layers or through OCR.
             </li>
             <li>
-              Scripted collection for large, public newspaper portals, respecting documented usage and rate limits.
+              <strong>Born-digital text.</strong> Some sources (e.g., Legacy.com, contemporary news sites) expose obituary text in HTML
+              or other structured formats. Here the main task is to strip boilerplate and isolate the obituary body while preserving
+              headings, dates, and bylines where available.
             </li>
             <li>
-              Use of headless browsers or Selenium for sites that require navigation, login, or dynamic rendering.
-            </li>
-            <li>
-              Consistent directory and file naming conventions to make later processing reproducible.
+              <strong>Embedded obituaries.</strong> In historic newspapers, obituaries may appear inside columns or blocks that also
+              contain advertisements or non-obituary content. In these cases, we treat the page as a container and need additional
+              preprocessing to separate obituary-like segments from surrounding text.
             </li>
           </ul>
           <p>
-            As scripts stabilize, this page can link out to public-safe documentation and, where appropriate, to
-            code repositories.
+            Each source in the data collection module is tagged with its dominant input format so we can standardize downstream steps
+            as much as possible.
           </p>
         </section>
 
-        <section id="metadata" class="section-card">
-          <h2>Metadata &amp; tracking</h2>
+        <section id="cleaning-modernization" class="content-card">
+          <h2>Cleaning &amp; modernization</h2>
           <p>
-            Alongside the texts themselves, we actively track metadata needed for both analysis and stewardship.
+            Once we have access to raw text, we clean and modernize it enough to support both close reading and automated extraction,
+            while still preserving the historical character of the language.
           </p>
           <ul>
-            <li>Publication title, location, and known political or community orientation.</li>
-            <li>Issue date, page number, and section (when available).</li>
-            <li>File paths, URLs, and identifiers that allow us to re-trace the origin of each item.</li>
-            <li>Notes on quality issues (e.g., OCR quality, scan artifacts, missing pages).</li>
-          </ul>
-          <p>
-            Internal tracking tables and logs are designed so that we can always answer “Where did this text come from?”
-            and “What have we done to it so far?”
-          </p>
-        </section>
-
-        <section id="current-decisions" class="section-card">
-          <h2>Current decisions</h2>
-          <p>Some working choices in the data collection pipeline include:</p>
-          <ul>
             <li>
-              Erring on the side of collecting a broad set of death-related items initially, with later filtering
-              into stricter obituary categories.
+              <strong>From PDF/image to text.</strong> Where no text layer is available, we run OCR to obtain a first-pass transcription.
+              For structured PDFs, we use simpler text extraction tools but still check for broken line breaks, column artifacts, and
+              missing characters.
             </li>
             <li>
-              Treating institutional constraints (e.g., access limits, download caps) as design constraints to be
-              documented rather than ignored.
+              <strong>Premodern and noisy English.</strong> Older obituaries often contain premodern spelling, irregular punctuation,
+              and OCR noise. For this material, we explore light-touch modernization and spelling normalization, informed by work
+              already started by Eunkyung (see the prototype tool at
+              <a href="https://newbruns19.shinyapps.io/oldobits/" target="_blank" rel="noopener noreferrer">oldobits</a>).
             </li>
             <li>
-              Logging all automated downloads with timestamps and basic diagnostics (e.g., success, timeout, block).
+              <strong>Page-level preprocessing.</strong> When obituaries are embedded in larger blocks of text, we experiment with
+              segmentation strategies (e.g., splitting on headings or keywords) and simple filters to distinguish obituary-like
+              segments from surrounding content.
             </li>
             <li>
-              Avoiding scraping from sites that explicitly prohibit automated access, unless separate arrangements
-              are made.
+              <strong>Standard text normalization.</strong> Across sources, we standardize character encodings, fix common line-break
+              issues, remove duplicated artifacts, and retain a parallel copy of the minimally processed text for archival purposes.
             </li>
           </ul>
         </section>
 
-        <section id="risks-open" class="section-card">
-          <h2>Risks &amp; open questions</h2>
+        <section id="structuring-extraction" class="content-card">
+          <h2>Structuring &amp; information extraction</h2>
           <p>
-            Data collection raises ethical, legal, and technical questions that we keep revisiting:
+            After basic cleaning, we focus on extracting information that can be analyzed systematically. This combines close reading,
+            hand annotation, and large language models (LLMs).
           </p>
           <ul>
-            <li>How do we handle contemporary obituaries where privacy concerns may be more acute?</li>
-            <li>What constraints do licenses and terms of use place on sharing derived data or models?</li>
-            <li>Where might our collection practices systematically miss communities or publications?</li>
-            <li>How can we design the pipeline so that new sources can be added without breaking earlier steps?</li>
+            <li>
+              <strong>Close reading and coding schemes.</strong> We begin with qualitative close reading of a diverse set of obituaries
+              to develop coding schemes. These schemes define the kinds of information we want to capture (e.g., age, gender, race
+              where available, occupation, organizations, places, kinship ties, causes of death, and references to inequality).
+            </li>
+            <li>
+              <strong>Hand-annotated training sets.</strong> Using the coding scheme, we create small annotated corpora that record how
+              human coders identify key entities and relationships. These annotations serve both as standalone qualitative data and as
+              reference material for automated methods.
+            </li>
+            <li>
+              <strong>LLM-assisted extraction.</strong> Once we have stable coding schemes and examples, we use LLMs to help with
+              information extraction. This can include:
+              <ul>
+                <li>Converting obituary prose into structured variables and categorical codes,</li>
+                <li>Named entity recognition (people, places, organizations),</li>
+                <li>Identifying kin and mapping kinship ties,</li>
+                <li>Detecting references to inequality, status, and community roles.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Network- and table-ready outputs.</strong> Extracted information is organized into tidy tables (e.g., one row per
+              obituary, one row per relationship) and network-ready edge lists (e.g., kinship networks, affiliation networks) that can
+              feed into the qualitative, network, and statistical components of the project.
+            </li>
           </ul>
         </section>
-      </div>
-    </main>
+
+        <section id="outputs-linkage" class="content-card">
+          <h2>Outputs &amp; linkage</h2>
+          <p>
+            Processed data from this module connects back to both the data collection and qualitative modules. For each source, we aim
+            to maintain:
+          </p>
+          <ul>
+            <li>A record of the original files or URLs used to generate the text,</li>
+            <li>A cleaned text version suitable for close reading, and</li>
+            <li>One or more structured datasets suitable for quantitative and network analysis.</li>
+          </ul>
+          <p>
+            For higher-level notes on where obituary texts originate and how coverage is defined by state, period, and source, see the
+            <a href="data-collection.html">Data collection</a> page.
+          </p>
+        </section>
+      </main>
+    </div>
 
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
@@ -401,25 +418,26 @@
     </footer>
   </div>
 
-  <button class="back-home" type="button" aria-label="Back to home">
-    <span>←</span>
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <span>↑</span>
   </button>
 
   <script>
-    // Smooth scroll for sidebar links
-    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        var target = document.querySelector(link.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
+    const backToTop = document.querySelector(".back-to-top");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 260) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
     });
 
-    // Back to home (modules section)
-    document.querySelector(".back-home").addEventListener("click", function () {
-      window.location.href = "index.html#modules";
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   </script>
 </body>
