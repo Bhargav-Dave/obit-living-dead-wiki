@@ -71,7 +71,8 @@
     }
 
     .title-block .subtitle {
-      margin: 0.4rem 0 0;
+      /* Center the constrained-width block itself */
+      margin: 0.4rem auto 0;
       font-size: 0.98rem;
       max-width: 36rem;
       line-height: 1.5;
@@ -164,14 +165,6 @@
     .nav-card:active {
       transform: translateY(-3px) scale(1.01);
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
-    }
-
-    .nav-card-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent-3);
-      opacity: 0.86;
     }
 
     .nav-card h3 {
@@ -394,24 +387,24 @@
         </div>
       </section>
 
-      <!-- CONTEXT CARDS (Time & Place / Approach) -->
+      <!-- CONTEXT CARDS -->
       <section id="context" class="info-section">
         <div class="info-grid">
           <article class="info-card">
             <h2>Time &amp; Place</h2>
             <p>
-              Focused on English-language obituaries from Pennsylvania and Georgia, from the
-              18th century through the present, with particular attention to discrepancies across
-              race, social status and gender.
+              Focused on English-language obituaries from Pennsylvania and Georgia, from the 18th century
+              through the present, with particular attention to discrepancies across race, social
+              status, and gender.
             </p>
           </article>
 
           <article class="info-card">
             <h2>Approach</h2>
             <p>
-              A mixed-methods project combining close reading and qualitative coding with
-              computational text analysis, social network approaches, and large language models
-              to trace patterns of social connection and inequality over time.
+              A mixed-methods project combining close reading and qualitative coding with computational
+              text analysis, social network approaches, and large language models to trace patterns of
+              social connection and inequality over time.
             </p>
           </article>
         </div>
@@ -420,6 +413,10 @@
       <!-- COLLABORATORS -->
       <section id="collaborators" class="collaborators-section">
         <h2>Collaborators</h2>
+
+        <p class="collaborators-blurb">
+          Collaborators working on <em>The Living Dead</em> project.
+        </p>
 
         <ul class="collaborators-list">
           <li>Jennifer Lundquist</li>
@@ -446,7 +443,7 @@
   </button>
 
   <script>
-    // Card navigation: clicking a module card moves to the corresponding HTML page.
+    // Card navigation
     document.querySelectorAll(".nav-card[data-target]").forEach(function (card) {
       card.addEventListener("click", function () {
         var target = card.getAttribute("data-target");
@@ -456,7 +453,7 @@
       });
     });
 
-    // Back-to-top button logic
+    // Back-to-top visibility
     const backToTop = document.querySelector(".back-to-top");
 
     window.addEventListener("scroll", function () {
