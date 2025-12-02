@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Living Dead – Data Collection</title>
+  <title>The Living Dead · Data Collection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -46,21 +46,20 @@
     .site-header {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
       align-items: center;
       text-align: center;
-      margin-bottom: 2.1rem;
+      margin-bottom: 2.2rem;
     }
 
     .title-block {
-      max-width: 40rem;
+      max-width: 640px;
       margin: 0 auto;
     }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 3.2vw, 2.8rem);
+      font-size: clamp(2.5rem, 3.6vw, 3.1rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin: 0 0 0.2rem;
@@ -68,7 +67,7 @@
     }
 
     .title-block .tagline {
-      margin: 0.2rem 0 0.3rem;
+      margin: 0.15rem 0 0.2rem;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -76,72 +75,66 @@
     }
 
     .title-block .subtitle {
-      margin: 0.35rem auto 0;
-      font-size: 0.96rem;
+      margin: 0.35rem 0 0;
+      font-size: 0.98rem;
       max-width: 36rem;
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--text-muted);
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .top-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.1rem;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .top-nav a {
-      text-decoration: none;
-      font-size: 0.86rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      padding-bottom: 0.1rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .top-nav a:hover {
-      border-color: rgba(0, 0, 0, 0.18);
-      color: #3d2f22;
-    }
-
-    /* Layout: sidebar + content */
+    /* Layout */
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
-      gap: 2rem;
+      grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+      gap: 1.8rem;
       align-items: flex-start;
     }
+
+    @media (max-width: 840px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar */
 
     .sidebar {
       position: sticky;
       top: 1.5rem;
       align-self: flex-start;
-      background: rgba(255, 250, 241, 0.9);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 1.1rem 1.1rem 1.2rem;
-      backdrop-filter: blur(4px);
     }
 
-    .sidebar h2 {
-      margin: 0 0 0.6rem;
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      padding: 1.1rem 1.2rem 1.2rem;
+    }
+
+    .sidebar-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.14em;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      margin: 0 0 0.4rem;
       color: var(--accent-2);
+    }
+
+    .sidebar-subtitle {
+      margin: 0 0 0.8rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
 
     .sidebar-nav {
       list-style: none;
       padding: 0;
-      margin: 0.1rem 0 0.9rem;
-      font-size: 0.9rem;
+      margin: 0;
+      font-size: 0.88rem;
     }
 
     .sidebar-nav li + li {
@@ -150,207 +143,173 @@
 
     .sidebar-nav a {
       text-decoration: none;
-      color: var(--text-muted);
-      padding: 0.16rem 0;
+      color: var(--accent-3);
+      padding: 0.25rem 0;
       display: inline-block;
       border-bottom: 1px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
     }
 
     .sidebar-nav a:hover {
-      color: var(--accent-2);
-      border-color: rgba(0, 0, 0, 0.12);
+      border-color: rgba(0, 0, 0, 0.18);
+      color: #3d2f22;
     }
 
-    .sidebar-note {
-      margin: 0.6rem 0 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+    /* Content */
 
     .content {
       display: flex;
       flex-direction: column;
-      gap: 1.9rem;
+      gap: 1.8rem;
     }
 
-    .module-header {
+    .section-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
       padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
-    .module-header h2 {
-      margin: 0 0 0.35rem;
+    .section-card h2 {
+      margin: 0 0 0.5rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.35rem;
-      letter-spacing: 0.08em;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent-2);
     }
 
-    .module-header p {
-      margin: 0.25rem 0 0;
+    .section-card p {
+      margin: 0.35rem 0;
       font-size: 0.92rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-
-    .module-section {
-      background: var(--bg-card);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      padding: 1.2rem 1.4rem 1.35rem;
-    }
-
-    /* Slightly larger box for the data table section */
-    #obituary-data-overview.module-section {
-      padding: 1.35rem 1.6rem 1.45rem;
-    }
-
-    .module-section + .module-section {
-      margin-top: 0.2rem;
-    }
-
-    .section-title {
-      margin: 0 0 0.6rem;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    .module-section p {
-      margin: 0.3rem 0 0.5rem;
-      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-muted);
     }
 
-    /* Obituary Data Overview table */
+    /* Pipeline flow */
 
-    .data-table-wrapper {
-      margin-top: 0.3rem;
+    .methodology-flow {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
     }
 
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto;
-      font-size: 0.85rem;
+    .flow-step {
+      background: #fffdf8;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.55rem 0.95rem;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      max-width: 260px;
     }
 
-    .data-table col.col-source {
-      width: 22%;
+    .flow-step strong {
+      display: block;
+      margin-bottom: 0.12rem;
+      color: var(--accent-2);
     }
 
-    .data-table col.col-pa,
-    .data-table col.col-ga {
-      width: 13%;
+    .flow-arrow {
+      font-size: 1.4rem;
+      color: var(--accent-3);
+      padding: 0 0.05rem;
     }
 
-    .data-table thead th {
-      background: #f0e7d4;
-      color: #3b3026;
-      font-weight: 500;
-      padding: 0.5rem 0.45rem;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+    @media (max-width: 700px) {
+      .methodology-flow {
+        justify-content: flex-start;
+      }
     }
 
-    .data-table thead tr:first-child th {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    /* Table */
 
-    .data-table tbody th {
-      text-align: left;
-      font-weight: 500;
-      padding: 0.45rem 0.5rem;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: #fbf6ea;
-      white-space: nowrap;
-    }
-
-    .data-table tbody td {
-      padding: 0.45rem 0.5rem;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      color: var(--text-muted);
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-
-    .data-table tfoot td {
-      font-weight: 500;
-      background: #f4ebdd;
-      text-align: center;
-    }
-
-    .table-note {
-      margin: 0.45rem 0 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Figure card */
-
-    .figure-wrapper {
+    .table-wrapper {
       margin-top: 0.6rem;
     }
 
-    .figure-frame {
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.07);
-      overflow: hidden;
-      background: #f9f3e6;
-      padding: 0.55rem;
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
     }
 
-    .figure-frame-inner {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fdfaf4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem;
+    .data-table thead {
+      background: #f2e8d6;
     }
 
-    .figure-frame img {
-      max-width: 100%;
-      height: auto;
+    .data-table th,
+    .data-table td {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 0.35rem 0.5rem;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .data-table th {
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-3);
+    }
+
+    .data-table td.source-cell {
+      text-align: left;
+      font-weight: 500;
+      color: var(--accent-2);
+      white-space: nowrap;
+    }
+
+    .data-table tfoot td {
+      font-weight: 600;
+      text-align: center;
+      background: #f8efe0;
+    }
+
+    .table-note {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .table-note span {
       display: block;
     }
 
-    .figure-caption {
-      margin: 0.45rem 0 0;
+    /* Image + caption */
+
+    .image-figure {
+      margin: 0.5rem 0 0;
+      text-align: center;
+    }
+
+    .image-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .image-figure figcaption {
+      margin-top: 0.35rem;
       font-size: 0.82rem;
       color: var(--text-muted);
       text-align: center;
     }
 
-    /* Source cards */
+    /* Source cards grid */
 
-    .source-grid-intro {
-      margin: 0.25rem 0 0.65rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .source-grid {
+    .source-card-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 0.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.8rem;
     }
 
     .source-card {
@@ -358,14 +317,13 @@
       background: var(--bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--border-soft);
-      padding: 0.95rem 1rem 1.1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
       cursor: pointer;
       transition:
         transform var(--transition-fast),
         box-shadow var(--transition-fast),
-        background-color var(--transition-fast),
-        border-color var(--transition-fast);
+        background-color var(--transition-fast);
     }
 
     .source-card:hover {
@@ -375,69 +333,32 @@
     }
 
     .source-card h3 {
-      margin: 0 0 0.25rem;
+      margin: 0 0 0.35rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--accent-2);
     }
 
     .source-card p {
-      margin: 0.2rem 0 0;
+      margin: 0;
       font-size: 0.86rem;
-      color: var(--text-muted);
       line-height: 1.5;
+      color: var(--text-muted);
     }
 
-    .source-card.data-complete {
-      background: #f3f8f3;
-      border-color: rgba(78, 117, 84, 0.4);
-    }
+    /* Slight green tint marker for "fully collected" dataset */
 
-    .source-card.data-complete:hover {
-      background: #eef6ee;
-    }
-
-    /* Floating "Back to home" button */
-
-    .back-to-home {
-      position: fixed;
-      right: 1.4rem;
-      bottom: 1.4rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      background: #fdf7ea;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      cursor: pointer;
-      opacity: 0.95;
-      z-index: 40;
-      padding: 0 0.4rem;
-    }
-
-    .back-to-home span {
-      display: inline-block;
-      transform: translateY(0.5px);
-    }
-
-    .back-to-home:hover {
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(-1px);
+    .source-card.completed {
+      background: #f6fbf4;
+      border-color: rgba(40, 120, 60, 0.3);
     }
 
     /* Footer */
 
     .footer {
-      margin-top: 2.4rem;
+      margin-top: 2.6rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
@@ -449,29 +370,41 @@
       margin: 0.1rem 0;
     }
 
-    /* Responsive */
+    /* Floating Back-to-home button */
 
-    @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 1.4rem;
-      }
-
-      .sidebar {
-        position: static;
-      }
+    .back-floating {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #fdf7ea;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      cursor: pointer;
+      opacity: 0.95;
+      transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        background-color 0.2s ease-out;
+      z-index: 40;
     }
 
-    @media (max-width: 700px) {
-      .page {
-        padding-inline: 1rem;
-      }
+    .back-floating:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      background: #fffaf0;
     }
 
-    @media (max-width: 650px) {
-      .source-grid {
-        grid-template-columns: 1fr;
-      }
+    .back-floating span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
   </style>
 </head>
@@ -485,221 +418,280 @@
           A project analyzing how obituaries across centuries reveal changing patterns of connection, inequality, and remembrance.
         </p>
       </div>
-
-      <nav class="top-nav">
-        <a href="index.html#modules">Project modules</a>
-        <a href="index.html#context">Context</a>
-        <a href="index.html#collaborators">Collaborators</a>
-      </nav>
     </header>
 
-    <main class="layout">
-      <!-- Sidebar -->
+    <div class="layout">
+      <!-- SIDEBAR -->
       <aside class="sidebar">
-        <h2>Data Collection</h2>
-        <ul class="sidebar-nav">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#obituary-data-overview">Obituary data overview</a></li>
-          <li><a href="#source-timelines">Source timelines</a></li>
-          <li><a href="#source-pages">Source pages</a></li>
-        </ul>
-        <p class="sidebar-note">
-          This page tracks where our obituary data comes from, how much coverage we have across time and geography, and where collection is still in progress.
-        </p>
+        <div class="sidebar-card">
+          <h2 class="sidebar-title">Data Collection</h2>
+          <p class="sidebar-subtitle">
+            High-level notes on how we assemble obituary datasets across sources.
+          </p>
+          <ul class="sidebar-nav">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#pipeline">Data collection pipeline</a></li>
+            <li><a href="#obituary-data-overview">Obituary data overview</a></li>
+            <li><a href="#timeline">Source timelines</a></li>
+            <li><a href="#source-pages">Source pages</a></li>
+            <li><a href="#other-sources">Other potential sources</a></li>
+          </ul>
+        </div>
       </aside>
 
-      <!-- Main content -->
-      <div class="content">
-        <!-- Overview -->
-        <section id="overview" class="module-header">
-          <h2>Data Collection</h2>
-          <p>
-            The data collection module coordinates how we acquire obituary texts and related metadata from a variety of sources, including digitized newspapers,
-            online archives, and funeral program collections. The goal is to assemble a transparent, reproducible corpus that can support both qualitative
-            and computational analysis.
-          </p>
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <!-- OVERVIEW -->
+        <section id="overview" class="content-section">
+          <article class="section-card">
+            <h2>Overview</h2>
+            <p>
+              The data collection module coordinates how we acquire obituary texts and related metadata from a variety
+              of sources, including digitized newspapers, online archives, and funeral program collections. The goal is
+              to assemble a transparent, reproducible corpus that can support both qualitative and computational analysis.
+            </p>
+          </article>
         </section>
 
-        <!-- Obituary Data Overview table -->
-        <section id="obituary-data-overview" class="module-section">
-          <h3 class="section-title">Obituary Data Overview</h3>
-          <p>
-            This table keeps a high-level snapshot of the temporal coverage and scale of our obituary data by source and by state. Values are updated as
-            scraping and cleaning progress.
-          </p>
+        <!-- DATA COLLECTION PIPELINE -->
+        <section id="pipeline" class="content-section">
+          <article class="section-card">
+            <h2>Data Collection Pipeline</h2>
+            <p>
+              At a high level, our data collection choices move through four linked stages: identifying where obituary
+              content lives, deciding which venues and time periods to include, determining how to access and store
+              available metadata, and finally specifying sampling strategies for each source.
+            </p>
 
-          <div class="data-table-wrapper">
-            <table class="data-table">
-              <colgroup>
-                <col class="col-source" />
-                <col class="col-pa" span="3" />
-                <col class="col-ga" span="3" />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col" colspan="3">Pennsylvania</th>
-                  <th scope="col" colspan="3">Georgia</th>
-                </tr>
-                <tr>
-                  <th scope="col">Source</th>
-                  <th scope="col">Start date</th>
-                  <th scope="col">End date</th>
-                  <th scope="col"># of obits</th>
-                  <th scope="col">Start date</th>
-                  <th scope="col">End date</th>
-                  <th scope="col"># of obits</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Chronicling America</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">State archive</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">ProQuest Black Newspapers</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">Celebrity obituaries*</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">Legacy.com</th>
-                  <td>01/01/2000</td>
-                  <td>12/31/2024</td>
-                  <td>TBA</td>
-                  <td>01/01/2000</td>
-                  <td>12/31/2024</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">African American obituaries**</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-                <tr>
-                  <th scope="row">Funeral homes</th>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                  <td>TBA</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td><strong>Total</strong></td>
-                  <td></td>
-                  <td></td>
-                  <td>TBA</td>
-                  <td></td>
-                  <td></td>
-                  <td>TBA</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <p class="table-note">
-            * Includes data from celebrity lists on Wikipedia, WikiTree, and other national newspapers (to be finalized).
-          </p>
-          <p class="table-note">
-            ** Specifically includes African American obituaries that were scraped in a targeted fashion. Data is collected from sources including but not
-            limited to BlackCemeteries.com, funeral home collections, Black newspapers, library collections, and related archives.
-          </p>
-        </section>
-
-        <!-- Source timelines figure -->
-        <section id="source-timelines" class="module-section">
-          <h3 class="section-title">Source Timelines</h3>
-          <p>
-            The rough timelines below illustrate how different sources overlap and complement one another across the eighteenth, nineteenth, twentieth,
-            and twenty-first centuries.
-          </p>
-
-          <div class="figure-wrapper">
-            <div class="figure-frame">
-              <div class="figure-frame-inner">
-                <img src="assets/data-collection/sources-timeline-v1.png" alt="Timeline sketch of obituary sources across Pennsylvania and Georgia." />
+            <div class="methodology-flow">
+              <div class="flow-step">
+                <strong>Finding obituaries</strong>
+                Scan potential platforms and collections (newspapers, archives, funeral programs, cemeteries) to locate
+                where obituary-like texts are available in digital form.
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <strong>Where?</strong>
+                Choose which titles, websites, or collections to include and define the broad time horizon (from
+                18th-century sources through 2024), balancing coverage with feasibility.
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <strong>How?</strong>
+                For each source, determine access methods (APIs, scraping, downloads), what metadata are exposed
+                (dates, locations, bylines, section labels, etc.), and how to store them consistently.
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <strong>Sampling</strong>
+                Specify source-specific sampling rules (e.g., full coverage vs. monthly draws, page-level filters,
+                keyword screens) so that our final corpus is traceable and comparable across states and time.
               </div>
             </div>
-            <p class="figure-caption">
-              Rough sketch of the timelines covered by the various sources.
+          </article>
+        </section>
+
+        <!-- OBITUARY DATA OVERVIEW TABLE -->
+        <section id="obituary-data-overview" class="content-section">
+          <article class="section-card">
+            <h2>Obituary Data Overview</h2>
+            <p>
+              This table sketches the current and planned coverage of obituary data by state, source, and time period.
+              All counts are approximate and will be updated as scraping progresses.
             </p>
-          </div>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Source</th>
+                    <th colspan="3">Pennsylvania</th>
+                    <th colspan="3">Georgia</th>
+                  </tr>
+                  <tr>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th># of obits</th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th># of obits</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="source-cell">Chronicling America</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">State archive</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">ProQuest Black Newspapers</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">Celebrity obituaries*</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">African American obituaries**</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">Funeral homes</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                    <td>TBA</td>
+                  </tr>
+                  <tr>
+                    <td class="source-cell">Legacy.com</td>
+                    <td>01/01/2000</td>
+                    <td>12/31/2024</td>
+                    <td>TBA</td>
+                    <td>01/01/2000</td>
+                    <td>12/31/2024</td>
+                    <td>TBA</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td>TBA</td>
+                    <td></td>
+                    <td></td>
+                    <td>TBA</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div class="table-note">
+              <span>* Includes data from celebrity lists on Wikipedia, WikiTree, and other national newspapers (to be finalized).</span>
+              <span>** Specifically includes African American obituaries that were scraped in a targeted fashion. Data is collected from sources including but not limited to blackcemeteries.com, funeral home collections, Black newspapers, and library collections.</span>
+            </div>
+          </article>
         </section>
 
-        <!-- Source pages / cards -->
-        <section id="source-pages" class="module-section">
-          <h3 class="section-title">Source Pages</h3>
-          <p class="source-grid-intro">
-            Use these cards to jump into working notes for each major data source. Each page can track scraping logic, filters, and open questions.
-            Fully collected datasets have a greenish tint.
-          </p>
-
-          <div class="source-grid">
-            <!-- Legacy.com (slight green tint to indicate fully collected dataset) -->
-            <article class="source-card data-complete" data-target="legacy.html">
-              <h3>Legacy.com</h3>
-              <p>
-                Commercial obituary platform with broad coverage from 2000 onward. Tracks coverage, regional focus, and internal completeness checks.
-              </p>
-            </article>
-
-            <article class="source-card" data-target="african-american-obituaries.html">
-              <h3>African American Obituaries</h3>
-              <p>
-                Notes on targeted collection strategies for African American obituaries across newspapers, community archives, and specialized databases.
-              </p>
-            </article>
-
-            <article class="source-card" data-target="general-newspapers.html">
-              <h3>General Newspapers</h3>
-              <p>
-                Coverage plans and extraction notes for state archives, Chronicling America, and other general-interest newspaper collections.
-              </p>
-            </article>
-
-            <article class="source-card" data-target="celebrity-obituaries.html">
-              <h3>Celebrity Obituaries</h3>
-              <p>
-                Methods for assembling a cross-national set of celebrity deaths from Wikipedia, WikiTree, and national press, with attention to selection bias.
-              </p>
-            </article>
-          </div>
+        <!-- SOURCE TIMELINES IMAGE -->
+        <section id="timeline" class="content-section">
+          <article class="section-card">
+            <h2>Source Timelines</h2>
+            <p>
+              A rough schematic of the temporal coverage of each data source. Exact start and end dates will be refined
+              as we finalize scraping plans and clean metadata.
+            </p>
+            <figure class="image-figure">
+              <img
+                src="assets/data-collection/sources-timeline-v1.png"
+                alt="Timeline sketch of obituary data sources across Pennsylvania and Georgia."
+              />
+              <figcaption>
+                Rough sketch of the timelines covered by the various sources.
+              </figcaption>
+            </figure>
+          </article>
         </section>
-      </div>
-    </main>
+
+        <!-- SOURCE PAGES GRID -->
+        <section id="source-pages" class="content-section">
+          <article class="section-card">
+            <h2>Source Pages</h2>
+            <p>
+              Use these cards to jump into working notes for each major data source. Each page can track scraping logic,
+              filters, and open questions. Fully collected datasets have a greenish tint.
+            </p>
+
+            <div class="source-card-grid">
+              <div class="source-card completed" data-target="legacy-obituaries.html">
+                <h3>Legacy.com</h3>
+                <p>
+                  Sampling-based obituary collection from Legacy.com for Georgia and Pennsylvania, 2000–2024.
+                </p>
+              </div>
+
+              <div class="source-card" data-target="african-american-obituaries.html">
+                <h3>African American Obituaries</h3>
+                <p>
+                  Targeted collections from funeral programs, Black cemeteries, and African American–focused archives.
+                </p>
+              </div>
+
+              <div class="source-card" data-target="general-newspapers.html">
+                <h3>General Newspapers</h3>
+                <p>
+                  Obituaries scraped from state newspaper archives and national digitization projects.
+                </p>
+              </div>
+
+              <div class="source-card" data-target="celebrity-obituaries.html">
+                <h3>Celebrity Obituaries</h3>
+                <p>
+                  Obituaries of nationally visible figures drawn from Wikipedia lists, WikiTree, and major outlets.
+                </p>
+              </div>
+            </div>
+
+            <p class="table-note">
+              For more information on how this data is processed, visit the
+              <a href="data-processing.html">Data Processing &amp; Design</a> page.
+            </p>
+          </article>
+        </section>
+
+        <!-- OTHER POTENTIAL SOURCES -->
+        <section id="other-sources" class="content-section">
+          <article class="section-card">
+            <h2>Other Potential Sources Identified</h2>
+            <p>
+              Beyond the sources listed above, we have identified several additional types of materials that may help
+              contextualize or extend our obituary corpus:
+              family tree entries from WikiTree, relevant life-story repositories, death certificates, belated
+              obituaries and events held in memoriam, and historical event records that spur commemorative writing.
+            </p>
+            <p>
+              We have not yet tapped into these sources systematically or devised detailed methodologies for incorporating
+              them into the project. They are flagged here as future directions for expanding the scope of the data.
+            </p>
+          </article>
+        </section>
+      </main>
+
+      <!-- Floating back-to-home button -->
+      <button class="back-floating" type="button" aria-label="Back to home">
+        <span>Home</span>
+      </button>
+    </div>
 
     <footer class="footer">
       <p>© 2025 The Living Dead Project. All rights reserved.</p>
@@ -707,41 +699,24 @@
     </footer>
   </div>
 
-  <!-- Floating "Back to home" button -->
-  <button class="back-to-home" type="button" aria-label="Back to home">
-    <span>Home</span>
-  </button>
-
   <script>
-    // Sidebar smooth scrolling
-    document.querySelectorAll(".sidebar-nav a").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          event.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-      });
-    });
-
-    // Source card navigation
+    // Source page navigation
     document.querySelectorAll(".source-card[data-target]").forEach(function (card) {
       card.addEventListener("click", function () {
-        const target = card.getAttribute("data-target");
+        var target = card.getAttribute("data-target");
         if (target) {
           window.location.href = target;
         }
       });
     });
 
-    // Back-to-home button behavior
-    const backToHome = document.querySelector(".back-to-home");
-    backToHome.addEventListener("click", function () {
-      window.location.href = "index.html#modules";
-    });
+    // Floating back-to-home button
+    const backFloating = document.querySelector(".back-floating");
+    if (backFloating) {
+      backFloating.addEventListener("click", function () {
+        window.location.href = "index.html#modules";
+      });
+    }
   </script>
 </body>
 </html>
