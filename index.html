@@ -127,16 +127,19 @@
       color: var(--text-muted);
     }
 
+    /* Switch from flex to a 3-column grid */
     .primary-card-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
+      justify-items: center;
+      align-items: stretch;
     }
 
     .nav-card {
       position: relative;
-      width: min(220px, 28vw);
+      width: 100%;
+      max-width: 220px;
       aspect-ratio: 1 / 1;
       background: var(--bg-card);
       border-radius: var(--radius-card);
@@ -156,9 +159,10 @@
         background-color var(--transition-fast);
     }
 
-    /* Special sizing for the "Research Overview" card */
+    /* Research Overview spans the entire 3-column grid row */
     .nav-card.nav-card--overview {
-      width: min(520px, 92vw);
+      grid-column: 1 / -1;
+      max-width: 760px;
       aspect-ratio: auto;
       padding: 1.35rem 1.6rem 1.45rem;
     }
@@ -169,7 +173,7 @@
 
     .nav-card.nav-card--overview .nav-card-subtitle {
       font-size: 0.86rem;
-      max-width: 28rem;
+      max-width: 34rem;
     }
 
     .nav-card:hover {
@@ -339,17 +343,34 @@
 
     /* Responsive tweaks */
 
+    @media (max-width: 900px) {
+      .primary-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-card.nav-card--overview {
+        grid-column: 1 / -1;
+        max-width: 680px;
+      }
+    }
+
     @media (max-width: 700px) {
       .page {
         padding-inline: 1rem;
       }
 
+      .primary-card-grid {
+        grid-template-columns: 1fr;
+      }
+
       .nav-card {
-        width: min(220px, 80vw);
+        max-width: 360px;
+        aspect-ratio: auto;
+        padding: 1.25rem 1.35rem 1.35rem;
       }
 
       .nav-card.nav-card--overview {
-        width: min(520px, 92vw);
+        max-width: 520px;
       }
     }
   </style>
@@ -381,7 +402,7 @@
         </div>
 
         <div class="primary-card-grid">
-          <!-- RESEARCH OVERVIEW CARD (SPECIAL WIDTH) -->
+          <!-- RESEARCH OVERVIEW CARD (FULL-WIDTH ROW ABOVE) -->
           <article class="nav-card nav-card--overview" data-target="research-overview.html">
             <h3>Research Overview</h3>
             <p class="nav-card-subtitle">
