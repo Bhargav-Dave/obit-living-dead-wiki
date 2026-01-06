@@ -130,8 +130,8 @@
     .primary-card-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: 0.9rem;  /* reduced horizontal space between the 3 cards */
-      row-gap: 1.5rem;     /* unchanged vertical spacing (matches original feel) */
+      column-gap: 0.45rem;  /* halved from 0.9rem */
+      row-gap: 1.5rem;      /* unchanged vertical spacing */
       justify-items: center;
       align-items: stretch;
     }
@@ -347,8 +347,8 @@
     @media (max-width: 900px) {
       .primary-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 0.9rem; /* keep tightened columns */
-        row-gap: 1.5rem;    /* unchanged */
+        column-gap: 0.45rem; /* halved from 0.9rem */
+        row-gap: 1.5rem;     /* unchanged */
       }
 
       .nav-card.nav-card--overview {
