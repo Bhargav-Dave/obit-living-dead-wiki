@@ -71,7 +71,6 @@
     }
 
     .title-block .subtitle {
-      /* Center the constrained-width block itself */
       margin: 0.4rem auto 0;
       font-size: 0.98rem;
       max-width: 36rem;
@@ -127,11 +126,12 @@
       color: var(--text-muted);
     }
 
-    /* Switch from flex to a 3-column grid */
+    /* 3-column grid: only tighten COLUMN spacing; keep row spacing unchanged */
     .primary-card-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      column-gap: 0.9rem;  /* reduced horizontal space between the 3 cards */
+      row-gap: 1.5rem;     /* unchanged vertical spacing (matches original feel) */
       justify-items: center;
       align-items: stretch;
     }
@@ -165,6 +165,7 @@
       max-width: 760px;
       aspect-ratio: auto;
       padding: 1.35rem 1.6rem 1.45rem;
+      margin-bottom: 0.1rem;
     }
 
     .nav-card.nav-card--overview h3 {
@@ -346,6 +347,8 @@
     @media (max-width: 900px) {
       .primary-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 0.9rem; /* keep tightened columns */
+        row-gap: 1.5rem;    /* unchanged */
       }
 
       .nav-card.nav-card--overview {
@@ -361,6 +364,7 @@
 
       .primary-card-grid {
         grid-template-columns: 1fr;
+        row-gap: 1.5rem; /* unchanged */
       }
 
       .nav-card {
