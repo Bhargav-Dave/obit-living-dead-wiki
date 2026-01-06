@@ -156,6 +156,22 @@
         background-color var(--transition-fast);
     }
 
+    /* Special sizing for the "Research Overview" card */
+    .nav-card.nav-card--overview {
+      width: min(520px, 92vw);
+      aspect-ratio: auto;
+      padding: 1.35rem 1.6rem 1.45rem;
+    }
+
+    .nav-card.nav-card--overview h3 {
+      font-size: 1.45rem;
+    }
+
+    .nav-card.nav-card--overview .nav-card-subtitle {
+      font-size: 0.86rem;
+      max-width: 28rem;
+    }
+
     .nav-card:hover {
       transform: translateY(-8px) scale(1.03);
       box-shadow: var(--shadow-soft);
@@ -331,6 +347,10 @@
       .nav-card {
         width: min(220px, 80vw);
       }
+
+      .nav-card.nav-card--overview {
+        width: min(520px, 92vw);
+      }
     }
   </style>
 </head>
@@ -361,15 +381,15 @@
         </div>
 
         <div class="primary-card-grid">
-          <!-- RESEARCH OVERVIEW CARD -->
-          <article class="nav-card" data-target="research-overview.html">
+          <!-- RESEARCH OVERVIEW CARD (SPECIAL WIDTH) -->
+          <article class="nav-card nav-card--overview" data-target="research-overview.html">
             <h3>Research Overview</h3>
             <p class="nav-card-subtitle">
               Proposals · Sites · Code · Bibliography
             </p>
           </article>
 
-          <!-- RESEARCH DESIGN CARD (RENAMED FROM QUALITATIVE WORK) -->
+          <!-- RESEARCH DESIGN CARD -->
           <article class="nav-card" data-target="research-design.html">
             <h3>Research Design</h3>
             <p class="nav-card-subtitle">
@@ -385,7 +405,7 @@
             </p>
           </article>
 
-          <!-- DATA PROCESSING CARD (RENAMED) -->
+          <!-- DATA PROCESSING CARD -->
           <article class="nav-card" data-target="data-processing.html">
             <h3>Data Processing</h3>
             <p class="nav-card-subtitle">
