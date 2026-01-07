@@ -179,6 +179,18 @@
 
     .content-card li { margin-bottom: 0.25rem; }
 
+    .content-card a {
+      color: var(--accent-3);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(80, 107, 122, 0.35);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .content-card a:hover {
+      color: #3d2f22;
+      border-color: rgba(0, 0, 0, 0.22);
+    }
+
     .footer {
       margin-top: 2.4rem;
       padding-top: 1rem;
@@ -249,8 +261,7 @@
           <h2>Contents</h2>
           <nav class="sidebar-nav">
             <a href="#overview">Overview</a>
-            <a href="#why-pa-ga">Why Pennsylvania &amp; Georgia?</a>
-            <a href="#coding-scheme">Coding scheme</a>
+            <a href="#foundations">Foundations</a>
             <a href="#qualitative-plan">Qualitative analysis plan</a>
             <a href="#analysis">Mixed-method analysis</a>
             <a href="#bibliography">Bibliography</a>
@@ -272,90 +283,38 @@
         <section id="overview" class="content-card">
           <h1>Research Design</h1>
           <p>
-            This page records design choices and emerging analysis outcomes as the project develops. It brings together decisions that
-            shape sampling, coding, and interpretation across sources and time periods, and it documents how close reading is coordinated
-            with structured data work.
+            This page records design choices and emerging analysis outcomes as the project develops. It documents how close reading is
+            coordinated with structured data work, and it captures the analysis procedures we use to compare obituary content across
+            time, place, and media.
           </p>
           <p>
-            At this stage, some details are still being finalized. The sections below summarize the project’s core state- and
-            source-selection logic, the coding scheme that anchors both qualitative interpretation and systematic extraction, and the
-            analysis plan that guides comparisons across race, gender, social class, historical period, and format (e.g., print vs. digital;
-            obituary vs. death notice vs. pamphlet).
-          </p>
-          <p>
-            Find the current SPARC proposal grant
-            <a href="https://umass.sharepoint.com/:w:/s/ConventionsofDeath2/IQCLtXW3zu6IQoeM604GY0YxARCBW1bJNA8-pQC-YNPCkjo?email=lundquist%40soc.umass.edu&e=oiNlj2&xsdata=MDV8MDJ8YmRhdmVAdW1hc3MuZWR1fDIyM2ZjYzliYzc0NDQ4NDNkMDYwMDhkZTNjNGJiNzE2fDdiZDA4YjBiMzM5NTRkYzE5NGJiZDBiMmU1NmE0OTdmfDB8MHw2MzkwMTQ0OTMwNDM4Nzg2Njd8VW5rbm93bnxUV0ZwYkdac2IzZDhleUpGYlhCMGVVMWhjR2tpT25SeWRXVXNJbFlpT2lJd0xqQXVNREF3TUNJc0lsQWlPaUpYYVc0ek1pSXNJa0ZPSWpvaVRXRnBiQ0lzSWxkVUlqb3lmUT09fDB8fHw%3d&sdata=MkZyYUFPeXd0ekh4S0RmV1JlSkd3Sk5iR24xY0ZraCtJZHljbVU2VTBSaz0%3d">here</a>.
+            For cross-cutting project information that is stable and shared across modules—proposals, site selection rationale, and the
+            current coding scheme—see <a href="research-overview.html">Research overview</a>. This page focuses on how those foundations
+            are implemented in practice: sampling for reading, qualitative workflows, model-assisted coding validation, and planned
+            quantitative and network analysis outputs.
           </p>
         </section>
 
-        <section id="why-pa-ga" class="content-card">
-          <h2>Why Pennsylvania &amp; Georgia?</h2>
+        <section id="foundations" class="content-card">
+          <h2>Foundations</h2>
           <p>
-            Pennsylvania and Georgia were selected for their locations in the Northeast and Southeast, respectively, and for their
-            historically significant Black populations. Together they give us two states in distinctive regions with long historical
-            records and rich Black press traditions.
+            Several core design inputs are maintained centrally to avoid duplication and to keep updates consistent across the site:
           </p>
           <ul>
             <li>
-              <strong>Regional contrast with long coverage.</strong> Georgia represents the South and Pennsylvania the Northeast. Both
-              have state-sponsored newspaper archives with content going back to the eighteenth century (for example, Georgia Historic
-              Newspapers starts in 1763), giving us extended time series for historic obituaries.
+              <strong>Proposals and project documents.</strong> See <a href="research-overview.html#proposals">Research overview → Proposals</a>.
             </li>
             <li>
-              <strong>Downloadable and comparable sources.</strong> Both states provide large, relatively accessible sets of digitized
-              newspaper pages and obituaries (through state archives and Chronicling America), which can be sampled in parallel ways.
+              <strong>Site selection (Pennsylvania &amp; Georgia).</strong> See <a href="research-overview.html#sites">Research overview → Sites</a>.
             </li>
             <li>
-              <strong>Population scale.</strong> Today the two states have broadly comparable population sizes, supporting comparisons
-              in the volume and composition of obituaries over time.
-            </li>
-            <li>
-              <strong>Black newspapers and communities.</strong> Each state has historically important Black communities and Black
-              newspapers, allowing us to study how race, region, and local histories shape obituary practices.
+              <strong>Coding scheme (current draft and scope).</strong> See <a href="research-overview.html#coding-scheme">Research overview → Coding scheme</a>.
             </li>
           </ul>
           <p>
-            More detailed justification, including maps of newspaper locations, counts of titles, and tables of African American
-            newspapers by state, is documented in the team Google doc and related internal memos. For source-specific coverage and sampling
-            notes, see <a href="data-collection.html">Data collection</a> and <a href="research-overview.html">Research overview</a>.
-          </p>
-        </section>
-
-        <section id="coding-scheme" class="content-card">
-          <h2>Coding scheme</h2>
-          <p>
-            A draft coding scheme has already been developed and saved by Eunkyung in the relevant Teams folder. That scheme is our
-            starting point for reading and annotating obituaries, and it also anchors what we attempt to extract consistently across
-            sources and time periods.
-          </p>
-          <p>
-            At a high level, the coding scheme is designed to capture:
-          </p>
-          <ul>
-            <li>
-              <strong>Basic descriptive information</strong> (where available), such as age, gender, race, occupation, education or titles,
-              religious affiliation, locations lived and died, and (when relevant) celebrity status,
-            </li>
-            <li>
-              <strong>Kinship and household ties</strong> (spouses, in-laws, children, siblings, extended kin, and non-kin described in
-              kin-like ways such as friends and neighbors), including whether individuals are named and how they appear in the text,
-            </li>
-            <li>
-              <strong>Status, inequality, and community roles</strong> (e.g., public offices, organizational memberships, religious participation
-              and official roles, military service, and civic contributions),
-            </li>
-            <li>
-              <strong>Institutional arrangements for death</strong> (e.g., visitation, funeral services, receiving lines, and other ritual descriptors),
-            </li>
-            <li>
-              <strong>Narrative features</strong> such as how a life story is structured, what events are highlighted, paid and unpaid work,
-              how death is described, personal attributes and interests, and other disclosures (both positive and negative), including commentary
-              on people listed.
-            </li>
-          </ul>
-          <p>
-            As we begin close reading, we expect to refine this coding scheme iteratively and record any revisions back into the Teams
-            materials. A streamlined summary of this scheme also appears on the <a href="research-overview.html">Research overview</a> page.
+            Source-specific implementation details (interfaces, coverage notes, and extraction constraints) are documented under
+            <a href="data-collection.html">Data collection</a>, and processing steps that turn raw materials into analysis-ready text and tables
+            are documented under <a href="data-processing.html">Data processing</a>.
           </p>
         </section>
 
@@ -384,6 +343,12 @@
             We anticipate using NVivo to develop analytically grounded nodes with attached attributes, and to run queries that identify patterns
             and trends in obituary content using procedures commonly applied to open-ended qualitative material.
           </p>
+          <p>
+            We expect to rely on qualitative material for two purposes: (1) to provide stories and quotations that clarify and elaborate
+            patterns observed in structured datasets; and (2) to develop case studies that highlight similarities and differences across social groups—
+            particularly between celebrities and ordinary individuals, Black and white communities, and women and men (and, where appropriate,
+            their intersections).
+          </p>
         </section>
 
         <section id="analysis" class="content-card">
@@ -395,16 +360,17 @@
           </p>
           <ul>
             <li>
-              <strong>Systematic coding for quantitative analysis.</strong> The coding framework (see <a href="research-overview.html">Research overview</a>)
-              will form the basis for structured datasets used in Stata and R for data management and statistical modeling. We aim to code texts
-              using LLMs, then validate outputs against human-coded material and alternative LLM-coded versions, enabling comparisons across women
-              and men, across race, across generations, and across formats (e.g., print vs. digital; obituary vs. death notice vs. pamphlet).
+              <strong>Systematic coding for quantitative analysis.</strong> Using the coding framework (see
+              <a href="research-overview.html#coding-scheme">Research overview</a>), we will build structured datasets and analyze them in
+              Stata and R for data management and statistical modeling. We aim to code texts using LLMs and validate outputs against human-coded
+              data and alternative LLM-coded versions, enabling comparisons across women and men, across race, across generations, and across formats
+              (e.g., print vs. digital; obituary vs. death notice vs. pamphlet).
             </li>
             <li>
-              <strong>Qualitative interpretation and case development.</strong> We expect to rely on the qualitative material for two purposes:
-              (1) to provide stories and quotations that clarify and elaborate the patterns observed in structured data; and (2) to develop case
-              studies that highlight similarities and differences across social groups—particularly between celebrities and ordinary individuals,
-              Black and white communities, and women and men (and, where appropriate, their intersections).
+              <strong>Network analysis outputs.</strong> Where the text supports it, we will translate relational information into network-ready
+              formats (e.g., kinship networks, affiliation networks, and place-based ties) and analyze how connectivity, tie composition, and social
+              boundary markers vary across groups and historical periods. (Network analysis specifics will be expanded as we finalize the last-meeting
+              plan and the first extraction pilots.)
             </li>
             <li>
               <strong>Historical comparison and periodization.</strong> Using complementary methods, we will trace general changes from the 18th to
