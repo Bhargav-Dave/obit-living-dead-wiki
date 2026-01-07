@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Data Processing &amp; Design | The Living Dead</title>
+  <title>Data Processing | The Living Dead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -23,9 +23,7 @@
       --transition-fast: 0.18s ease-out;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -51,9 +49,7 @@
       margin-bottom: 2rem;
     }
 
-    .title-block {
-      text-align: center;
-    }
+    .title-block { text-align: center; }
 
     .title-block h1 {
       font-family: "Cormorant Garamond", "Times New Roman", serif;
@@ -137,9 +133,7 @@
       border-color: rgba(0, 0, 0, 0.14);
     }
 
-    main {
-      min-width: 0;
-    }
+    main { min-width: 0; }
 
     .content-card {
       background: var(--bg-card);
@@ -183,9 +177,7 @@
       color: var(--text-muted);
     }
 
-    .content-card li {
-      margin-bottom: 0.25rem;
-    }
+    .content-card li { margin-bottom: 0.25rem; }
 
     .footer {
       margin-top: 2.4rem;
@@ -196,9 +188,7 @@
       color: var(--text-muted);
     }
 
-    .footer p {
-      margin: 0.1rem 0;
-    }
+    .footer p { margin: 0.1rem 0; }
 
     .back-to-top {
       position: fixed;
@@ -217,10 +207,7 @@
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
-      transition:
-        opacity 0.2s ease-out,
-        transform 0.2s ease-out,
-        box-shadow 0.2s ease-out;
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
       z-index: 40;
     }
 
@@ -235,21 +222,15 @@
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .back-to-top span {
-      transform: translateY(-1px);
-    }
+    .back-to-top span { transform: translateY(-1px); }
 
     @media (max-width: 860px) {
-      .main-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
+      .main-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header class="site-header">
@@ -271,7 +252,7 @@
             <a href="#input-formats">Input formats</a>
             <a href="#cleaning-modernization">Cleaning &amp; modernization</a>
             <a href="#structuring-extraction">Structuring &amp; information extraction</a>
-            <a href="#outputs-linkage">Outputs &amp; linkage</a>
+            <a href="#outputs-linkages">Outputs &amp; linkages</a>
           </nav>
         </div>
 
@@ -279,15 +260,16 @@
           <h3>Navigate</h3>
           <nav class="sidebar-nav">
             <a href="index.html#modules">← Back to home</a>
+            <a href="research-overview.html">Research overview</a>
             <a href="data-collection.html">Data collection</a>
-            <a href="qualitative.html">Qualitative work</a>
+            <a href="research-design.html">Research design</a>
           </nav>
         </div>
       </aside>
 
       <main>
         <section id="overview" class="content-card">
-          <h1>Data Processing &amp; Design</h1>
+          <h1>Data Processing</h1>
           <p>
             This module focuses on how raw obituary materials are transformed into research-ready data. A driving question for this
             section is: <em>In what formats do the obituaries arrive, and what work is required to make them usable for analysis?</em>
@@ -295,7 +277,7 @@
           <p>
             Across sources, obituaries may appear as page images, PDF documents, HTML snippets, or already extracted text. For each
             format, we document how the text is obtained, how language and layout are cleaned, and how information is structured into
-            variables that support qualitative interpretation, descriptive statistics, and network analysis.
+            variables that support close reading and systematic analysis.
           </p>
         </section>
 
@@ -307,24 +289,24 @@
           </p>
           <ul>
             <li>
-              <strong>PDFs and page images.</strong> Many archival sources (state archives, historic newspapers, some funeral program
-              collections) provide page-level PDFs or image files. These require conversion to machine-readable text, either through
-              built-in text layers or through OCR.
+              <strong>PDFs and page images.</strong> Many archival sources (state archives, historic newspapers, and some funeral
+              program collections) provide page-level PDFs or image files. These require conversion to machine-readable text, either
+              through built-in text layers or through OCR.
             </li>
             <li>
-              <strong>Born-digital text.</strong> Some sources (e.g., Legacy.com, contemporary news sites) expose obituary text in HTML
-              or other structured formats. Here the main task is to strip boilerplate and isolate the obituary body while preserving
-              headings, dates, and bylines where available.
+              <strong>Born-digital text.</strong> Some sources (e.g., Legacy.com and contemporary news sites) expose obituary text in
+              HTML or other structured formats. Here the main task is to strip boilerplate and isolate the obituary body while
+              preserving headings, dates, and bylines where available.
             </li>
             <li>
               <strong>Embedded obituaries.</strong> In historic newspapers, obituaries may appear inside columns or blocks that also
-              contain advertisements or non-obituary content. In these cases, we treat the page as a container and need additional
+              contain advertisements or non-obituary content. In these cases, we treat the page as a container and use additional
               preprocessing to separate obituary-like segments from surrounding text.
             </li>
           </ul>
           <p>
-            Each source in the data collection module is tagged with its dominant input format so we can standardize downstream steps
-            as much as possible.
+            Each source in the <a href="data-collection.html">Data collection</a> module is tagged with its dominant input format so we
+            can standardize downstream steps as much as possible.
           </p>
         </section>
 
@@ -336,9 +318,9 @@
           </p>
           <ul>
             <li>
-              <strong>From PDF/image to text.</strong> Where no text layer is available, we run OCR to obtain a first-pass transcription.
-              For structured PDFs, we use simpler text extraction tools but still check for broken line breaks, column artifacts, and
-              missing characters.
+              <strong>From PDF/image to text.</strong> Where no text layer is available, we run OCR to obtain a first-pass
+              transcription. For structured PDFs, we use simpler text extraction tools but still check for broken line breaks, column
+              artifacts, and missing characters.
             </li>
             <li>
               <strong>Premodern and noisy English.</strong> Older obituaries often contain premodern spelling, irregular punctuation,
@@ -361,52 +343,48 @@
         <section id="structuring-extraction" class="content-card">
           <h2>Structuring &amp; information extraction</h2>
           <p>
-            After basic cleaning, we focus on extracting information that can be analyzed systematically. This combines close reading,
-            hand annotation, and large language models (LLMs).
+            After basic cleaning, we focus on extracting information that can be analyzed systematically. This combines hand
+            annotation and large language models (LLMs), grounded in the project’s qualitative coding framework (documented on the
+            <a href="research-design.html#coding-scheme">Research design</a> page).
           </p>
           <ul>
             <li>
-              <strong>Close reading and coding schemes.</strong> We begin with qualitative close reading of a diverse set of obituaries
-              to develop coding schemes. These schemes define the kinds of information we want to capture (e.g., age, gender, race
-              where available, occupation, organizations, places, kinship ties, causes of death, and references to inequality).
+              <strong>Hand-annotated training sets.</strong> Using the shared coding scheme, we create small annotated corpora that
+              record how human coders identify key entities and relationships. These annotations serve both as standalone qualitative
+              material and as reference examples for automated methods.
             </li>
             <li>
-              <strong>Hand-annotated training sets.</strong> Using the coding scheme, we create small annotated corpora that record how
-              human coders identify key entities and relationships. These annotations serve both as standalone qualitative data and as
-              reference material for automated methods.
-            </li>
-            <li>
-              <strong>LLM-assisted extraction.</strong> Once we have stable coding schemes and examples, we use LLMs to help with
+              <strong>LLM-assisted extraction.</strong> Once we have stable coding schemes and examples, we use LLMs to support
               information extraction. This can include:
               <ul>
                 <li>Converting obituary prose into structured variables and categorical codes,</li>
                 <li>Named entity recognition (people, places, organizations),</li>
                 <li>Identifying kin and mapping kinship ties,</li>
-                <li>Detecting references to inequality, status, and community roles.</li>
+                <li>Identifying community roles and organizational participation.</li>
               </ul>
             </li>
             <li>
-              <strong>Network- and table-ready outputs.</strong> Extracted information is organized into tidy tables (e.g., one row per
-              obituary, one row per relationship) and network-ready edge lists (e.g., kinship networks, affiliation networks) that can
-              feed into the qualitative, network, and statistical components of the project.
+              <strong>Relationship- and table-ready outputs.</strong> Extracted information is organized into tidy tables (e.g., one
+              row per obituary, one row per relationship) that can support descriptive analysis and cross-source comparison (for
+              example, kinship ties and organizational affiliations).
             </li>
           </ul>
         </section>
 
-        <section id="outputs-linkage" class="content-card">
-          <h2>Outputs &amp; linkage</h2>
+        <section id="outputs-linkages" class="content-card">
+          <h2>Outputs &amp; linkages</h2>
           <p>
-            Processed data from this module connects back to both the data collection and qualitative modules. For each source, we aim
-            to maintain:
+            Processed data from this module connects back to both the <a href="data-collection.html">Data collection</a> and
+            <a href="research-design.html">Research design</a> modules. For each source, we aim to maintain:
           </p>
           <ul>
             <li>A record of the original files or URLs used to generate the text,</li>
             <li>A cleaned text version suitable for close reading, and</li>
-            <li>One or more structured datasets suitable for quantitative and network analysis.</li>
+            <li>One or more structured datasets suitable for systematic analysis.</li>
           </ul>
           <p>
             For higher-level notes on where obituary texts originate and how coverage is defined by state, period, and source, see the
-            <a href="data-collection.html">Data collection</a> page.
+            <a href="research-overview.html">Research overview</a> and <a href="data-collection.html">Data collection</a> pages.
           </p>
         </section>
       </main>
@@ -434,10 +412,7 @@
     });
 
     backToTop.addEventListener("click", function () {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
 </body>
